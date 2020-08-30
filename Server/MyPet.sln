@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPet.Domain", "Domain\MyPet.Domain\MyPet.Domain.csproj", "{926FB2D6-F046-4B7A-9BBD-E970AE11F82D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{BAB57C99-9797-4B96-922F-AB2DAF1D34F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{31601353-3519-4D6E-9959-12CF9B2151CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{B8C474C9-1A1D-4ABF-AC09-D3317DB657F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{ECFB51EE-6BC4-4D30-9645-9C9E7344F684}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Startup", "Startup", "{60142024-8F17-4018-ADB9-E9FAF0F22964}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{926FB2D6-F046-4B7A-9BBD-E970AE11F82D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{926FB2D6-F046-4B7A-9BBD-E970AE11F82D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{926FB2D6-F046-4B7A-9BBD-E970AE11F82D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{926FB2D6-F046-4B7A-9BBD-E970AE11F82D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{926FB2D6-F046-4B7A-9BBD-E970AE11F82D} = {BAB57C99-9797-4B96-922F-AB2DAF1D34F0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {71F49411-B6C4-4099-984C-E214DE08E628}
+	EndGlobalSection
+EndGlobal

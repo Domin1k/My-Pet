@@ -1,0 +1,16 @@
+<div class="jumbotron">
+    <div *ngIf="!token">
+        <h1 class="display-3">Welcome to <i>My Pet</i> app!</h1>
+        <p class="lead">Here you can register as company or end user and track your personal pets or patients.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" (click)="route('auth/register-company')" role="button">Register as a
+                company</a>
+        </p>
+        <hr class="my-4">
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" (click)="route('auth/register-user')" role="button">Register as an
+                user</a>
+        </p>
+        <hr class="my-4">
+    </div>
+</div>
