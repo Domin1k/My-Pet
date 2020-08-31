@@ -1,21 +1,51 @@
+<h2>Patient detailed record</h2>
+<div>
+    <button class="btn btn-outline-secondary mr-2" (click)="goToNewRecord()">Add new record</button>
+</div>
+
 <ngb-accordion #acc="ngbAccordion">
-    <ngb-panel id="toggle-1" title="First panel">
+    <ngb-panel id="toggle-1" title="General Info">
         <ng-template ngbPanelContent>
             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
             on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
             raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
         </ng-template>
     </ngb-panel>
-    <ngb-panel id="toggle-2" title="Second">
+    <ngb-panel id="toggle-2" title="Owner Info">
         <ng-template ngbPanelContent>
             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
             on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
             raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel id="toggle-3" title="Medical record for upcoming year">
+        <ng-template ngbPanelContent>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">Area</th>
+                        <th scope="col">Population</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let country of countries; index as i">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>
+                            <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px"> {{ country.name }}
+                        </td>
+                        <td>{{ country.area | number }}</td>
+                        <td>{{ country.population | number }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </ng-template>
     </ngb-panel>
 </ngb-accordion>
 
 <hr/>
 
-<button class="btn btn-sm btn-outline-primary mr-2" (click)="acc.toggle('toggle-1')">Toggle first</button>
-<button class="btn btn-sm btn-outline-primary mr-2" (click)="acc.toggle('toggle-2')">Toggle second</button>
+<button class="btn btn-sm btn-outline-primary mr-2" (click)="acc.toggle('toggle-1')">General Info</button>
+<button class="btn btn-sm btn-outline-primary mr-2" (click)="acc.toggle('toggle-2')">Owner Info</button>
+<button class="btn btn-sm btn-outline-primary mr-2" (click)="acc.toggle('toggle-3')">Medical record for upcoming year</button>

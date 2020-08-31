@@ -5,13 +5,15 @@ import { CompanyLandingComponent } from './company-landing/company-landing.compo
 import { UserLandingComponent } from './user-landing/user-landing.component';
 import { PatientsComponent } from './patients/patients.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PatientInfoComponent } from './patient-info/patient-info.component';
+import { MedicalRecordComponent } from './medical-record/medical-record.component';
 
 @NgModule({
-  declarations: [CompanyLandingComponent, UserLandingComponent, PatientsComponent, PatientInfoComponent],
+  declarations: [CompanyLandingComponent, UserLandingComponent, PatientsComponent, PatientInfoComponent, MedicalRecordComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     PetsRoutingModule,
     FormsModule,
     NgbModule
