@@ -27,8 +27,8 @@ export class PatientsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  route(param) {
-    this.router.navigate([param])
+  goToPersonalInfo(param) {
+    this.router.navigate([`pets/patient-info/${param}`])
   }
 
   onSort({column, direction}: SortEvent) {
