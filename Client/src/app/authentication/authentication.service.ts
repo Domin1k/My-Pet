@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 })
 export class AuthenticationService {
     private path = environment.identityServiceUrl + "identity/login";
-
+    
     constructor(private http: HttpClient) { }
 
     login(data): Observable<any> {

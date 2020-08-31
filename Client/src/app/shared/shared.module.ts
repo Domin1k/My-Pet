@@ -6,11 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { SharedRoutingModule } from './shared-routing.module';
+import { NgbdSortableHeader } from './sortable.directive';
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    NgbdSortableHeader
   ],
   imports: [
     CommonModule,
@@ -26,6 +28,8 @@ import { SharedRoutingModule } from './shared-routing.module';
   exports: [
     ReactiveFormsModule,
     FormsModule,
-    NavbarComponent]
+    NavbarComponent,
+    NgbdSortableHeader
+  ]
 })
 export class SharedModule { }

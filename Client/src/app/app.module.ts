@@ -16,7 +16,7 @@ import { PetsModule } from './pets/pets.module';
     AppRoutingModule,
     SharedModule,
     AuthenticationModule,
-    PetsModule
+    PetsModule,    
   ],
   providers: [],
   bootstrap: [AppComponent]
