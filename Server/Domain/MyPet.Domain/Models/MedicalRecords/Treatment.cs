@@ -6,7 +6,7 @@
 
     public class Treatment : AuditableEntity<int>
     {
-        public Treatment(string title, string description, string imageUrl, DateTime? next)
+        internal Treatment(string title, string description, string imageUrl, DateTime? next)
         {
             this.Validate(title, description, imageUrl, next);
 

@@ -2,19 +2,20 @@
 {
     using MyPet.Domain.Common;
     using MyPet.Domain.Exceptions;
+    using MyPet.Domain.Models.MedicalRecords;
     using System.Collections.Generic;
 
-    public class MedicalRecord : AuditableEntity<int>
+    public class MedicalRecord : AuditableEntity<int>, IAggregateRoot
     {
-        public MedicalRecord(string animalName, int animalAge, Species animalSpecies, string ownerFullName, string breed)
+        internal MedicalRecord(string animalName, int animalAge, string ownerFullName, Breed breed)
         {
-            this.Validate(animalName, animalAge, ownerFullName, breed);
+            this.Validate(animalName, animalAge, ownerFullName);
 
             this.AnimalName = animalName;
             this.AnimalAge = animalAge;
-            this.AnimalSpecies = animalSpecies;
             this.OwnerFullName = ownerFullName;
             this.AnimalBreed = breed;
+
             this.Treatments = new List<Treatment>();
         }
 
@@ -22,11 +23,9 @@
 
         public int AnimalAge { get; }
 
-        public Species AnimalSpecies { get; }
-
         public string OwnerFullName { get; }
 
-        public string AnimalBreed { get; }
+        public Breed AnimalBreed { get; }
 
         public ICollection<Treatment> Treatments { get; }
 
@@ -37,7 +36,7 @@
             return this;
         }
 
-        public void Validate(string animalName, int animalAge, string ownerFullName, string breed)
+        public void Validate(string animalName, int animalAge, string ownerFullName)
         {
             Guard.ForStringLength<InvalidMedicalRecordException>(
                animalName,
@@ -50,12 +49,6 @@
                ModelConstants.Common.MinNameLength,
                ModelConstants.Common.MaxNameLength,
                nameof(this.OwnerFullName));
-
-            Guard.ForStringLength<InvalidMedicalRecordException>(
-               breed,
-               ModelConstants.MedicalRecord.MinBreedLength,
-               ModelConstants.MedicalRecord.MaxBreedLength,
-               nameof(this.AnimalBreed));
 
             Guard.AgainstOutOfRange<InvalidMedicalRecordException>(
                animalAge,

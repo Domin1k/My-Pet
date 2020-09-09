@@ -68,7 +68,7 @@
             return matchingItem;
         }
 
-        public override bool Equals(object? obj)
+        public override bool Equals(object obj)
         {
             if (!(obj is Enumeration otherValue))
             {
@@ -83,6 +83,6 @@
 
         public override int GetHashCode() => (this.GetType().ToString() + this.Value).GetHashCode();
 
-        public int CompareTo(object? other) => this.Value.CompareTo(((Enumeration)other!).Value);
+        public int CompareTo(object other) => this.Value.CompareTo(((Enumeration)other!).Value);
     }
 }
