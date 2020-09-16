@@ -1,7 +1,7 @@
 ﻿namespace MyPet.Domain
 {
     using Microsoft.Extensions.DependencyInjection;
-    using MyPet.Domain.Factories;
+    using MyPet.Domain.Common.Factories;
 
     public static class DomainConfiguration
     {
