@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPet.Infrastructure", "Inf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPet.Application", "Application\MyPet.Application\MyPet.Application.csproj", "{FD535770-0764-4F51-979B-67007637A441}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPet.Web", "Web\MyPet.Web\MyPet.Web.csproj", "{CBF305BA-2FDE-4343-8EC0-EF54D07DDBBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FD535770-0764-4F51-979B-67007637A441}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD535770-0764-4F51-979B-67007637A441}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD535770-0764-4F51-979B-67007637A441}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBF305BA-2FDE-4343-8EC0-EF54D07DDBBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBF305BA-2FDE-4343-8EC0-EF54D07DDBBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBF305BA-2FDE-4343-8EC0-EF54D07DDBBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBF305BA-2FDE-4343-8EC0-EF54D07DDBBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
