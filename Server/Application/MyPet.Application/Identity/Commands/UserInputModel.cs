@@ -1,4 +1,4 @@
-﻿namespace MyPet.Application.Features.Identity.Commands
+﻿namespace MyPet.Application.Identity.Commands
 {
     public abstract class UserInputModel
     {

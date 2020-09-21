@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>1c8e6ac4-2c64-446d-a684-7d7f56a6114b</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\MyPet.Infrastructure\MyPet.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Web\MyPet.Web\MyPet.Web.csproj" />
+  </ItemGroup>
+  
+</Project>

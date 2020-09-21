@@ -1,4 +1,4 @@
-﻿namespace MyPet.Application.Features.Identity
+﻿namespace MyPet.Application.Identity.Contracts
 {
     public interface IUser
     {

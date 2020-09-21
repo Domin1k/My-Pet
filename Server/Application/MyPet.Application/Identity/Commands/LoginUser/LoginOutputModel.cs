@@ -1,11 +1,11 @@
-﻿namespace MyPet.Application.Features.Identity.Commands.LoginUser
+﻿namespace MyPet.Application.Identity.Commands.LoginUser
 {
     public class LoginOutputModel
     {
         public LoginOutputModel(string token, int dealerId)
         {
-            this.Token = token;
-            this.DealerId = dealerId;
+            Token = token;
+            DealerId = dealerId;
         }
 
         public int DealerId { get; }

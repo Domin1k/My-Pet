@@ -1,7 +1,7 @@
 ﻿namespace MyPet.Infrastructure.Identity
 {
     using Microsoft.AspNetCore.Identity;
-    using MyPet.Application.Features.Identity;
+    using MyPet.Application.Identity.Contracts;
 
     public class User : IdentityUser, IUser
     {
