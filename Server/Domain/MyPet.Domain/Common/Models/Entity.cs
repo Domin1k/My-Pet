@@ -1,22 +1,62 @@
 ﻿namespace MyPet.Domain.Common.Models
 {
-    using MyPet.Domain.Common.Events;
-    using System.Collections.Generic;
-    using System.Linq;
+    using System;
 
-    public class Entity<T> : IEntity
+    public abstract class Entity<TId>
+        where TId : struct
     {
-        private readonly ICollection<IDomainEvent> events;
+        public TId Id { get; private set; } = default;
 
-        protected Entity()
+        public string CreatedBy { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public string ModifiedBy { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
+
+        public override bool Equals(object? obj)
         {
-            events = new List<IDomainEvent>();
+            if (!(obj is Entity<TId> other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (this.GetType() != other.GetType())
+            {
+                return false;
+            }
+
+            if (this.Id.Equals(default) || other.Id.Equals(default))
+            {
+                return false;
+            }
+
+            return this.Id.Equals(other.Id);
         }
 
-        public IReadOnlyCollection<IDomainEvent> Events => events.ToList();
+        public static bool operator ==(Entity<TId>? first, Entity<TId>? second)
+        {
+            if (first is null && second is null)
+            {
+                return true;
+            }
 
-        public void ClearEvents() => events.Clear();
+            if (first is null || second is null)
+            {
+                return false;
+            }
 
-        protected void AdddEvent(IDomainEvent @event) => events.Add(@event);
+            return first.Equals(second);
+        }
+
+        public static bool operator !=(Entity<TId>? first, Entity<TId>? second) => !(first == second);
+
+        public override int GetHashCode() => (this.GetType().ToString() + this.Id).GetHashCode();
     }
 }

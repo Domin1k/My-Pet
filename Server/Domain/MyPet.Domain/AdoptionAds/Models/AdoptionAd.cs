@@ -3,7 +3,7 @@
     using MyPet.Domain.AdoptionAds.Exceptions;
     using MyPet.Domain.Common.Models;
 
-    public class AdoptionAd : AuditableEntity<int>, IAggregateRoot
+    public class AdoptionAd : Entity<int>, IAggregateRoot
     {
         internal AdoptionAd(string name, string description, string publisherId, AdoptionCategory category)
         {

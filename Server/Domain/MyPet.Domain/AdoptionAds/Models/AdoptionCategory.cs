@@ -3,7 +3,7 @@
     using MyPet.Domain.AdoptionAds.Exceptions;
     using MyPet.Domain.Common.Models;
 
-    public class AdoptionCategory : AuditableEntity<int>
+    public class AdoptionCategory : Entity<int>
     {
         internal AdoptionCategory(string name)
         {

@@ -16,10 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
-    <Folder Include="Persistence\Configuration\" />
-    <Folder Include="Persistence\Migrations\" />
-    <Folder Include="Persistence\Repositories\" />
+    <Folder Include="AdoptionAds\Configuration\" />
+    <Folder Include="Common\Persistence\Migrations\" />
+    <Folder Include="Common\Persistence\Repositories\" />
   </ItemGroup>
 
 </Project>

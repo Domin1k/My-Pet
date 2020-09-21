@@ -4,7 +4,7 @@
     using MyPet.Domain.MedicalRecords.Exceptions;
     using System;
 
-    public class Treatment : AuditableEntity<int>
+    public class Treatment : Entity<int>
     {
         internal Treatment(string title, string description, string imageUrl, DateTime? next)
         {

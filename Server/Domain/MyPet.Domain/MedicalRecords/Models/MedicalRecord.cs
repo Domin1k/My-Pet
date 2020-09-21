@@ -4,7 +4,7 @@
     using MyPet.Domain.MedicalRecords.Exceptions;
     using System.Collections.Generic;
 
-    public class MedicalRecord : AuditableEntity<int>, IAggregateRoot
+    public class MedicalRecord : Entity<int>, IAggregateRoot
     {
         internal MedicalRecord(string animalName, int animalAge, string ownerFullName, Breed breed)
         {
