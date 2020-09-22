@@ -2,5 +2,6 @@
 {
     public interface IApplicationUser
     {
+        string Id { get; set; }
     }
 }

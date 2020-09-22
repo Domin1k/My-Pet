@@ -10,7 +10,7 @@
     {
         Task<Result<IApplicationUser>> RegisterCompany(UserInputModel userInput);
 
-        Task<Result<LoginSuccessModel>> LoginCompany(UserInputModel userInput);
+        Task<Result<LoginOutputModel>> LoginCompany(UserInputModel userInput);
 
         Task<Result> ChangePassword(ChangePasswordInputModel changePasswordInput);
     }

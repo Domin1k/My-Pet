@@ -35,7 +35,7 @@
                 : Result<IApplicationUser>.Failure(errors);
         }
 
-        public async Task<Result<LoginSuccessModel>> LoginCompany(UserInputModel userInput)
+        public async Task<Result<LoginOutputModel>> LoginCompany(UserInputModel userInput)
         {
             var user = await this.userManager.FindByEmailAsync(userInput.Email);
             if (user == null)
@@ -51,7 +51,7 @@
 
             var token = this.jwtTokenGenerator.GenerateToken(user);
 
-            return new LoginSuccessModel(user.Id, token);
+            return new LoginOutputModel(user.Id, token);
         }
 
         public async Task<Result> ChangePassword(ChangePasswordInputModel changePasswordInput)

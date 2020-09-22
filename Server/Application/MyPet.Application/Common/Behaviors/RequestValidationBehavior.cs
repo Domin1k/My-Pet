@@ -17,12 +17,9 @@
         public RequestValidationBehavior(IEnumerable<IValidator<TRequest>> validators)
             => this.validators = validators;
 
-        public Task<TResponse> Handle(
-            TRequest request,
-            CancellationToken cancellationToken,
-            RequestHandlerDelegate<TResponse> next)
+        public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
-            var context = new ValidationContext(request);
+            var context = new ValidationContext<TRequest>(request);
 
             var errors = this
                 .validators
