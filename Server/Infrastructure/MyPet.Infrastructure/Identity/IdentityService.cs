@@ -4,7 +4,7 @@
     using Microsoft.AspNetCore.Identity;
     using MyPet.Application.Identity.Commands;
     using MyPet.Application.Identity.Commands.ChangePassword;
-    using MyPet.Application.Identity.Commands.LoginUser;
+    using MyPet.Application.Identity.Commands.LoginCompany;
     using MyPet.Application.Identity.Contracts;
     using System.Linq;
     using System.Threading.Tasks;
@@ -13,29 +13,29 @@
     {
         private const string InvalidErrorMessage = "Invalid credentials.";
 
-        private readonly UserManager<User> userManager;
+        private readonly UserManager<ApplicationUser> userManager;
         private readonly IJwtTokenGenerator jwtTokenGenerator;
 
-        public IdentityService(UserManager<User> userManager, IJwtTokenGenerator jwtTokenGenerator)
+        public IdentityService(UserManager<ApplicationUser> userManager, IJwtTokenGenerator jwtTokenGenerator)
         {
             this.userManager = userManager;
             this.jwtTokenGenerator = jwtTokenGenerator;
         }
 
-        public async Task<Result<IUser>> Register(UserInputModel userInput)
+        public async Task<Result<IApplicationUser>> RegisterCompany(UserInputModel userInput)
         {
-            var user = new User(userInput.Email);
+            var user = new ApplicationUser(userInput.Email);
 
             var identityResult = await this.userManager.CreateAsync(user, userInput.Password);
 
             var errors = identityResult.Errors.Select(e => e.Description);
 
             return identityResult.Succeeded
-                ? Result<IUser>.SuccessWith(user)
-                : Result<IUser>.Failure(errors);
+                ? Result<IApplicationUser>.SuccessWith(user)
+                : Result<IApplicationUser>.Failure(errors);
         }
 
-        public async Task<Result<LoginSuccessModel>> Login(UserInputModel userInput)
+        public async Task<Result<LoginSuccessModel>> LoginCompany(UserInputModel userInput)
         {
             var user = await this.userManager.FindByEmailAsync(userInput.Email);
             if (user == null)

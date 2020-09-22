@@ -3,9 +3,9 @@
     using Microsoft.AspNetCore.Identity;
     using MyPet.Application.Identity.Contracts;
 
-    public class User : IdentityUser, IUser
+    public class ApplicationUser : IdentityUser, IApplicationUser
     {
-        internal User(string email)
+        internal ApplicationUser(string email)
             : base(email)
             => this.Email = email;
     }

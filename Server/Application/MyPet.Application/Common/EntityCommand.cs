@@ -2,7 +2,7 @@
 {
     public class EntityCommand<TId>
     {
-        public TId Id { get; set; } = default!;
+        public TId Id { get; set; }
     }
 
     public static class EntityCommandExtensions

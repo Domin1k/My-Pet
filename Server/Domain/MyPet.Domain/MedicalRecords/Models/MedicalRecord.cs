@@ -3,50 +3,44 @@
     using MyPet.Domain.Common.Models;
     using MyPet.Domain.MedicalRecords.Exceptions;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class MedicalRecord : Entity<int>, IAggregateRoot
     {
-        internal MedicalRecord(string animalName, int animalAge, string ownerFullName, Breed breed)
+        private readonly HashSet<Treatment> treatments;
+
+        internal MedicalRecord(string animalName, int animalAge, Breed breed)
         {
-            this.Validate(animalName, animalAge, ownerFullName);
+            this.Validate(animalName, animalAge);
 
             this.AnimalName = animalName;
             this.AnimalAge = animalAge;
-            this.OwnerFullName = ownerFullName;
             this.AnimalBreed = breed;
 
-            this.Treatments = new List<Treatment>();
+            this.treatments = new HashSet<Treatment>();
         }
 
         public string AnimalName { get;  }
 
         public int AnimalAge { get; }
 
-        public string OwnerFullName { get; }
-
         public Breed AnimalBreed { get; }
 
-        public ICollection<Treatment> Treatments { get; }
+        public IReadOnlyCollection<Treatment> Treatments => this.treatments.ToList().AsReadOnly();
 
         public MedicalRecord AddTreatment(Treatment treatment)
         {
-            this.Treatments.Add(treatment);
+            this.treatments.Add(treatment);
             return this;
         }
 
-        public void Validate(string animalName, int animalAge, string ownerFullName)
+        public void Validate(string animalName, int animalAge)
         {
             Guard.ForStringLength<InvalidMedicalRecordException>(
                animalName,
                ModelConstants.Common.MinNameLength,
                ModelConstants.Common.MaxNameLength,
                nameof(this.AnimalName));
-
-            Guard.ForStringLength<InvalidMedicalRecordException>(
-               ownerFullName,
-               ModelConstants.Common.MinNameLength,
-               ModelConstants.Common.MaxNameLength,
-               nameof(this.OwnerFullName));
 
             Guard.AgainstOutOfRange<InvalidMedicalRecordException>(
                animalAge,

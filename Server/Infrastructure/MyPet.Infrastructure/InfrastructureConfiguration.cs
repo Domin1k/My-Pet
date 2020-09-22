@@ -49,7 +49,7 @@
             IConfiguration configuration)
         {
             services
-                .AddIdentity<User, IdentityRole>(options =>
+                .AddIdentity<ApplicationUser, IdentityRole>(options =>
                 {
                     options.Password.RequiredLength = 6;
                     options.Password.RequireDigit = false;

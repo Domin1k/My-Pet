@@ -15,7 +15,7 @@
         public JwtTokenGeneratorService(IOptions<AppSettings> applicationSettings)
             => this.appSettings = applicationSettings.Value;
 
-        public string GenerateToken(User user)
+        public string GenerateToken(ApplicationUser user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(this.appSettings.Secret);

@@ -6,7 +6,6 @@
     {
         private int animalAge;
         private string animalName;
-        private string ownerFullName;
         private Breed breed;
 
         public IMedicalRecordFactory WithAnimalAge(int animalAge)
@@ -18,12 +17,6 @@
         public IMedicalRecordFactory WithAnimalName(string animalName)
         {
             this.animalName = animalName;
-            return this;
-        }
-
-        public IMedicalRecordFactory WithOwnerFullName(string ownerFullName)
-        {
-            this.ownerFullName = ownerFullName;
             return this;
         }
 
@@ -40,7 +33,6 @@
             => new MedicalRecord(
                 this.animalName,
                 this.animalAge,
-                this.ownerFullName,
                 this.breed);
     }
 }

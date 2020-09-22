@@ -5,7 +5,7 @@
     public abstract class Entity<TId>
         where TId : struct
     {
-        public TId Id { get; private set; } = default;
+        public TId Id { get; private set; }
 
         public string CreatedBy { get; set; }
 
@@ -15,7 +15,7 @@
 
         public DateTime? ModifiedOn { get; set; }
 
-        public override bool Equals(object? obj)
+        public override bool Equals(object obj)
         {
             if (!(obj is Entity<TId> other))
             {
@@ -40,7 +40,7 @@
             return this.Id.Equals(other.Id);
         }
 
-        public static bool operator ==(Entity<TId>? first, Entity<TId>? second)
+        public static bool operator ==(Entity<TId> first, Entity<TId> second)
         {
             if (first is null && second is null)
             {
@@ -55,7 +55,7 @@
             return first.Equals(second);
         }
 
-        public static bool operator !=(Entity<TId>? first, Entity<TId>? second) => !(first == second);
+        public static bool operator !=(Entity<TId> first, Entity<TId> second) => !(first == second);
 
         public override int GetHashCode() => (this.GetType().ToString() + this.Id).GetHashCode();
     }

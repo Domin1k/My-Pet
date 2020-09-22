@@ -9,8 +9,6 @@
         
         IMedicalRecordFactory WithAnimalAge(int animalAge);
 
-        IMedicalRecordFactory WithOwnerFullName(string ownerFullName);
-
         IMedicalRecordFactory WithBreed(string breed, Species species);
 
         IMedicalRecordFactory WithBreed(Breed breed);
