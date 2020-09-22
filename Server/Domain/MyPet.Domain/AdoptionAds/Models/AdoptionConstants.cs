@@ -10,8 +10,8 @@
 
         public class AdoptionAd
         {
-            public const int MinAdoptionAdNameLength = 2;
-            public const int MaxAdoptionAdNameLength = 100;
+            public const int MinAdoptionAdTitleLength = 2;
+            public const int MaxAdoptionAdTitleLength = 100;
 
             public const int MinAdoptionAdDescriptionLength = 1;
             public const int MaxAdoptionAdDescriptionLength = 1000;

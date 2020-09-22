@@ -26,10 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AdoptionAds\Configuration\" />
-    <Folder Include="Common\Persistence\Migrations\" />
     <Folder Include="Common\Persistence\Repositories\" />
-    <Folder Include="CompanyUsers\Configuration\" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Release'">

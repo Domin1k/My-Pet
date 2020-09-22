@@ -16,6 +16,13 @@
             this.Next = next;
         }
 
+        private Treatment(string title, string description, string imageUrl)
+        {
+            this.Title = title;
+            this.Description = description;
+            this.ImageUrl = imageUrl;
+        }
+
         public string Title { get; }
 
         public string Description { get; }

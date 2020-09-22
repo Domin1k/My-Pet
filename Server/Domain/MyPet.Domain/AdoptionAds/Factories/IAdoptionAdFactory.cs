@@ -7,7 +7,7 @@
     {
         IAdoptionAdFactory WithPublisherId(string publisherId);
 
-        IAdoptionAdFactory WithName(string name);
+        IAdoptionAdFactory WithTitle(string title);
 
         IAdoptionAdFactory WithDescription(string description);
 

@@ -20,6 +20,14 @@
             this.treatments = new HashSet<Treatment>();
         }
 
+        private MedicalRecord(string animalName, int animalAge)
+        {
+            this.AnimalName = animalName;
+            this.AnimalAge = animalAge;
+
+            this.treatments = new HashSet<Treatment>();
+        }
+
         public string AnimalName { get;  }
 
         public int AnimalAge { get; }

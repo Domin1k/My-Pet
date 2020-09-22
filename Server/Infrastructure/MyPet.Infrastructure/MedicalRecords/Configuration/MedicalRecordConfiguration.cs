@@ -22,9 +22,21 @@
                 .HasMaxLength(ModelConstants.Common.MaxNameLength);
 
             builder
-                .Property(x => x.AnimalBreed)
-                .IsRequired()
-                .HasMaxLength(MedicalRecordConstants.MedicalRecord.MaxBreedLength);
+               .OwnsOne(c => c.AnimalBreed, o =>
+               {
+                   o.WithOwner();
+
+                   o.Property(op => op.BreedName);
+
+                   o.OwnsOne(
+                       op => op.Species,
+                       t =>
+                       {
+                           t.WithOwner();
+
+                           t.Property(tr => tr.Value);
+                       });
+               });
         }
     }
 }

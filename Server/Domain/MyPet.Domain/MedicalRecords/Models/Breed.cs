@@ -5,21 +5,26 @@
 
     public class Breed : ValueObject
     {
-        internal Breed(string breed, Species species)
+        internal Breed(string breedName, Species species)
         {
-            this.Validate(breed);
+            this.Validate(breedName);
 
-            this.BreedName = breed;
+            this.BreedName = breedName;
             this.Species = species;
+        }
+
+        private Breed(string breedName)
+        {
+            this.BreedName = breedName;
         }
 
         public string BreedName { get; }
 
         public Species Species { get; }
 
-        private void Validate(string breed)
+        private void Validate(string breedName)
             => Guard.ForStringLength<InvalidMedicalRecordException>(
-               breed,
+               breedName,
                MedicalRecordConstants.MedicalRecord.MinBreedLength,
                MedicalRecordConstants.MedicalRecord.MaxBreedLength,
                nameof(this.BreedName));

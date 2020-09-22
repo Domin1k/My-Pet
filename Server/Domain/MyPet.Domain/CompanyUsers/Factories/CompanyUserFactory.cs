@@ -1,10 +1,8 @@
 ﻿namespace MyPet.Domain.CompanyUsers.Factories
 {
-    using MyPet.Domain.CompanyUsers.Exceptions;
     using MyPet.Domain.CompanyUsers.Models;
-    using System;
 
-    public class CompanyUserFactory : ICompanyUserFactory
+    internal class CompanyUserFactory : ICompanyUserFactory
     {
         private string applicationUserId;
         private string name;
@@ -20,10 +18,6 @@
 
         public ICompanyUserFactory WithApplicationUserId(string applicationUserId)
         {
-            if (!Guid.TryParse(applicationUserId, out _))
-            {
-                throw new InvalidCompanyUserException($"{applicationUserId} is not valid Guid");
-            }
             this.applicationUserId = applicationUserId;
             return this;
         }

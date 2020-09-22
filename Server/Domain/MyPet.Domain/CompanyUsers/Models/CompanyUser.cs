@@ -2,17 +2,18 @@
 {
     using MyPet.Domain.Common.Models;
     using MyPet.Domain.CompanyUsers.Exceptions;
+    using MyPet.Domain.MedicalRecords.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
     public class CompanyUser : Entity<Guid>, IAggregateRoot
     {
-        private readonly HashSet<int> medicalRecords;
+        private readonly HashSet<MedicalRecord> medicalRecords;
 
         internal CompanyUser(string applicationUserId, string name, string ownerName, string address, string legalityRegistrationNumber)
         {
-            this.Validate(name, ownerName, address, legalityRegistrationNumber);
+            this.Validate(name, ownerName, address, legalityRegistrationNumber, applicationUserId);
 
             this.ApplicationUserId = applicationUserId;
             this.Name = name;
@@ -20,7 +21,17 @@
             this.Address = address;
             this.LegalityRegistrationNumber = legalityRegistrationNumber;
 
-            this.medicalRecords = new HashSet<int>();
+            this.medicalRecords = new HashSet<MedicalRecord>();
+        }
+
+        private CompanyUser(string name, string ownerName, string address, string legalityRegistrationNumber)
+        {
+            this.Name = name;
+            this.OwnerName = ownerName;
+            this.Address = address;
+            this.LegalityRegistrationNumber = legalityRegistrationNumber;
+
+            this.medicalRecords = new HashSet<MedicalRecord>();
         }
 
         public string LegalityRegistrationNumber { get; }
@@ -33,15 +44,15 @@
 
         public string Address { get; }
 
-        public IReadOnlyCollection<int> MedicalRecords => this.medicalRecords.ToList().AsReadOnly();
+        public IReadOnlyCollection<MedicalRecord> MedicalRecords => this.medicalRecords.ToList().AsReadOnly();
 
-        public CompanyUser AddMedicalRecord(int medicalRecordId)
+        public CompanyUser AddMedicalRecord(MedicalRecord medicalRecord)
         {
-            this.medicalRecords.Add(medicalRecordId);
+            this.medicalRecords.Add(medicalRecord);
             return this;
         }
 
-        public void Validate(string name, string ownerName, string address, string legalityCode)
+        public void Validate(string name, string ownerName, string address, string legalityCode, string applicationUserId)
         {
             Guard.ForStringLength<InvalidCompanyUserException>(
                name,
@@ -65,7 +76,11 @@
               legalityCode,
               CompanyUsersConstants.CompanyUser.MinLegalityRegistrationNumberLength,
               CompanyUsersConstants.CompanyUser.MaxLegalityRegistrationNumberLength,
-              nameof(this.Address));
+              nameof(this.LegalityRegistrationNumber));
+
+            Guard.ForValidGuid<InvalidCompanyUserException>(
+             applicationUserId,
+             nameof(this.ApplicationUserId));
         }
     }
 }

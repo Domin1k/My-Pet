@@ -5,17 +5,24 @@
 
     public class AdoptionAd : Entity<int>, IAggregateRoot
     {
-        internal AdoptionAd(string name, string description, string publisherId, AdoptionCategory category)
+        internal AdoptionAd(string title, string description, string publisherId, AdoptionCategory category)
         {
-            this.Validate(name, description, publisherId);
+            this.Validate(title, description, publisherId);
 
-            Name = name;
-            Description = description;
-            Category = category;
-            PublisherId = publisherId;
+            this.Title = title;
+            this.Description = description;
+            this.Category = category;
+            this.PublisherId = publisherId;
         }
 
-        public string Name { get; }
+        private AdoptionAd(string title, string description, string publisherId)
+        {
+            this.Title = title;
+            this.Description = description;
+            this.PublisherId = publisherId;
+        }
+
+        public string Title { get; }
 
         public string Description { get; }
 
@@ -27,9 +34,9 @@
         {
             Guard.ForStringLength<InvalidAdoptionAdException>(
                 name,
-                AdoptionConstants.AdoptionAd.MinAdoptionAdNameLength,
-                AdoptionConstants.AdoptionAd.MaxAdoptionAdNameLength,
-                nameof(this.Name));
+                AdoptionConstants.AdoptionAd.MinAdoptionAdTitleLength,
+                AdoptionConstants.AdoptionAd.MaxAdoptionAdTitleLength,
+                nameof(this.Title));
 
             Guard.ForStringLength<InvalidAdoptionAdException>(
                 description,

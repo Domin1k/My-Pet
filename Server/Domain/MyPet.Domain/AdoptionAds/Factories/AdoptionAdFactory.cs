@@ -5,46 +5,46 @@
 
     internal class AdoptionAdFactory : IAdoptionAdFactory
     {
-        private AdoptionCategory _adoptionCategory;
-        private string _adoptionAdName;
-        private string _adoptionAdDescription;
-        private string _adoptionPublisherId;
+        private AdoptionCategory adoptionCategory;
+        private string adoptionAdTitle;
+        private string adoptionAdDescription;
+        private string adoptionPublisherId;
 
         public IAdoptionAdFactory WithCategory(string name)
             => this.WithCategory(new AdoptionCategory(name));
 
         public IAdoptionAdFactory WithCategory(AdoptionCategory adoptionCategory)
         {
-            _adoptionCategory = adoptionCategory;
+            this.adoptionCategory = adoptionCategory;
             return this;
         }
 
         public IAdoptionAdFactory WithDescription(string description)
         {
-            _adoptionAdDescription = description;
+            this.adoptionAdDescription = description;
             return this;
         }
 
-        public IAdoptionAdFactory WithName(string name)
+        public IAdoptionAdFactory WithTitle(string title)
         {
-            _adoptionAdName = name;
+            this.adoptionAdTitle = title;
             return this;
         }
 
         public IAdoptionAdFactory WithPublisherId(string publisherId)
         {
-            _adoptionPublisherId = publisherId;
+            this.adoptionPublisherId = publisherId;
             return this;
         }
 
         public AdoptionAd Build()
         {
-            if (_adoptionCategory == null)
+            if (this.adoptionCategory == null)
             {
                 throw new InvalidAdoptionAdException("AdoptionCategory cannot be null");
             }
 
-            return new AdoptionAd(_adoptionAdName, _adoptionAdDescription, _adoptionPublisherId, _adoptionCategory);
+            return new AdoptionAd(this.adoptionAdTitle, this.adoptionAdDescription, this.adoptionPublisherId, this.adoptionCategory);
         }
     }
 }

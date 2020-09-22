@@ -13,5 +13,10 @@
             : base(value, name)
         {
         }
+
+        private Species(int value)
+            : this(value, FromValue<Species>(value).Name)
+        {
+        }
     }
 }
