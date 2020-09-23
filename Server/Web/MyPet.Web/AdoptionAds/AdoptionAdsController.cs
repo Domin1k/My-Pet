@@ -1,5 +1,6 @@
 ﻿namespace MyPet.Web.AdoptionAds
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using MyPet.Application.AdoptionAds.Commands.Create;
     using MyPet.Application.AdoptionAds.Commands.Delete;
@@ -9,14 +10,16 @@
     using MyPet.Web.Common;
     using System.Threading.Tasks;
 
+    [Authorize]
     public class AdoptionAdsController : ApiController
     {
         [HttpGet]
+        [AllowAnonymous]
         [Route(Id)]
         public async Task<ActionResult<AdoptionAdDetailsOutputModel>> Details([FromRoute] AdoptionAdDetailsQuery query)
             => await this.Send(query);
 
-        [HttpPut]
+        [HttpPut]        
         [Route(Id)]
         public async Task<ActionResult> Edit(int id, EditAdoptionAdCommand command)
             => await this.Send(command.SetId(id));

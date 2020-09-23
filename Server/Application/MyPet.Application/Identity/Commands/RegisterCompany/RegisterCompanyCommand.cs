@@ -25,12 +25,12 @@
         {
             private readonly IIdentity identity;
             private readonly ICompanyUserFactory companyUserFactory;
-            private readonly ICompanyUsersRepository companyUsersRepository;
+            private readonly ICompanyUserRepository companyUsersRepository;
 
             public RegisterCompanyCommandHandler(
                 IIdentity identity,
                 ICompanyUserFactory companyUserFactory,
-                ICompanyUsersRepository companyUsersRepository)
+                ICompanyUserRepository companyUsersRepository)
             {
                 this.identity = identity;
                 this.companyUserFactory = companyUserFactory;

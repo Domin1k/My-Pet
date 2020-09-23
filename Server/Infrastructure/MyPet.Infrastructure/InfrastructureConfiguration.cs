@@ -10,32 +10,32 @@
     using Microsoft.IdentityModel.Tokens;
     using MyPet.Application;
     using MyPet.Application.Identity.Contracts;
+    using MyPet.Infrastructure.AdoptionAds;
     using MyPet.Infrastructure.Common.Events;
     using MyPet.Infrastructure.CompanyUsers;
+    using MyPet.Infrastructure.MedicalRecords;
     using MyPet.Infrastructure.Persistence;
     using System.Text;
 
     public static class InfrastructureConfiguration
     {
-        public static IServiceCollection AddInfrastructure(
-            this IServiceCollection services,
-            IConfiguration configuration)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
             => services
                 .AddDatabase(configuration)
                 .AddRepositories()
                 .AddIdentity(configuration)
                 .AddTransient<IEventDispatcher, EventDispatcher>();
 
-        private static IServiceCollection AddDatabase(
-            this IServiceCollection services,
-            IConfiguration configuration)
+        private static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
             => services
                 .AddDbContext<MyPetDbContext>(options => options
                     .UseSqlServer(
                         configuration.GetConnectionString("DefaultConnection"),
                         sqlServer => sqlServer
                             .MigrationsAssembly(typeof(MyPetDbContext).Assembly.FullName)))
-                .AddScoped<ICompanyUsersDbContext>(provider => provider.GetService<MyPetDbContext>());
+                .AddScoped<ICompanyUsersDbContext>(provider => provider.GetService<MyPetDbContext>())
+                .AddScoped<IAdoptionAdsDbContext>(provider => provider.GetService<MyPetDbContext>())
+                .AddScoped<IMedicalRecordsDbContext>(provider => provider.GetService<MyPetDbContext>());
 
         internal static IServiceCollection AddRepositories(this IServiceCollection services)
             => services
@@ -46,9 +46,7 @@
                     .AsMatchingInterface()
                     .WithTransientLifetime());
 
-        private static IServiceCollection AddIdentity(
-            this IServiceCollection services,
-            IConfiguration configuration)
+        private static IServiceCollection AddIdentity(this IServiceCollection services, IConfiguration configuration)
         {
             services
                 .AddIdentity<ApplicationUser, IdentityRole>(options =>

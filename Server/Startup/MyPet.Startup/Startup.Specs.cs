@@ -6,7 +6,9 @@
     using Microsoft.AspNetCore.Mvc.Controllers;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using MyPet.Application.AdoptionAds;
     using MyPet.Application.CompanyUsers;
+    using MyPet.Application.MedicalRecords;
     using MyTested.AspNetCore.Mvc;
 
     public class TestStartup : Startup
@@ -30,7 +32,9 @@
         {
             var provider = services.BuildServiceProvider();
 
-            provider.GetRequiredService<ICompanyUsersRepository>();
+            provider.GetRequiredService<ICompanyUserRepository>();
+            provider.GetRequiredService<IAdoptionAdRepository>();
+            provider.GetRequiredService<IMedicalRecordRepository>();
             provider.GetRequiredService<IMediator>();
             provider.GetRequiredService<IControllerFactory>();
         }

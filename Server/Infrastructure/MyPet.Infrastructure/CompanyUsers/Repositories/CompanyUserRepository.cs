@@ -4,9 +4,9 @@
     using MyPet.Domain.CompanyUsers.Models;
     using MyPet.Infrastructure.Common.Persistence;
 
-    internal class CompanyUsersRepository : DataRepository<ICompanyUsersDbContext, CompanyUser>, ICompanyUsersRepository
+    internal class CompanyUserRepository : DataRepository<ICompanyUsersDbContext, CompanyUser>, ICompanyUserRepository
     {
-        public CompanyUsersRepository(ICompanyUsersDbContext db) 
+        public CompanyUserRepository(ICompanyUsersDbContext db) 
             : base(db)
         {
         }

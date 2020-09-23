@@ -1,5 +1,6 @@
 ﻿namespace MyPet.Web.MedicalRecords
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using MyPet.Application.Common;
     using MyPet.Application.MedicalRecords.Commands.Create;
@@ -8,6 +9,7 @@
     using MyPet.Web.Common;
     using System.Threading.Tasks;
 
+    [Authorize]
     public class MedicalRecordsController : ApiController
     {
         [HttpGet]

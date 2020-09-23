@@ -28,10 +28,6 @@
     <ProjectReference Include="..\..\Application\MyPet.Application\MyPet.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Common\Persistence\Repositories\" />
-  </ItemGroup>
-
   <ItemGroup Condition="'$(Configuration)' == 'Release'">
     <Compile Remove="**\*.Specs.cs" />
     <Compile Remove="**\*.Fakes.cs" />

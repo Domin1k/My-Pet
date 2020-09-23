@@ -3,7 +3,7 @@
     using MyPet.Application.Common.Contracts;
     using MyPet.Domain.CompanyUsers.Models;
 
-    public interface ICompanyUsersRepository : IRepository<CompanyUser>
+    public interface ICompanyUserRepository : IRepository<CompanyUser>
     {
         
     }
