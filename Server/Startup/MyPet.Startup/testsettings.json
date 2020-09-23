@@ -1,8 +1,8 @@
 {
 	"General": {
-		"WebAssemblyName": "CarRentalSystem.Startup"
+		"WebAssemblyName": "MyPet.Startup"
 	},
-	"ApplicationSettings": {
+	"AppSettings": {
 		"Secret": "My Fake Secret"
 	},
 	"ConnectionStrings": {

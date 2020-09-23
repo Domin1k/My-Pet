@@ -20,11 +20,16 @@
                     .RestrictingForHttpMethod(HttpMethod.Post)
                     .SpecifyingRoute(nameof(IdentityController.RegisterCompany)));
 
-        [Fact]
-        public void LoginCompany_ShouldHaveCorrectAttributes()
+        [Theory]
+        [InlineData(IdentityFakes.TestEmail, IdentityFakes.ValidPassword)]
+        public void LoginCompany_ShouldHaveCorrectAttributes(string email, string password)
             => MyController<IdentityController>
                 .Calling(c => c
-                    .LoginCompany(With.Default<LoginCompanyCommand>()))
+                    .LoginCompany(new LoginCompanyCommand
+                    {
+                        Email = email,
+                        Password = password
+                    }))
                 .ShouldHave()
                 .ActionAttributes(attr => attr
                     .RestrictingForHttpMethod(HttpMethod.Post)

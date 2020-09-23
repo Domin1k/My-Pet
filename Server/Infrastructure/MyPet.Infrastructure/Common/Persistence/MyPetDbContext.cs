@@ -5,10 +5,11 @@
     using MyPet.Domain.AdoptionAds.Models;
     using MyPet.Domain.CompanyUsers.Models;
     using MyPet.Domain.MedicalRecords.Models;
+    using MyPet.Infrastructure.CompanyUsers;
     using MyPet.Infrastructure.Identity;
     using System.Reflection;
 
-    internal class MyPetDbContext : IdentityDbContext<ApplicationUser>
+    internal class MyPetDbContext : IdentityDbContext<ApplicationUser>, ICompanyUsersDbContext
     {
         public MyPetDbContext(DbContextOptions<MyPetDbContext> options)
             : base(options)

@@ -11,6 +11,7 @@
     using MyPet.Application;
     using MyPet.Application.Identity.Contracts;
     using MyPet.Infrastructure.Common.Events;
+    using MyPet.Infrastructure.CompanyUsers;
     using MyPet.Infrastructure.Persistence;
     using System.Text;
 
@@ -33,7 +34,8 @@
                     .UseSqlServer(
                         configuration.GetConnectionString("DefaultConnection"),
                         sqlServer => sqlServer
-                            .MigrationsAssembly(typeof(MyPetDbContext).Assembly.FullName)));
+                            .MigrationsAssembly(typeof(MyPetDbContext).Assembly.FullName)))
+                .AddScoped<ICompanyUsersDbContext>(provider => provider.GetService<MyPetDbContext>());
 
         internal static IServiceCollection AddRepositories(this IServiceCollection services)
             => services
