@@ -24,12 +24,13 @@
         public async Task<ActionResult> Edit(int id, EditAdoptionAdCommand command)
             => await this.Send(command.SetId(id));
 
-        [HttpPost]
-        public async Task<ActionResult> Create(CreateAdoptionAdCommand command)
+        [HttpDelete]
+        [Route(Id)]
+        public async Task<ActionResult> Delete([FromRoute] DeleteAdoptionAdCommand command)
             => await this.Send(command);
 
-        [HttpDelete]
-        public async Task<ActionResult> Delete(DeleteAdoptionAdCommand command)
+        [HttpPost]
+        public async Task<ActionResult> Create(CreateAdoptionAdCommand command)
             => await this.Send(command);
     }
 }

@@ -3,7 +3,6 @@
     using Application.Common;
     using Microsoft.AspNetCore.Identity;
     using MyPet.Application.Identity.Commands;
-    using MyPet.Application.Identity.Commands.ChangePassword;
     using MyPet.Application.Identity.Commands.LoginCompany;
     using MyPet.Application.Identity.Contracts;
     using System.Linq;
@@ -52,27 +51,6 @@
             var token = this.jwtTokenGenerator.GenerateToken(user);
 
             return new LoginOutputModel(user.Id, token);
-        }
-
-        public async Task<Result> ChangePassword(ChangePasswordInputModel changePasswordInput)
-        {
-            var user = await this.userManager.FindByIdAsync(changePasswordInput.UserId);
-
-            if (user == null)
-            {
-                return InvalidErrorMessage;
-            }
-
-            var identityResult = await this.userManager.ChangePasswordAsync(
-                user,
-                changePasswordInput.CurrentPassword,
-                changePasswordInput.NewPassword);
-
-            var errors = identityResult.Errors.Select(e => e.Description);
-
-            return identityResult.Succeeded
-                ? Result.Success
-                : Result.Failure(errors);
         }
     }
 }

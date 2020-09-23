@@ -14,10 +14,7 @@
         {
             private readonly IIdentity identity;
 
-            public LoginCompanyCommandHandler(IIdentity identity)
-            {
-                this.identity = identity;
-            }
+            public LoginCompanyCommandHandler(IIdentity identity) => this.identity = identity;
 
             public async Task<Result<LoginOutputModel>> Handle(LoginCompanyCommand request, CancellationToken cancellationToken)
             {
