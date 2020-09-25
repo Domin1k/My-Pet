@@ -19,6 +19,20 @@
             this.mapper = mapper;
         }
 
+        public async Task<bool> Delete(int id, CancellationToken cancellationToken = default)
+        {
+            var entity = await this.Find(id, cancellationToken);
+            if (entity == null)
+            {
+                return false;
+            }
+
+            this.Data.MedicalRecords.Remove(entity);
+            await this.Data.SaveChangesAsync(cancellationToken);
+
+            return true;
+        }
+
         public Task<MedicalRecord> Find(int id, CancellationToken cancellationToken = default)
             => this.All()
                 .Include(x => x.Treatments)

@@ -11,5 +11,7 @@
         Task<MedicalRecordDetailsOutputModel> GetDetails(int id, CancellationToken cancellationToken = default);
 
         Task<MedicalRecord> Find(int id, CancellationToken cancellationToken = default);
+
+        Task<bool> Delete(int id, CancellationToken cancellationToken = default);
     }
 }

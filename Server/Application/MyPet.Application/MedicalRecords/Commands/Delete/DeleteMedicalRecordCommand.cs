@@ -9,10 +9,13 @@
     {
         public class DeleteMedicalRecordCommandHandler : IRequestHandler<DeleteMedicalRecordCommand, Result>
         {
-            public Task<Result> Handle(DeleteMedicalRecordCommand request, CancellationToken cancellationToken)
-            {
-                throw new System.NotImplementedException();
-            }
+            private readonly IMedicalRecordRepository medicalRecordRepository;
+
+            public DeleteMedicalRecordCommandHandler(IMedicalRecordRepository medicalRecordRepository) 
+                => this.medicalRecordRepository = medicalRecordRepository;
+
+            public async Task<Result> Handle(DeleteMedicalRecordCommand request, CancellationToken cancellationToken)
+                => await this.medicalRecordRepository.Delete(request.Id, cancellationToken);
         }
     }
 }
