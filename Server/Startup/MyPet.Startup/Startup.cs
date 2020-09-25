@@ -42,7 +42,8 @@ namespace MyPet.Startup
                 .UseAuthentication()
                 .UseAuthorization()
                 .UseEndpoints(endpoints => endpoints
-                    .MapControllers());
+                    .MapControllers())
+                .Initialize();
         }
     }
 }

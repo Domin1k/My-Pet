@@ -5,6 +5,8 @@
     using MyPet.Domain.AdoptionAds.Models;
     using MyPet.Domain.CompanyUsers.Models;
     using MyPet.Domain.MedicalRecords.Models;
+    using MyPet.Domain.Statistics.Models;
+    using MyPet.Infrastructure;
     using MyPet.Infrastructure.AdoptionAds;
     using MyPet.Infrastructure.CompanyUsers;
     using MyPet.Infrastructure.Identity;
@@ -14,7 +16,8 @@
     internal class MyPetDbContext : IdentityDbContext<ApplicationUser>,
         ICompanyUsersDbContext,
         IAdoptionAdsDbContext,
-        IMedicalRecordsDbContext
+        IMedicalRecordsDbContext,
+        IStatisticsDbContext
     {
         public MyPetDbContext(DbContextOptions<MyPetDbContext> options)
             : base(options)
@@ -30,6 +33,8 @@
         public DbSet<MedicalRecord> MedicalRecords { get; set; }
 
         public DbSet<Treatment> Treatments { get; set; }
+
+        public DbSet<Statistics> Statistics { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

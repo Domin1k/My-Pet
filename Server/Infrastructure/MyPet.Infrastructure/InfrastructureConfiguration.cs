@@ -11,7 +11,9 @@
     using MyPet.Application;
     using MyPet.Application.Identity.Contracts;
     using MyPet.Infrastructure.AdoptionAds;
+    using MyPet.Infrastructure.Common;
     using MyPet.Infrastructure.Common.Events;
+    using MyPet.Infrastructure.Common.Persistence;
     using MyPet.Infrastructure.CompanyUsers;
     using MyPet.Infrastructure.MedicalRecords;
     using MyPet.Infrastructure.Persistence;
@@ -35,7 +37,9 @@
                             .MigrationsAssembly(typeof(MyPetDbContext).Assembly.FullName)))
                 .AddScoped<ICompanyUsersDbContext>(provider => provider.GetService<MyPetDbContext>())
                 .AddScoped<IAdoptionAdsDbContext>(provider => provider.GetService<MyPetDbContext>())
-                .AddScoped<IMedicalRecordsDbContext>(provider => provider.GetService<MyPetDbContext>());
+                .AddScoped<IMedicalRecordsDbContext>(provider => provider.GetService<MyPetDbContext>())
+                .AddScoped<IStatisticsDbContext>(provider => provider.GetService<MyPetDbContext>())
+                .AddTransient<IInitializer, DatabaseInitializer>();
 
         internal static IServiceCollection AddRepositories(this IServiceCollection services)
             => services

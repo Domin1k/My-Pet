@@ -12,8 +12,8 @@
     {
         private readonly AppSettings appSettings;
 
-        public JwtTokenGeneratorService(IOptions<AppSettings> applicationSettings)
-            => this.appSettings = applicationSettings.Value;
+        public JwtTokenGeneratorService(IOptions<AppSettings> appSettings)
+            => this.appSettings = appSettings.Value;
 
         public string GenerateToken(ApplicationUser user)
         {
