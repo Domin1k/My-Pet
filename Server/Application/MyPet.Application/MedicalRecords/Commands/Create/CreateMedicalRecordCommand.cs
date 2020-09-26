@@ -1,10 +1,13 @@
 ﻿namespace MyPet.Application.MedicalRecords.Commands.Create
 {
     using MediatR;
+    using MyPet.Application.Common.Contracts;
+    using MyPet.Application.CompanyUsers;
     using MyPet.Application.MedicalRecords.Commands.Common;
     using MyPet.Domain.Common.Models;
     using MyPet.Domain.MedicalRecords.Factories;
     using MyPet.Domain.MedicalRecords.Models;
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -14,20 +17,32 @@
         {
             private readonly IMedicalRecordRepository medicalRecordRepository;
             private readonly IMedicalRecordFactory medicalRecordFactory;
+            private readonly ICurrentUserService currentUser;
+            private readonly ICompanyUserRepository companyUserRepository;
 
-            public CreateMedicalRecordCommandHandler(IMedicalRecordRepository medicalRecordRepository, IMedicalRecordFactory medicalRecordFactory)
+            public CreateMedicalRecordCommandHandler(
+                IMedicalRecordRepository medicalRecordRepository,
+                IMedicalRecordFactory medicalRecordFactory,
+                ICurrentUserService currentUser,
+                ICompanyUserRepository companyUserRepository)
             {
                 this.medicalRecordFactory = medicalRecordFactory;
                 this.medicalRecordRepository = medicalRecordRepository;
+                this.currentUser = currentUser;
+                this.companyUserRepository = companyUserRepository;
             }
 
             public async Task<CreateMedicalRecordOutputModel> Handle(CreateMedicalRecordCommand request, CancellationToken cancellationToken)
             {
+                var companyUser = await this.companyUserRepository.FindBy(this.currentUser.UserId, cancellationToken);
+
                 var medicalRecord = this.medicalRecordFactory
                         .WithAnimalAge(request.AnimalAge)
                         .WithAnimalName(request.AnimalName)
                         .WithBreed(request.AnimalBreedName, Enumeration.FromName<Species>(request.AnimalSpecies))
                         .Build();
+                
+                companyUser.AddMedicalRecord(medicalRecord);
 
                 await this.medicalRecordRepository.Save(medicalRecord, cancellationToken);
 

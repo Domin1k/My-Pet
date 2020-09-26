@@ -49,7 +49,7 @@
                 var companyUser = this.companyUserFactory
                             .WithApplicationUserId(result.Data.Id)
                             .WithLegalityRegistrationNumber(request.LegalityRegistrationNumber)
-                            .WithName(request.Name)
+                            .WithCompanyName(request.Name)
                             .WithOwnerName(request.OwnerName)
                             .WithAddress(request.Address)
                             .Build();

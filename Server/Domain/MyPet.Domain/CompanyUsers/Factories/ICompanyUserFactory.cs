@@ -7,7 +7,7 @@
     {
         ICompanyUserFactory WithApplicationUserId(string applicationUserId);
 
-        ICompanyUserFactory WithName(string name);
+        ICompanyUserFactory WithCompanyName(string companyName);
 
         ICompanyUserFactory WithOwnerName(string ownerName);
 

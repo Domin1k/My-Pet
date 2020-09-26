@@ -6,6 +6,8 @@
 
     public interface IStatisticsDbContext : IDbContext
     {
+        DbSet<AdoptionAdView> AdoptionAdViews { get; }
+
         DbSet<Statistics> Statistics { get; }
     }
 }

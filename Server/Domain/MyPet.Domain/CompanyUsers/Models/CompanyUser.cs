@@ -1,6 +1,7 @@
 ﻿namespace MyPet.Domain.CompanyUsers.Models
 {
     using MyPet.Domain.Common.Models;
+    using MyPet.Domain.CompanyUsers.Events;
     using MyPet.Domain.CompanyUsers.Exceptions;
     using MyPet.Domain.MedicalRecords.Models;
     using System;
@@ -11,12 +12,12 @@
     {
         private readonly HashSet<MedicalRecord> medicalRecords;
 
-        internal CompanyUser(string applicationUserId, string name, string ownerName, string address, string legalityRegistrationNumber)
+        internal CompanyUser(string applicationUserId, string companyName, string ownerName, string address, string legalityRegistrationNumber)
         {
-            this.Validate(name, ownerName, address, legalityRegistrationNumber, applicationUserId);
+            this.Validate(companyName, ownerName, address, legalityRegistrationNumber, applicationUserId);
 
             this.ApplicationUserId = applicationUserId;
-            this.Name = name;
+            this.CompanyName = companyName;
             this.OwnerName = ownerName;
             this.Address = address;
             this.LegalityRegistrationNumber = legalityRegistrationNumber;
@@ -24,9 +25,9 @@
             this.medicalRecords = new HashSet<MedicalRecord>();
         }
 
-        private CompanyUser(string name, string ownerName, string address, string legalityRegistrationNumber)
+        private CompanyUser(string companyName, string ownerName, string address, string legalityRegistrationNumber)
         {
-            this.Name = name;
+            this.CompanyName = companyName;
             this.OwnerName = ownerName;
             this.Address = address;
             this.LegalityRegistrationNumber = legalityRegistrationNumber;
@@ -34,31 +35,33 @@
             this.medicalRecords = new HashSet<MedicalRecord>();
         }
 
-        public string LegalityRegistrationNumber { get; }
+        public string LegalityRegistrationNumber { get; private set; }
 
-        public string ApplicationUserId { get; }
+        public string ApplicationUserId { get; private set; }
 
-        public string Name { get; }
+        public string CompanyName { get; private set; }
 
-        public string OwnerName { get; }
+        public string OwnerName { get; private set; }
 
-        public string Address { get; }
+        public string Address { get; private set; }
 
         public IReadOnlyCollection<MedicalRecord> MedicalRecords => this.medicalRecords.ToList().AsReadOnly();
 
         public CompanyUser AddMedicalRecord(MedicalRecord medicalRecord)
         {
             this.medicalRecords.Add(medicalRecord);
+
+            this.AddEvent(new MedicalRecordAddedEvent(medicalRecord.Id));
             return this;
         }
 
-        public void Validate(string name, string ownerName, string address, string legalityCode, string applicationUserId)
+        public void Validate(string companyName, string ownerName, string address, string legalityCode, string applicationUserId)
         {
             Guard.ForStringLength<InvalidCompanyUserException>(
-               name,
+               companyName,
                ModelConstants.Common.MinNameLength,
                ModelConstants.Common.MaxNameLength,
-               nameof(this.Name));
+               nameof(this.CompanyName));
 
             Guard.ForStringLength<InvalidCompanyUserException>(
                ownerName,

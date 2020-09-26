@@ -28,7 +28,7 @@
             return this;
         }
 
-        public ICompanyUserFactory WithName(string name)
+        public ICompanyUserFactory WithCompanyName(string name)
         {
             this.name = name;
             return this;

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyPet.Infrastructure.Persistence;
 
 namespace MyPet.Infrastructure.Common.Persistence.Migrations
 {
     [DbContext(typeof(MyPetDbContext))]
-    partial class MyPetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200926085845_CompanyUserConstraintsUpdate")]
+    partial class CompanyUserConstraintsUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,10 +1,20 @@
 ﻿namespace MyPet.Domain.Common.Models
 {
+    using MyPet.Domain.Common.Events;
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public abstract class Entity<TId>
         where TId : struct
     {
+        private readonly ICollection<IDomainEvent> events;
+
+        protected Entity()
+        {
+            this.events = new List<IDomainEvent>();
+        }
+
         public TId Id { get; private set; }
 
         public string CreatedBy { get; set; }
@@ -14,6 +24,13 @@
         public string ModifiedBy { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
+
+        public IReadOnlyCollection<IDomainEvent> Events=> this.events.ToList().AsReadOnly();
+
+        public void ClearEvents() => this.events.Clear();
+
+        protected void AddEvent(IDomainEvent domainEvent)
+            => this.events.Add(domainEvent);
 
         public override bool Equals(object obj)
         {

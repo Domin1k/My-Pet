@@ -2,6 +2,7 @@
 {
     using FluentAssertions;
     using MyPet.Domain.AdoptionAds.Models;
+    using System;
     using Xunit;
 
     public class EntitySpecs
@@ -41,7 +42,24 @@
             where TEntity : Entity<int>
             => (entity.SetId<int>(id) as TEntity)!;
 
+        public static TEntity SetId<TEntity>(this TEntity entity, Guid id)
+            where TEntity : Entity<Guid>
+            => (entity.SetId<Guid>(id) as TEntity);
+
         private static Entity<T> SetId<T>(this Entity<T> entity, int id)
+            where T : struct
+        {
+            entity
+                .GetType()
+                .BaseType!
+                .GetProperty(nameof(Entity<T>.Id))!
+                .GetSetMethod(true)!
+                .Invoke(entity, new object[] { id });
+
+            return entity;
+        }
+
+        private static Entity<T> SetId<T>(this Entity<T> entity, Guid id)
             where T : struct
         {
             entity

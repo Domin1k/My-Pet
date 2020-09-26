@@ -19,7 +19,7 @@
         public async Task<ActionResult<AdoptionAdDetailsOutputModel>> Details([FromRoute] AdoptionAdDetailsQuery query)
             => await this.Send(query);
 
-        [HttpPut]        
+        [HttpPut]
         [Route(Id)]
         public async Task<ActionResult> Edit(int id, EditAdoptionAdCommand command)
             => await this.Send(command.SetId(id));
@@ -30,7 +30,7 @@
             => await this.Send(command);
 
         [HttpPost]
-        public async Task<ActionResult> Create(CreateAdoptionAdCommand command)
+        public async Task<ActionResult<CreateAdoptionAdOutputModel>> Create(CreateAdoptionAdCommand command)
             => await this.Send(command);
     }
 }

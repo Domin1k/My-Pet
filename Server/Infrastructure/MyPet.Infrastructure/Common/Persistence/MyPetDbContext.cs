@@ -36,6 +36,8 @@
 
         public DbSet<Statistics> Statistics { get; set; }
 
+        public DbSet<AdoptionAdView> AdoptionAdViews { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

@@ -13,7 +13,7 @@
                .HasKey(d => d.Id);
 
             builder
-                .Property(d => d.Name)
+                .Property(d => d.CompanyName)
                 .IsRequired()
                 .HasMaxLength(ModelConstants.Common.MaxNameLength);
 

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyPet.Infrastructure.Persistence;
 
 namespace MyPet.Infrastructure.Common.Persistence.Migrations
 {
     [DbContext(typeof(MyPetDbContext))]
-    partial class MyPetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200926083005_StatisticsContextUpdated")]
+    partial class StatisticsContextUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,11 +237,6 @@ namespace MyPet.Infrastructure.Common.Persistence.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
-
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -256,6 +253,11 @@ namespace MyPet.Infrastructure.Common.Persistence.Migrations
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("OwnerName")
                         .IsRequired()
@@ -280,8 +282,8 @@ namespace MyPet.Infrastructure.Common.Persistence.Migrations
 
                     b.Property<string>("AnimalName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<Guid?>("CompanyUserId")
                         .HasColumnType("uniqueidentifier");

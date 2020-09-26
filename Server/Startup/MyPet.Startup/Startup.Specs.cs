@@ -7,8 +7,10 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using MyPet.Application.AdoptionAds;
+    using MyPet.Application.Common.Contracts;
     using MyPet.Application.CompanyUsers;
     using MyPet.Application.MedicalRecords;
+    using MyPet.Web.Common;
     using MyTested.AspNetCore.Mvc;
 
     public class TestStartup : Startup
@@ -26,6 +28,7 @@
 
             services.ReplaceTransient<UserManager<ApplicationUser>>(_ => IdentityFakes.FakeUserManager);
             services.ReplaceTransient<IJwtTokenGenerator>(_ => JwtTokenGeneratorFakes.FakeJwtTokenGenerator);
+            services.ReplaceTransient<ICurrentUserService>(_ => CurrentUserServiceFakes.FakeCurrentUserService);
         }
 
         private static void ValidateServices(IServiceCollection services)
@@ -35,6 +38,7 @@
             provider.GetRequiredService<ICompanyUserRepository>();
             provider.GetRequiredService<IAdoptionAdRepository>();
             provider.GetRequiredService<IMedicalRecordRepository>();
+            provider.GetRequiredService<ICompanyUserRepository>();
             provider.GetRequiredService<IMediator>();
             provider.GetRequiredService<IControllerFactory>();
         }

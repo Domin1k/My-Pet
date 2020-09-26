@@ -1,11 +1,11 @@
 ﻿namespace MyPet.Startup.Specs
 {
     using FluentAssertions;
-    using MyPet.Application.Common;
     using MyPet.Application.MedicalRecords.Commands.Create;
     using MyPet.Application.MedicalRecords.Commands.Delete;
     using MyPet.Application.MedicalRecords.Commands.Edit;
     using MyPet.Application.MedicalRecords.Queries.Details;
+    using MyPet.Domain.CompanyUsers.Models;
     using MyPet.Domain.MedicalRecords.Models;
     using MyPet.Web.MedicalRecords;
     using MyTested.AspNetCore.Mvc;
@@ -13,7 +13,7 @@
 
     public class MedicalRecordsControllerSpecs
     {
-        private string controllerName = typeof(MedicalRecordsController).Name.Replace("Controller", string.Empty);
+        private readonly string controllerName = typeof(MedicalRecordsController).Name.Replace("Controller", string.Empty);
         
         [Theory]
         [InlineData(1, 5)]
@@ -23,8 +23,7 @@
                 .Configuration()
                 .ShouldMap($"/{this.controllerName}/{id}")
                 .To<MedicalRecordsController>(c => c.Details(new MedicalRecordDetailsQuery { Id = id }))
-                .Which(instance => instance
-                    .WithData(MedicalRecordFakes.Data.GetMedicalRecord(id, totalTreatments)))
+                .Which(instance => instance.WithData(MedicalRecordFakes.Data.GetMedicalRecord(id, totalTreatments)))
                 .ShouldReturn()
                 .ActionResult<MedicalRecordDetailsOutputModel>(result => result
                     .Passing(model =>
@@ -56,7 +55,7 @@
                         AnimalName = "Johny",
                         AnimalSpecies = Species.Dog.ToString()
                     }))
-                .Which()
+                .Which(instance => instance.WithData(CompanyUserFakes.Data.GetCompanyUser()))
                 .ShouldReturn()
                 .ActionResult<CreateMedicalRecordOutputModel>(result => result
                     .Passing(model =>
