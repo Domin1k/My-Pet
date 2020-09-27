@@ -4,7 +4,7 @@
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using MyPet.Domain.Statistics.Models;
 
-    public class StatisticsConfiguration : IEntityTypeConfiguration<Statistics>
+    internal class StatisticsConfiguration : IEntityTypeConfiguration<Statistics>
     {
         public void Configure(EntityTypeBuilder<Statistics> builder)
         {

@@ -8,7 +8,7 @@
     using System.Security.Claims;
     using System.Text;
 
-    public class JwtTokenGeneratorService : IJwtTokenGenerator
+    internal class JwtTokenGeneratorService : IJwtTokenGenerator
     {
         private readonly AppSettings appSettings;
 

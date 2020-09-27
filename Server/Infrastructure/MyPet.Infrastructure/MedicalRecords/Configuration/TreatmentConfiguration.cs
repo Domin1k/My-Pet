@@ -5,7 +5,7 @@
     using MyPet.Domain.Common.Models;
     using MyPet.Domain.MedicalRecords.Models;
 
-    public class TreatmentConfiguration : IEntityTypeConfiguration<Treatment>
+    internal class TreatmentConfiguration : IEntityTypeConfiguration<Treatment>
     {
         public void Configure(EntityTypeBuilder<Treatment> builder)
         {

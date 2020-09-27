@@ -6,7 +6,7 @@
 
     public class CompanyUserFakes
     {
-        public const string CompanyUserFakeApplicationId = "0f8fad5b-d9cb-469f-a165-70867728950e";
+        public static Guid CompanyUserFakeApplicationId = Guid.Parse("0f8fad5b-d9cb-469f-a165-70867728950e");
 
         public static class Data
         {
@@ -20,7 +20,7 @@
                         f.Address.FullAddress(),
                         "12346"))
                     .Generate()
-                    .SetId(new Guid(CompanyUserFakeApplicationId));
+                    .SetId(CompanyUserFakeApplicationId);
 
                 return companyUser;
             }

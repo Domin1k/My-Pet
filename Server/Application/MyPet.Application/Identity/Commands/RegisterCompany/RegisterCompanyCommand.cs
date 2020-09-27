@@ -3,11 +3,12 @@
     using FluentValidation;
     using MediatR;
     using MyPet.Application.Common;
-    using MyPet.Application.CompanyUsers;
     using MyPet.Application.Identity.Contracts;
     using MyPet.Domain.Common.Models;
+    using MyPet.Domain.CompanyUsers;
     using MyPet.Domain.CompanyUsers.Factories;
     using MyPet.Domain.CompanyUsers.Models;
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -25,12 +26,12 @@
         {
             private readonly IIdentity identity;
             private readonly ICompanyUserFactory companyUserFactory;
-            private readonly ICompanyUserRepository companyUsersRepository;
+            private readonly ICompanyUserDomainRepository companyUsersRepository;
 
             public RegisterCompanyCommandHandler(
                 IIdentity identity,
                 ICompanyUserFactory companyUserFactory,
-                ICompanyUserRepository companyUsersRepository)
+                ICompanyUserDomainRepository companyUsersRepository)
             {
                 this.identity = identity;
                 this.companyUserFactory = companyUserFactory;
@@ -47,7 +48,7 @@
                 }
 
                 var companyUser = this.companyUserFactory
-                            .WithApplicationUserId(result.Data.Id)
+                            .WithApplicationUserId(new Guid(result.Data.Id))
                             .WithLegalityRegistrationNumber(request.LegalityRegistrationNumber)
                             .WithCompanyName(request.Name)
                             .WithOwnerName(request.OwnerName)

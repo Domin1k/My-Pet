@@ -2,10 +2,11 @@
 {
     using MyPet.Domain.Common.Factories;
     using MyPet.Domain.CompanyUsers.Models;
+    using System;
 
     public interface ICompanyUserFactory : IFactory<CompanyUser>
     {
-        ICompanyUserFactory WithApplicationUserId(string applicationUserId);
+        ICompanyUserFactory WithApplicationUserId(Guid applicationUserId);
 
         ICompanyUserFactory WithCompanyName(string companyName);
 

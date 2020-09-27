@@ -9,9 +9,9 @@
     {
         public class MedicalRecordDetailsQueryHandler : IRequestHandler<MedicalRecordDetailsQuery, MedicalRecordDetailsOutputModel>
         {
-            private readonly IMedicalRecordRepository medicalRecordRepository;
+            private readonly IMedicalRecordQueryRepository medicalRecordRepository;
 
-            public MedicalRecordDetailsQueryHandler(IMedicalRecordRepository medicalRecordRepository)
+            public MedicalRecordDetailsQueryHandler(IMedicalRecordQueryRepository medicalRecordRepository)
             {
                 this.medicalRecordRepository = medicalRecordRepository;
             }

@@ -25,29 +25,29 @@
             var serviceCollection = new ServiceCollection()
                 .AddDbContext<MyPetDbContext>(opts => opts
                     .UseInMemoryDatabase(Guid.NewGuid().ToString()))
-                .AddTransient(_ => A.Fake<ICompanyUsersDbContext>())
-                .AddTransient(_ => A.Fake<IAdoptionAdsDbContext>())
-                .AddTransient(_ => A.Fake<IMedicalRecordsDbContext>());
+                .AddScoped<ICompanyUsersDbContext>(provider => provider.GetService<MyPetDbContext>())
+                .AddScoped<IAdoptionAdsDbContext>(provider => provider.GetService<MyPetDbContext>())
+                .AddScoped<IMedicalRecordsDbContext>(provider => provider.GetService<MyPetDbContext>());
 
             // Act
             var services = serviceCollection
                 .AddAutoMapper(Assembly.GetExecutingAssembly())
-                .AddRepositories()
+                .AddQueryRepositories()
                 .BuildServiceProvider();
 
             // Assert
             services
-                .GetService<ICompanyUserRepository>()
+                .GetService<ICompanyUserQueryRepository>()
                 .Should()
                 .NotBeNull();
 
             services
-                .GetService<IMedicalRecordRepository>()
+                .GetService<IMedicalRecordQueryRepository>()
                 .Should()
                 .NotBeNull();
 
             services
-                .GetService<IAdoptionAdRepository>()
+                .GetService<IAdoptionAdQueryRepository>()
                 .Should()
                 .NotBeNull();
         }

@@ -12,7 +12,7 @@
     {
         private readonly HashSet<MedicalRecord> medicalRecords;
 
-        internal CompanyUser(string applicationUserId, string companyName, string ownerName, string address, string legalityRegistrationNumber)
+        internal CompanyUser(Guid applicationUserId, string companyName, string ownerName, string address, string legalityRegistrationNumber)
         {
             this.Validate(companyName, ownerName, address, legalityRegistrationNumber, applicationUserId);
 
@@ -37,7 +37,7 @@
 
         public string LegalityRegistrationNumber { get; private set; }
 
-        public string ApplicationUserId { get; private set; }
+        public Guid ApplicationUserId { get; private set; }
 
         public string CompanyName { get; private set; }
 
@@ -55,7 +55,7 @@
             return this;
         }
 
-        public void Validate(string companyName, string ownerName, string address, string legalityCode, string applicationUserId)
+        public void Validate(string companyName, string ownerName, string address, string legalityCode, Guid applicationUserId)
         {
             Guard.ForStringLength<InvalidCompanyUserException>(
                companyName,
@@ -81,9 +81,10 @@
               CompanyUsersConstants.CompanyUser.MaxLegalityRegistrationNumberLength,
               nameof(this.LegalityRegistrationNumber));
 
-            Guard.ForValidGuid<InvalidCompanyUserException>(
-             applicationUserId,
-             nameof(this.ApplicationUserId));
+            if (applicationUserId == Guid.Empty)
+            {
+                throw new InvalidCompanyUserException($"{nameof(this.ApplicationUserId)} cannot be empty or null");
+            }
         }
     }
 }

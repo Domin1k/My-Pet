@@ -1,10 +1,11 @@
 ﻿namespace MyPet.Domain.CompanyUsers.Factories
 {
     using MyPet.Domain.CompanyUsers.Models;
+    using System;
 
     internal class CompanyUserFactory : ICompanyUserFactory
     {
-        private string applicationUserId;
+        private Guid applicationUserId;
         private string name;
         private string ownerName;
         private string legalityRegistrationNumber;
@@ -16,7 +17,7 @@
             return this;
         }
 
-        public ICompanyUserFactory WithApplicationUserId(string applicationUserId)
+        public ICompanyUserFactory WithApplicationUserId(Guid applicationUserId)
         {
             this.applicationUserId = applicationUserId;
             return this;

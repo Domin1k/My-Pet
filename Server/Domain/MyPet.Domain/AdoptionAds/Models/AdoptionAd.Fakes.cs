@@ -25,7 +25,7 @@
                     .CustomInstantiator(f => new AdoptionAd(
                         f.Commerce.ProductName(),
                         f.Commerce.ProductDescription(),
-                        CompanyUserFakes.CompanyUserFakeApplicationId,
+                        CompanyUserFakes.CompanyUserFakeApplicationId.ToString(),
                         A.Dummy<AdoptionCategory>()))
                     .Generate()
                     .SetId(id);

@@ -3,6 +3,7 @@
     using MediatR;
     using MyPet.Application.Common;
     using MyPet.Application.MedicalRecords.Commands.Common;
+    using MyPet.Domain.MedicalRecords;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -10,12 +11,10 @@
     {
         public class EditMedicalRecordCommandHandler : IRequestHandler<EditMedicalRecordCommand, Result>
         {
-            private readonly IMedicalRecordRepository medicalRecordRepository;
+            private readonly IMedicalRecordDomainRepository medicalRecordRepository;
 
-            public EditMedicalRecordCommandHandler(IMedicalRecordRepository medicalRecordRepository)
-            {
-                this.medicalRecordRepository = medicalRecordRepository;
-            }
+            public EditMedicalRecordCommandHandler(IMedicalRecordDomainRepository medicalRecordRepository) 
+                => this.medicalRecordRepository = medicalRecordRepository;
 
             public async Task<Result> Handle(EditMedicalRecordCommand request, CancellationToken cancellationToken)
             {

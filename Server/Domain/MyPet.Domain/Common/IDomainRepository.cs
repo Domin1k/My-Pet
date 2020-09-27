@@ -1,10 +1,10 @@
-﻿namespace MyPet.Application.Common.Contracts
+﻿namespace MyPet.Domain.Common
 {
     using MyPet.Domain.Common.Models;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public interface IRepository<in TEntity>
+    public interface IDomainRepository<in TEntity>
         where TEntity : IAggregateRoot
     {
         Task Save(TEntity entity, CancellationToken cancellationToken = default);

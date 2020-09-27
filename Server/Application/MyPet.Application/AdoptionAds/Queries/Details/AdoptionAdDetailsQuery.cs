@@ -9,9 +9,9 @@
     {
         public class AdoptionAdDetailsQueryHandler : IRequestHandler<AdoptionAdDetailsQuery, AdoptionAdDetailsOutputModel>
         {
-            private readonly IAdoptionAdRepository adoptionAdRepository;
+            private readonly IAdoptionAdQueryRepository adoptionAdRepository;
 
-            public AdoptionAdDetailsQueryHandler(IAdoptionAdRepository adoptionAdRepository) 
+            public AdoptionAdDetailsQueryHandler(IAdoptionAdQueryRepository adoptionAdRepository) 
                 => this.adoptionAdRepository = adoptionAdRepository;
 
             public Task<AdoptionAdDetailsOutputModel> Handle(AdoptionAdDetailsQuery request, CancellationToken cancellationToken)

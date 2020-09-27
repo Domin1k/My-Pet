@@ -2,6 +2,7 @@
 {
     using MediatR;
     using MyPet.Application.Common;
+    using MyPet.Domain.MedicalRecords;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -9,9 +10,9 @@
     {
         public class DeleteMedicalRecordCommandHandler : IRequestHandler<DeleteMedicalRecordCommand, Result>
         {
-            private readonly IMedicalRecordRepository medicalRecordRepository;
+            private readonly IMedicalRecordDomainRepository medicalRecordRepository;
 
-            public DeleteMedicalRecordCommandHandler(IMedicalRecordRepository medicalRecordRepository) 
+            public DeleteMedicalRecordCommandHandler(IMedicalRecordDomainRepository medicalRecordRepository) 
                 => this.medicalRecordRepository = medicalRecordRepository;
 
             public async Task<Result> Handle(DeleteMedicalRecordCommand request, CancellationToken cancellationToken)

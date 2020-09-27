@@ -3,6 +3,7 @@
     using MediatR;
     using MyPet.Application.AdoptionAds.Commands.Common;
     using MyPet.Application.Common;
+    using MyPet.Domain.AdoptionAds;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -10,9 +11,9 @@
     {
         public class EditAdoptionAdCommandHanddler : IRequestHandler<EditAdoptionAdCommand, Result>
         {
-            private readonly IAdoptionAdRepository adoptionAdRepository;
+            private readonly IAdoptionAdDomainRepository adoptionAdRepository;
 
-            public EditAdoptionAdCommandHanddler(IAdoptionAdRepository adoptionAdRepository) 
+            public EditAdoptionAdCommandHanddler(IAdoptionAdDomainRepository adoptionAdRepository) 
                 => this.adoptionAdRepository = adoptionAdRepository;
 
             public async Task<Result> Handle(EditAdoptionAdCommand request, CancellationToken cancellationToken)

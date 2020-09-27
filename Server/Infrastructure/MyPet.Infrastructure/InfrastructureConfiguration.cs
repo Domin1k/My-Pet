@@ -10,6 +10,7 @@
     using Microsoft.IdentityModel.Tokens;
     using MyPet.Application;
     using MyPet.Application.Identity.Contracts;
+    using MyPet.Domain.Common;
     using MyPet.Infrastructure.AdoptionAds;
     using MyPet.Infrastructure.Common;
     using MyPet.Infrastructure.Common.Events;
@@ -24,7 +25,7 @@
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
             => services
                 .AddDatabase(configuration)
-                .AddRepositories()
+                .AddQueryRepositories()
                 .AddIdentity(configuration)
                 .AddTransient<IEventDispatcher, EventDispatcher>();
 
@@ -41,13 +42,13 @@
                 .AddScoped<IStatisticsDbContext>(provider => provider.GetService<MyPetDbContext>())
                 .AddTransient<IInitializer, DatabaseInitializer>();
 
-        internal static IServiceCollection AddRepositories(this IServiceCollection services)
+        internal static IServiceCollection AddQueryRepositories(this IServiceCollection services)
             => services
                 .Scan(scan => scan
                     .FromCallingAssembly()
                     .AddClasses(classes => classes
-                        .AssignableTo(typeof(IRepository<>)))
-                    .AsMatchingInterface()
+                        .AssignableTo(typeof(IQueryRepository<>)))
+                    .AsImplementedInterfaces()
                     .WithTransientLifetime());
 
         private static IServiceCollection AddIdentity(this IServiceCollection services, IConfiguration configuration)

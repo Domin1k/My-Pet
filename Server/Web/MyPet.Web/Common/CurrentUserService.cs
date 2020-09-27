@@ -16,9 +16,12 @@
                 throw new InvalidOperationException("This request does not have an authenticated user.");
             }
 
-            this.UserId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (user.FindFirstValue(ClaimTypes.NameIdentifier) != null)
+            {
+                this.UserId = new Guid(user.FindFirstValue(ClaimTypes.NameIdentifier));
+            }
         }
 
-        public string UserId { get; }
+        public Guid UserId { get; }
     }
 }

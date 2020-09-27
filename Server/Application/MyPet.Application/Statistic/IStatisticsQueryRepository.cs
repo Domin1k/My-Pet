@@ -5,7 +5,7 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public interface IStatisticsRepository : IRepository<Statistics>
+    public interface IStatisticsQueryRepository : IQueryRepository<Statistics>
     {
         Task<int> GetAdoptionAdsView(int adoptionAdId, CancellationToken cancellationToken = default);
 

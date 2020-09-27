@@ -2,6 +2,7 @@
 {
     using MediatR;
     using MyPet.Application.AdoptionAds.Commands.Common;
+    using MyPet.Domain.AdoptionAds;
     using MyPet.Domain.AdoptionAds.Factories;
     using System.Threading;
     using System.Threading.Tasks;
@@ -10,10 +11,10 @@
     {
         public class CreateAdoptionAdCommandHandler : IRequestHandler<CreateAdoptionAdCommand, CreateAdoptionAdOutputModel>
         {
-            private readonly IAdoptionAdRepository adoptionAdRepository;
+            private readonly IAdoptionAdDomainRepository adoptionAdRepository;
             private readonly IAdoptionAdFactory adoptionAdFactory;
 
-            public CreateAdoptionAdCommandHandler(IAdoptionAdRepository adoptionAdRepository, IAdoptionAdFactory adoptionAdFactory)
+            public CreateAdoptionAdCommandHandler(IAdoptionAdDomainRepository adoptionAdRepository, IAdoptionAdFactory adoptionAdFactory)
             {
                 this.adoptionAdRepository = adoptionAdRepository;
                 this.adoptionAdFactory = adoptionAdFactory;

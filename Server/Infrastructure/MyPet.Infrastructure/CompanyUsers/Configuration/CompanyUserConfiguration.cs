@@ -5,7 +5,7 @@
     using MyPet.Domain.Common.Models;
     using MyPet.Domain.CompanyUsers.Models;
 
-    public class CompanyUserConfiguration : IEntityTypeConfiguration<CompanyUser>
+    internal class CompanyUserConfiguration : IEntityTypeConfiguration<CompanyUser>
     {
         public void Configure(EntityTypeBuilder<CompanyUser> builder)
         {

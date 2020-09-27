@@ -24,8 +24,4 @@
     <Compile Remove="**\*.Fakes.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="CompanyUsers\Commands\" />
-  </ItemGroup>
-
 </Project>

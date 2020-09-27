@@ -4,7 +4,7 @@
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using MyPet.Domain.AdoptionAds.Models;
 
-    public class AdoptionCategoryConfiguration : IEntityTypeConfiguration<AdoptionCategory>
+    internal class AdoptionCategoryConfiguration : IEntityTypeConfiguration<AdoptionCategory>
     {
         public void Configure(EntityTypeBuilder<AdoptionCategory> builder)
         {

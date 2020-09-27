@@ -4,7 +4,7 @@
     using MyPet.Domain.MedicalRecords.Models;
     using MyPet.Infrastructure.Common.Persistence;
 
-    public interface IMedicalRecordsDbContext : IDbContext
+    internal interface IMedicalRecordsDbContext : IDbContext
     {
         DbSet<MedicalRecord> MedicalRecords { get; }
 

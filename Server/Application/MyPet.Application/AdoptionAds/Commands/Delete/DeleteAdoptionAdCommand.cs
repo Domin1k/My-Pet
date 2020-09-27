@@ -2,6 +2,7 @@
 {
     using MediatR;
     using MyPet.Application.Common;
+    using MyPet.Domain.AdoptionAds;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -9,9 +10,9 @@
     {
         public class DeleteAdoptionAdCommandHandler : IRequestHandler<DeleteAdoptionAdCommand, Result>
         {
-            private readonly IAdoptionAdRepository adoptionAdRepository;
+            private readonly IAdoptionAdDomainRepository adoptionAdRepository;
 
-            public DeleteAdoptionAdCommandHandler(IAdoptionAdRepository adoptionAdRepository) 
+            public DeleteAdoptionAdCommandHandler(IAdoptionAdDomainRepository adoptionAdRepository) 
                 => this.adoptionAdRepository = adoptionAdRepository;
 
             public async Task<Result> Handle(DeleteAdoptionAdCommand request, CancellationToken cancellationToken)

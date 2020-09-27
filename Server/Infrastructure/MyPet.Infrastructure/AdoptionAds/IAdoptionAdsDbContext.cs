@@ -4,7 +4,7 @@
     using MyPet.Domain.AdoptionAds.Models;
     using MyPet.Infrastructure.Common.Persistence;
 
-    public interface IAdoptionAdsDbContext : IDbContext
+    internal interface IAdoptionAdsDbContext : IDbContext
     {
         DbSet<AdoptionAd> AdoptionAds { get; }
 

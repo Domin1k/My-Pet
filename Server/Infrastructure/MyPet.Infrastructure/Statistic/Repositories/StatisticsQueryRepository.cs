@@ -7,9 +7,9 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal class StatisticsRepository : DataRepository<IStatisticsDbContext, Statistics>, IStatisticsRepository
+    internal class StatisticsQueryRepository : DataRepository<IStatisticsDbContext, Statistics>, IStatisticsQueryRepository
     {
-        public StatisticsRepository(IStatisticsDbContext db) 
+        public StatisticsQueryRepository(IStatisticsDbContext db) 
             : base(db)
         {
         }

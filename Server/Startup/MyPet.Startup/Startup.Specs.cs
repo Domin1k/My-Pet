@@ -35,10 +35,10 @@
         {
             var provider = services.BuildServiceProvider();
 
-            provider.GetRequiredService<ICompanyUserRepository>();
-            provider.GetRequiredService<IAdoptionAdRepository>();
-            provider.GetRequiredService<IMedicalRecordRepository>();
-            provider.GetRequiredService<ICompanyUserRepository>();
+            provider.GetRequiredService<ICompanyUserQueryRepository>();
+            provider.GetRequiredService<IAdoptionAdQueryRepository>();
+            provider.GetRequiredService<IMedicalRecordQueryRepository>();
+            provider.GetRequiredService<ICompanyUserQueryRepository>();
             provider.GetRequiredService<IMediator>();
             provider.GetRequiredService<IControllerFactory>();
         }

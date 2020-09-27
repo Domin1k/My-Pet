@@ -5,7 +5,7 @@
     using MyPet.Domain.Statistics.Models;
     using MyPet.Infrastructure.Identity;
 
-    public class AdoptionAdViewConfiguration : IEntityTypeConfiguration<AdoptionAdView>
+    internal class AdoptionAdViewConfiguration : IEntityTypeConfiguration<AdoptionAdView>
     {
         public void Configure(EntityTypeBuilder<AdoptionAdView> builder)
         {

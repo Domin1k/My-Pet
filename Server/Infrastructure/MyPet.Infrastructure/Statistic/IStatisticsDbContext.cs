@@ -4,7 +4,7 @@
     using MyPet.Domain.Statistics.Models;
     using MyPet.Infrastructure.Common.Persistence;
 
-    public interface IStatisticsDbContext : IDbContext
+    internal interface IStatisticsDbContext : IDbContext
     {
         DbSet<AdoptionAdView> AdoptionAdViews { get; }
 

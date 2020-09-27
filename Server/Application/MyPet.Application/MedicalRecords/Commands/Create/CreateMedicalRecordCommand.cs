@@ -5,6 +5,8 @@
     using MyPet.Application.CompanyUsers;
     using MyPet.Application.MedicalRecords.Commands.Common;
     using MyPet.Domain.Common.Models;
+    using MyPet.Domain.CompanyUsers;
+    using MyPet.Domain.MedicalRecords;
     using MyPet.Domain.MedicalRecords.Factories;
     using MyPet.Domain.MedicalRecords.Models;
     using System;
@@ -15,16 +17,16 @@
     {
         public class CreateMedicalRecordCommandHandler : IRequestHandler<CreateMedicalRecordCommand, CreateMedicalRecordOutputModel>
         {
-            private readonly IMedicalRecordRepository medicalRecordRepository;
+            private readonly IMedicalRecordDomainRepository medicalRecordRepository;
             private readonly IMedicalRecordFactory medicalRecordFactory;
             private readonly ICurrentUserService currentUser;
-            private readonly ICompanyUserRepository companyUserRepository;
+            private readonly ICompanyUserDomainRepository companyUserRepository;
 
             public CreateMedicalRecordCommandHandler(
-                IMedicalRecordRepository medicalRecordRepository,
+                IMedicalRecordDomainRepository medicalRecordRepository,
                 IMedicalRecordFactory medicalRecordFactory,
                 ICurrentUserService currentUser,
-                ICompanyUserRepository companyUserRepository)
+                ICompanyUserDomainRepository companyUserRepository)
             {
                 this.medicalRecordFactory = medicalRecordFactory;
                 this.medicalRecordRepository = medicalRecordRepository;
