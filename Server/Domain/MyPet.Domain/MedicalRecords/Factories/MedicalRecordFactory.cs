@@ -1,12 +1,18 @@
 ﻿namespace MyPet.Domain.MedicalRecords.Factories
 {
+    using MyPet.Domain.MedicalRecords.Factories.Nested;
     using MyPet.Domain.MedicalRecords.Models;
+    using System;
+    using System.Collections.Generic;
 
     internal class MedicalRecordFactory : IMedicalRecordFactory
     {
         private int animalAge;
         private string animalName;
         private Breed breed;
+
+        private readonly TreatmentFactory treatmentFactory = new TreatmentFactory();
+        private readonly List<Treatment> treatments = new List<Treatment>();
 
         public IMedicalRecordFactory WithAnimalAge(int animalAge)
         {
@@ -29,10 +35,23 @@
             return this;
         }
 
+        public IMedicalRecordFactory WithTreatment(Action<TreatmentFactory> treatment)
+        {
+            treatment(this.treatmentFactory);
+            this.treatments.Add(this.treatmentFactory.Build());
+            return this;
+        }
+
         public MedicalRecord Build()
-            => new MedicalRecord(
-                this.animalName,
-                this.animalAge,
-                this.breed);
+        {
+            var medicalRecord = new MedicalRecord(
+               this.animalName,
+               this.animalAge,
+               this.breed);
+
+            this.treatments.ForEach(t => medicalRecord.AddTreatment(t));
+
+            return medicalRecord;
+        }
     }
 }

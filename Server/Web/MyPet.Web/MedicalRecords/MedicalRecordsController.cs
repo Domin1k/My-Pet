@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using MyPet.Application.Common;
     using MyPet.Application.MedicalRecords.Commands.Create;
+    using MyPet.Application.MedicalRecords.Commands.CreateTreatment;
     using MyPet.Application.MedicalRecords.Commands.Delete;
     using MyPet.Application.MedicalRecords.Commands.Edit;
     using MyPet.Application.MedicalRecords.Queries.Details;
@@ -31,5 +32,12 @@
         [Route(Id)]
         public async Task<ActionResult> Delete([FromRoute] DeleteMedicalRecordCommand command)
             => await this.Send(command);
+
+        [HttpPost]
+        [Route("{id}/treatment")]
+        public async Task<ActionResult<CreateTreatmentOutputModel>> Treatment(
+            [FromRoute]int id,
+            [FromBody]CreateTreatmentCommand command)
+            => await this.Send(command.SetId(id));
     }
 }

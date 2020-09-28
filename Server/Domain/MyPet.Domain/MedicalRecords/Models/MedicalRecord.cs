@@ -43,6 +43,16 @@
             return this;
         }
 
+        public MedicalRecord AddTreatments(IEnumerable<Treatment> treatments)
+        {
+            foreach (var treatment in treatments)
+            {
+                this.treatments.Add(treatment);
+            }
+
+            return this;
+        }
+
         public MedicalRecord UpdateAnimalAge(int animalAge)
         {
             this.ValidateAge(animalAge);
