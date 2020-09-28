@@ -1,4 +1,4 @@
-﻿namespace MyPet.Application.Identity.Commands.RegisterCompany
+﻿namespace MyPet.Application.Identity.Commands.Register
 {
     using FluentValidation;
     using MediatR;
@@ -12,7 +12,7 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class RegisterCompanyCommand : UserInputModel, IRequest<Result>
+    public class RegisterCommand : UserInputModel, IRequest<Result>
     {
         public string Name { get; set; }
 
@@ -22,13 +22,13 @@
 
         public string LegalityRegistrationNumber { get; set; }
 
-        public class RegisterCompanyCommandHandler : IRequestHandler<RegisterCompanyCommand, Result>
+        public class RegisterCommandHandler : IRequestHandler<RegisterCommand, Result>
         {
             private readonly IIdentity identity;
             private readonly ICompanyUserFactory companyUserFactory;
             private readonly ICompanyUserDomainRepository companyUsersRepository;
 
-            public RegisterCompanyCommandHandler(
+            public RegisterCommandHandler(
                 IIdentity identity,
                 ICompanyUserFactory companyUserFactory,
                 ICompanyUserDomainRepository companyUsersRepository)
@@ -38,9 +38,9 @@
                 this.companyUsersRepository = companyUsersRepository;
             }
 
-            public async Task<Result> Handle(RegisterCompanyCommand request, CancellationToken cancellationToken)
+            public async Task<Result> Handle(RegisterCommand request, CancellationToken cancellationToken)
             {
-                var result = await this.identity.RegisterCompany(request);
+                var result = await this.identity.Register(request);
 
                 if (!result.Succeeded)
                 {
@@ -61,9 +61,9 @@
             }
         }
 
-        public class RegisterCompanyCommandValidator : AbstractValidator<RegisterCompanyCommand>
+        public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
         {
-            public RegisterCompanyCommandValidator()
+            public RegisterCommandValidator()
             {
                 this.RuleFor(u => u.Email)
                    .MinimumLength(ModelConstants.Common.MinEmailLength)

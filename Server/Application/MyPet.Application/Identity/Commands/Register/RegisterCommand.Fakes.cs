@@ -1,13 +1,13 @@
-﻿namespace MyPet.Application.Identity.Commands.RegisterCompany
+﻿namespace MyPet.Application.Identity.Commands.Register
 {
     using Bogus;
 
-    public class RegisterCompanyCommandFakes
+    public class RegisterCommandFakes
     {
         public static class Data
         {
-            public static RegisterCompanyCommand GetCommand()
-                => new Faker<RegisterCompanyCommand>()
+            public static RegisterCommand GetCommand()
+                => new Faker<RegisterCommand>()
                     .RuleFor(u => u.Email, f => f.Internet.Email())
                     .RuleFor(u => u.Password, f => f.Lorem.Letter(10))
                     .RuleFor(u => u.Name, f => f.Name.FullName())

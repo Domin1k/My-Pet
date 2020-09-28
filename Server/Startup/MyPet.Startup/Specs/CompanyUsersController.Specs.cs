@@ -1,14 +1,11 @@
 ﻿namespace MyPet.Startup.Specs
 {
-    using FluentAssertions;
-    using MyPet.Application.CompanyUsers.Commands.Create;
     using MyPet.Application.CompanyUsers.Commands.Delete;
     using MyPet.Application.CompanyUsers.Commands.Edit;
     using MyPet.Application.CompanyUsers.Queries.Profile;
     using MyPet.Domain.CompanyUsers.Models;
     using MyPet.Web.CompanyUsers;
     using MyTested.AspNetCore.Mvc;
-    using System;
     using Xunit;
 
     public class CompanyUsersControllerSpecs
@@ -24,30 +21,6 @@
                 .Which(instance => instance.WithData(CompanyUserFakes.Data.GetCompanyUser()))
                 .ShouldReturn()
                 .ActionResult<CompanyUserProfileOutputModel>(result => result
-                    .Passing(model =>
-                    {
-                        // TODO
-                    }));
-
-        [Fact]
-        public void Create_WithValidData_ShouldReturnIdOfCreatedRecord()
-            => MyPipeline
-                .Configuration()
-                .ShouldMap(request => request
-                        .WithLocation($"/{this.controllerName}")
-                        .WithMethod(HttpMethod.Post)
-                        .WithJsonBody(new
-                        {
-                            // TODO
-                        }))
-                .To<CompanyUsersController>(c => c
-                    .Create(new CreateCompanyUserCommand
-                    {
-                        // TODO
-                    }))
-                .Which(instance => instance.WithData(CompanyUserFakes.Data.GetCompanyUser()))
-                .ShouldReturn()
-                .ActionResult<CreateCompanyUserOutputModel>(result => result
                     .Passing(model =>
                     {
                         // TODO

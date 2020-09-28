@@ -3,7 +3,7 @@
     using Application.Common;
     using Microsoft.AspNetCore.Identity;
     using MyPet.Application.Identity.Commands;
-    using MyPet.Application.Identity.Commands.LoginCompany;
+    using MyPet.Application.Identity.Commands.Login;
     using MyPet.Application.Identity.Contracts;
     using System.Linq;
     using System.Threading.Tasks;
@@ -21,7 +21,7 @@
             this.jwtTokenGenerator = jwtTokenGenerator;
         }
 
-        public async Task<Result<IApplicationUser>> RegisterCompany(UserInputModel userInput)
+        public async Task<Result<IApplicationUser>> Register(UserInputModel userInput)
         {
             var user = new ApplicationUser(userInput.Email);
 
@@ -34,7 +34,7 @@
                 : Result<IApplicationUser>.Failure(errors);
         }
 
-        public async Task<Result<LoginOutputModel>> LoginCompany(UserInputModel userInput)
+        public async Task<Result<LoginOutputModel>> Login(UserInputModel userInput)
         {
             var user = await this.userManager.FindByEmailAsync(userInput.Email);
             if (user == null)

@@ -1,8 +1,8 @@
 ﻿namespace MyPet.Startup.Specs
 {
-    using Application.Identity.Commands.LoginCompany;
+    using Application.Identity.Commands.Login;
     using FluentAssertions;
-    using MyPet.Application.Identity.Commands.RegisterCompany;
+    using MyPet.Application.Identity.Commands.Register;
     using MyPet.Infrastructure.Identity;
     using MyPet.Web.Identity;
     using MyTested.AspNetCore.Mvc;
@@ -14,18 +14,18 @@
         public void RegisterCompany_ShouldHaveCorrectAttributes()
             => MyController<IdentityController>
                 .Calling(c => c
-                    .RegisterCompany(RegisterCompanyCommandFakes.Data.GetCommand()))
+                    .Register(RegisterCommandFakes.Data.GetCommand()))
                 .ShouldHave()
                 .ActionAttributes(attr => attr
                     .RestrictingForHttpMethod(HttpMethod.Post)
-                    .SpecifyingRoute(nameof(IdentityController.RegisterCompany)));
+                    .SpecifyingRoute(nameof(IdentityController.Register)));
 
         [Theory]
         [InlineData(IdentityFakes.TestEmail, IdentityFakes.ValidPassword)]
         public void LoginCompany_ShouldHaveCorrectAttributes(string email, string password)
             => MyController<IdentityController>
                 .Calling(c => c
-                    .LoginCompany(new LoginCompanyCommand
+                    .Login(new LoginCommand
                     {
                         Email = email,
                         Password = password
@@ -33,7 +33,7 @@
                 .ShouldHave()
                 .ActionAttributes(attr => attr
                     .RestrictingForHttpMethod(HttpMethod.Post)
-                    .SpecifyingRoute(nameof(IdentityController.LoginCompany)));
+                    .SpecifyingRoute(nameof(IdentityController.Login)));
 
         [Theory]
         [InlineData(IdentityFakes.TestEmail, IdentityFakes.ValidPassword, JwtTokenGeneratorFakes.ValidToken)]
@@ -49,7 +49,7 @@
                         Password = password
                     }))
                 .To<IdentityController>(c => c
-                    .LoginCompany(new LoginCompanyCommand
+                    .Login(new LoginCommand
                     {
                         Email = email,
                         Password = password

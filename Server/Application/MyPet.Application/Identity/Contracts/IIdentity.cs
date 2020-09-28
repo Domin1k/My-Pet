@@ -2,13 +2,13 @@
 {
     using MyPet.Application.Common;
     using MyPet.Application.Identity.Commands;
-    using MyPet.Application.Identity.Commands.LoginCompany;
+    using MyPet.Application.Identity.Commands.Login;
     using System.Threading.Tasks;
 
     public interface IIdentity
     {
-        Task<Result<IApplicationUser>> RegisterCompany(UserInputModel userInput);
+        Task<Result<IApplicationUser>> Register(UserInputModel userInput);
 
-        Task<Result<LoginOutputModel>> LoginCompany(UserInputModel userInput);
+        Task<Result<LoginOutputModel>> Login(UserInputModel userInput);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MyPet.Application.Identity.Commands.LoginCompany
+﻿namespace MyPet.Application.Identity.Commands.Login
 {
     public class LoginOutputModel
     {

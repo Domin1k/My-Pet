@@ -2,7 +2,6 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using MyPet.Application.Common;
-    using MyPet.Application.CompanyUsers.Commands.Create;
     using MyPet.Application.CompanyUsers.Commands.Delete;
     using MyPet.Application.CompanyUsers.Commands.Edit;
     using MyPet.Application.CompanyUsers.Queries.Profile;
@@ -20,10 +19,6 @@
         [Route(Id)]
         public async Task<ActionResult> Edit(int id, EditCompanyUserCommand command)
             => await this.Send(command.SetId(id));
-
-        [HttpPost]
-        public async Task<ActionResult<CreateCompanyUserOutputModel>> Create(CreateCompanyUserCommand command)
-            => await this.Send(command);
 
         [HttpDelete]
         [Route(Id)]

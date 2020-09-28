@@ -1,4 +1,4 @@
-﻿namespace MyPet.Application.Identity.Commands.LoginCompany
+﻿namespace MyPet.Application.Identity.Commands.Login
 {
     using FluentValidation;
     using MediatR;
@@ -8,17 +8,17 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class LoginCompanyCommand : UserInputModel, IRequest<Result<LoginOutputModel>>
+    public class LoginCommand : UserInputModel, IRequest<Result<LoginOutputModel>>
     {
-        public class LoginCompanyCommandHandler : IRequestHandler<LoginCompanyCommand, Result<LoginOutputModel>>
+        public class LoginCommandHandler : IRequestHandler<LoginCommand, Result<LoginOutputModel>>
         {
             private readonly IIdentity identity;
 
-            public LoginCompanyCommandHandler(IIdentity identity) => this.identity = identity;
+            public LoginCommandHandler(IIdentity identity) => this.identity = identity;
 
-            public async Task<Result<LoginOutputModel>> Handle(LoginCompanyCommand request, CancellationToken cancellationToken)
+            public async Task<Result<LoginOutputModel>> Handle(LoginCommand request, CancellationToken cancellationToken)
             {
-                var result = await this.identity.LoginCompany(request);
+                var result = await this.identity.Login(request);
 
                 if (!result.Succeeded)
                 {
@@ -29,9 +29,9 @@
             }
         }
 
-        public class LoginCompanyCommandValidator : AbstractValidator<LoginCompanyCommand>
+        public class LoginCommandValidator : AbstractValidator<LoginCommand>
         {
-            public LoginCompanyCommandValidator()
+            public LoginCommandValidator()
             {
                 this.RuleFor(u => u.Email)
                    .MinimumLength(ModelConstants.Common.MinEmailLength)
