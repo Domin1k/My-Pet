@@ -2,22 +2,27 @@
 {
     using MediatR;
     using MyPet.Application.Common;
+    using MyPet.Application.Common.Contracts;
     using MyPet.Domain.CompanyUsers;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class DeleteCompanyUserCommand : EntityCommand<Guid>, IRequest<Result>
+    public class DeleteCompanyUserCommand : IRequest<Result>
     {
         public class DeleteCompanyUserCommandHandler : IRequestHandler<DeleteCompanyUserCommand, Result>
         {
             private readonly ICompanyUserDomainRepository companyUserRepository;
+            private readonly ICurrentUserService currentUserService;
 
-            public DeleteCompanyUserCommandHandler(ICompanyUserDomainRepository companyUserRepository)
-                => this.companyUserRepository = companyUserRepository;
+            public DeleteCompanyUserCommandHandler(ICompanyUserDomainRepository companyUserRepository, ICurrentUserService currentUserService)
+            {
+                this.companyUserRepository = companyUserRepository;
+                this.currentUserService = currentUserService;
+            }
 
             public async Task<Result> Handle(DeleteCompanyUserCommand request, CancellationToken cancellationToken)
-                => await this.companyUserRepository.Delete(request.Id, cancellationToken);
+                => await this.companyUserRepository.Delete(this.currentUserService.UserId, cancellationToken);
         }
     }
 }

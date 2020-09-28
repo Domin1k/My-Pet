@@ -11,17 +11,14 @@
     public class CompanyUsersController : ApiController
     {
         [HttpGet]
-        [Route(Id)]
         public async Task<ActionResult<CompanyUserProfileOutputModel>> Profile([FromRoute] CompanyUserProfileQuery query)
                => await this.Send(query);
 
         [HttpPut]
-        [Route(Id)]
-        public async Task<ActionResult> Edit(int id, EditCompanyUserCommand command)
-            => await this.Send(command.SetId(id));
+        public async Task<ActionResult> Edit(EditCompanyUserCommand command)
+            => await this.Send(command);
 
         [HttpDelete]
-        [Route(Id)]
         public async Task<ActionResult> Delete([FromRoute] DeleteCompanyUserCommand command)
             => await this.Send(command);
     }

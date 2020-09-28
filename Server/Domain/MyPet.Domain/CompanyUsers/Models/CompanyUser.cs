@@ -8,7 +8,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class CompanyUser : Entity<Guid>, IAggregateRoot
+    public class CompanyUser : Entity<int>, IAggregateRoot
     {
         private readonly HashSet<MedicalRecord> medicalRecords;
 
@@ -55,36 +55,72 @@
             return this;
         }
 
-        public void Validate(string companyName, string ownerName, string address, string legalityCode, Guid applicationUserId)
+        public CompanyUser UpdateOwnerName(string ownerName)
         {
-            Guard.ForStringLength<InvalidCompanyUserException>(
-               companyName,
-               ModelConstants.Common.MinNameLength,
-               ModelConstants.Common.MaxNameLength,
-               nameof(this.CompanyName));
+            this.ValidateOwnerName(ownerName);
+            this.OwnerName = ownerName;
+            return this;
+        }
 
-            Guard.ForStringLength<InvalidCompanyUserException>(
-               ownerName,
-               CompanyUsersConstants.CompanyUser.MinOwnerName,
-               CompanyUsersConstants.CompanyUser.MaxOwnerName,
-               nameof(this.OwnerName));
+        public CompanyUser UpdateLegalityRegistrationNumber(string legalityRegistrationNumber)
+        {
+            this.ValidateLegalityRegistrationNumber(legalityRegistrationNumber);
+            this.LegalityRegistrationNumber = legalityRegistrationNumber;
+            return this;
+        }
 
-            Guard.ForStringLength<InvalidCompanyUserException>(
-               address,
-               CompanyUsersConstants.CompanyUser.MinAddressLength,
-               CompanyUsersConstants.CompanyUser.MaxAddressLength,
-               nameof(this.Address));
+        public CompanyUser UpdateCompanyName(string companyName)
+        {
+            this.ValidateCompany(companyName);
+            this.CompanyName = companyName;
+            return this;
+        }
 
-            Guard.ForStringLength<InvalidCompanyUserException>(
-              legalityCode,
-              CompanyUsersConstants.CompanyUser.MinLegalityRegistrationNumberLength,
-              CompanyUsersConstants.CompanyUser.MaxLegalityRegistrationNumberLength,
-              nameof(this.LegalityRegistrationNumber));
+        public CompanyUser UpdateAddress(string address)
+        {
+            this.ValidateAddress(address);
+            this.Address = address;
+            return this;
+        }
 
+        private void Validate(string companyName, string ownerName, string address, string legalityCode, Guid applicationUserId)
+        {
+            this.ValidateCompany(companyName);
+            this.ValidateOwnerName(ownerName);
+            this.ValidateAddress(address);
+            this.ValidateLegalityRegistrationNumber(legalityCode);
             if (applicationUserId == Guid.Empty)
             {
                 throw new InvalidCompanyUserException($"{nameof(this.ApplicationUserId)} cannot be empty or null");
             }
         }
+
+        private void ValidateCompany(string companyName) 
+            => Guard.ForStringLength<InvalidCompanyUserException>(
+               companyName,
+               ModelConstants.Common.MinNameLength,
+               ModelConstants.Common.MaxNameLength,
+               nameof(this.CompanyName));
+
+        private void ValidateOwnerName(string ownerName) 
+            => Guard.ForStringLength<InvalidCompanyUserException>(
+                ownerName,
+                CompanyUsersConstants.CompanyUser.MinOwnerName,
+                CompanyUsersConstants.CompanyUser.MaxOwnerName,
+                nameof(this.OwnerName));
+
+        private void ValidateAddress(string address)
+            => Guard.ForStringLength<InvalidCompanyUserException>(
+                address,
+                CompanyUsersConstants.CompanyUser.MinAddressLength,
+                CompanyUsersConstants.CompanyUser.MaxAddressLength,
+                nameof(this.Address));
+
+        private void ValidateLegalityRegistrationNumber(string legalityCode)
+            => Guard.ForStringLength<InvalidCompanyUserException>(
+               legalityCode,
+               CompanyUsersConstants.CompanyUser.MinLegalityRegistrationNumberLength,
+               CompanyUsersConstants.CompanyUser.MaxLegalityRegistrationNumberLength,
+               nameof(this.LegalityRegistrationNumber));
     }
 }

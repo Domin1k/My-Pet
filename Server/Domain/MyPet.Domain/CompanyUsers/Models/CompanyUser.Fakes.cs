@@ -6,11 +6,12 @@
 
     public class CompanyUserFakes
     {
+        public static int CompanyUserFakeId = 1;
         public static Guid CompanyUserFakeApplicationId = Guid.Parse("0f8fad5b-d9cb-469f-a165-70867728950e");
 
         public static class Data
         {
-            public static CompanyUser GetCompanyUser()
+            public static CompanyUser GetCompanyUser(int? id = null)
             {
                 var companyUser = new Faker<CompanyUser>()
                     .CustomInstantiator(f => new CompanyUser(
@@ -20,7 +21,7 @@
                         f.Address.FullAddress(),
                         "12346"))
                     .Generate()
-                    .SetId(CompanyUserFakeApplicationId);
+                    .SetId(id ?? CompanyUserFakeId);
 
                 return companyUser;
             }
