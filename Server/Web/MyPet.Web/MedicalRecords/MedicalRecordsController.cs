@@ -8,7 +8,9 @@
     using MyPet.Application.MedicalRecords.Commands.Delete;
     using MyPet.Application.MedicalRecords.Commands.Edit;
     using MyPet.Application.MedicalRecords.Queries.Details;
+    using MyPet.Application.MedicalRecords.Queries.Search;
     using MyPet.Web.Common;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     [Authorize]
@@ -17,6 +19,11 @@
         [HttpGet]
         [Route(Id)]
         public async Task<ActionResult<MedicalRecordDetailsOutputModel>> Details([FromRoute] MedicalRecordDetailsQuery query)
+            => await this.Send(query);
+
+        [HttpGet]
+        [Route(nameof(Search))]
+        public async Task<ActionResult<IEnumerable<MedicalRecordSearchOutputModel>>> Search([FromRoute] MedicalRecordSearchQuery query)
             => await this.Send(query);
 
         [HttpPut]
@@ -34,7 +41,7 @@
             => await this.Send(command);
 
         [HttpPost]
-        [Route("{id}/treatment")]
+        [Route(Id + PathSeparator + nameof(Treatment))]
         public async Task<ActionResult<CreateTreatmentOutputModel>> Treatment(
             [FromRoute]int id,
             [FromBody]CreateTreatmentCommand command)

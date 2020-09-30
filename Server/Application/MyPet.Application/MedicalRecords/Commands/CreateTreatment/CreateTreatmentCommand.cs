@@ -42,8 +42,8 @@
                             .WithImageUrl(request.ImageUrl)
                             .WithNextDate(request.Next)
                             .Build());
-
-                medicalRecord.AddTreatments(medRecordTreatment.Treatments);
+                // TODO find out how to build Treatment domain model
+               /* medicalRecord.AddTreatments(medRecordTreatment.Treatments);*/
                 await this.medicalRecordDomainRepository.Save(medicalRecord, cancellationToken);
 
                 return new CreateTreatmentOutputModel(medicalRecord.Id);

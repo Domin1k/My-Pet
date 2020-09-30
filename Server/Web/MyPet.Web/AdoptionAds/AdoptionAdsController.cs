@@ -6,8 +6,10 @@
     using MyPet.Application.AdoptionAds.Commands.Delete;
     using MyPet.Application.AdoptionAds.Commands.Edit;
     using MyPet.Application.AdoptionAds.Queries.Details;
+    using MyPet.Application.AdoptionAds.Queries.Search;
     using MyPet.Application.Common;
     using MyPet.Web.Common;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     [Authorize]
@@ -17,6 +19,12 @@
         [AllowAnonymous]
         [Route(Id)]
         public async Task<ActionResult<AdoptionAdDetailsOutputModel>> Details([FromRoute] AdoptionAdDetailsQuery query)
+            => await this.Send(query);
+
+
+        [HttpGet]
+        [Route(nameof(Search))]
+        public async Task<ActionResult<IEnumerable<AdoptionAdSearchOutputModel>>> Search([FromRoute] AdoptionAdSearchQuery query)
             => await this.Send(query);
 
         [HttpPut]
