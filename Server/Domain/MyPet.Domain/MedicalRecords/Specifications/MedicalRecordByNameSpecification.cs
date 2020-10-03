@@ -15,6 +15,6 @@
         protected override bool Include => !string.IsNullOrEmpty(this.animalName);
 
         public override Expression<Func<MedicalRecord, bool>> ToExpression()
-                    => medRecord => medRecord.AnimalName == this.animalName;
+                    => medRecord => medRecord.AnimalName.Contains(this.animalName) ;
     }
 }

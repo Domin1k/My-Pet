@@ -35,10 +35,16 @@
             CancellationToken cancellationToken = default)
         {
             var data = await this.mapper
-                    .ProjectTo<MedicalRecordSearchOutputModel>(this.All().Where(specification).Sort(sort))
+                    .ProjectTo<MedicalRecordSearchOutputModel>(this.GetMedicalRecordsQuery(specification))
                     .ToListAsync(cancellationToken);
 
-            return data.Skip(skip).Take(take); // EF Core bug forces me to execute paging on the client.
+            return data.Skip(skip).Take(take); // Old SQL Server version forces me to execute paging on the client.
         }
+
+        private IQueryable<MedicalRecord> GetMedicalRecordsQuery(Specification<MedicalRecord> specification)
+            => this
+                .Data
+                .MedicalRecords
+                .Where(specification);
     }
 }

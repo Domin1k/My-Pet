@@ -6,10 +6,14 @@
     using MyPet.Application.MedicalRecords.Commands.Delete;
     using MyPet.Application.MedicalRecords.Commands.Edit;
     using MyPet.Application.MedicalRecords.Queries.Details;
+    using MyPet.Application.MedicalRecords.Queries.Search;
     using MyPet.Domain.CompanyUsers.Models;
     using MyPet.Domain.MedicalRecords.Models;
     using MyPet.Web.MedicalRecords;
     using MyTested.AspNetCore.Mvc;
+    using MyTested.AspNetCore.Mvc.Utilities.Extensions;
+    using System.Collections.Generic;
+    using System.Linq;
     using Xunit;
 
     public class MedicalRecordsControllerSpecs
@@ -137,5 +141,23 @@
                 .Which(instance => instance.WithData(MedicalRecordFakes.Data.GetMedicalRecord(id)))
                 .ShouldReturn()
                 .Ok();
+
+        [Theory]
+        [InlineData("AnimalName", 2)]
+        public void Search_ShouldReturnAllMedicalRecordsWhereCriteriaMatches(string animalName, int page)
+            => MyPipeline
+                .Configuration()
+                .ShouldMap($"/{this.controllerName}?{nameof(animalName)}={animalName}&{nameof(page)}={page}&sortby=animalName")
+                .To<MedicalRecordsController>(c => c.Search(new MedicalRecordSearchQuery { AnimalName = animalName, Page = page, SortBy = "animalName" }))
+                .Which(instance => instance.WithData(MedicalRecordFakes.Data.GetMedicalRecords(30)))
+                .ShouldReturn()
+                .ActionResult<IEnumerable<MedicalRecordSearchOutputModel>>(result => result
+                    .Passing(model =>
+                    {
+                        model.Count().Should().Equals(10);
+                        model.First().AnimalName.Should().Equals($"{animalName}11");
+                        model.Last().AnimalName.Should().Equals($"{animalName}20");
+                        model.All(m => m.AnimalName.StartsWith(animalName)).Should().BeTrue();
+                    }));
     }
 }

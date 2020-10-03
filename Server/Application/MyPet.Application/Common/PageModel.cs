@@ -6,7 +6,7 @@
 
         public string SortBy { get; set; }
 
-        public string Order { get; set; }
+        public string Order { get; set; } = SortOrder<PageModel>.Ascending;
 
         public int Page { get; set; } = 1;
     }

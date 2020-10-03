@@ -13,12 +13,18 @@
         }
 
         public override Expression<Func<AdoptionAd, object>> ToExpression()
-            => this.SortBy switch
+        {
+            if (string.IsNullOrEmpty(this.SortBy))
+            {
+                return adoptionAd => adoptionAd.Id;
+            }
+            return this.SortBy switch
             {
                 "title" => adoptionAd => adoptionAd.Title,
                 "description" => adoptionAd => adoptionAd.Description,
                 "categoryName" => adoptionAd => adoptionAd.Category.Name,
                 _ => adoptionAd => adoptionAd.Id
             };
+        }
     }
 }

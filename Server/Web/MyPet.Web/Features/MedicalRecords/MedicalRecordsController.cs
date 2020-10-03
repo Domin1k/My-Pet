@@ -22,8 +22,7 @@
             => await this.Send(query);
 
         [HttpGet]
-        [Route(nameof(Search))]
-        public async Task<ActionResult<IEnumerable<MedicalRecordSearchOutputModel>>> Search([FromRoute] MedicalRecordSearchQuery query)
+        public async Task<ActionResult<IEnumerable<MedicalRecordSearchOutputModel>>> Search([FromQuery] MedicalRecordSearchQuery query)
             => await this.Send(query);
 
         [HttpPut]
