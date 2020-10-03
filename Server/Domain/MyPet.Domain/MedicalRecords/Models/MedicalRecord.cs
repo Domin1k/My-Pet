@@ -2,6 +2,7 @@
 {
     using MyPet.Domain.Common.Models;
     using MyPet.Domain.MedicalRecords.Exceptions;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -37,19 +38,9 @@
 
         public IReadOnlyCollection<Treatment> Treatments => this.treatments.ToList().AsReadOnly();
 
-        public MedicalRecord AddTreatment(Treatment treatment)
+        public MedicalRecord AddTreatment(string title, string description, string imageUrl, DateTime? next)
         {
-            this.treatments.Add(treatment);
-            return this;
-        }
-
-        public MedicalRecord AddTreatments(IEnumerable<Treatment> treatments)
-        {
-            foreach (var treatment in treatments)
-            {
-                this.treatments.Add(treatment);
-            }
-
+            this.treatments.Add(new Treatment(title, description, imageUrl, next));
             return this;
         }
 

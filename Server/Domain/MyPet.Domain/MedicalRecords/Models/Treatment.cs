@@ -23,13 +23,13 @@
             this.ImageUrl = imageUrl;
         }
 
-        public string Title { get; }
+        public string Title { get; private set; }
 
-        public string Description { get; }
+        public string Description { get; private set; }
 
-        public string ImageUrl { get; }
+        public string ImageUrl { get; private set; }
 
-        public DateTime? Next { get; }
+        public DateTime? Next { get; private set; }
 
         public void Validate(string title, string description, string imageUrl, DateTime? next)
         {

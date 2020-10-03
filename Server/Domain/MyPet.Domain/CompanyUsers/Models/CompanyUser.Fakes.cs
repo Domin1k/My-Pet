@@ -19,7 +19,8 @@
                         f.Company.CompanyName(),
                         f.Name.FullName(),
                         f.Address.FullAddress(),
-                        "12346"))
+                        "12346",
+                        "someEmail@mysite.com"))
                     .Generate()
                     .SetId(id ?? CompanyUserFakeId);
 

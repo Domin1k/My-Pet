@@ -10,8 +10,8 @@ using MyPet.Infrastructure.Persistence;
 namespace MyPet.Infrastructure.Common.Persistence.Migrations
 {
     [DbContext(typeof(MyPetDbContext))]
-    [Migration("20200926083005_StatisticsContextUpdated")]
-    partial class StatisticsContextUpdated
+    [Migration("20201003070328_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -228,11 +228,25 @@ namespace MyPet.Infrastructure.Common.Persistence.Migrations
 
             modelBuilder.Entity("MyPet.Domain.CompanyUsers.Models.CompanyUser", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<Guid>("ApplicationUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CompanyEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
+
+                    b.Property<string>("CompanyName")
                         .IsRequired()
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
@@ -253,11 +267,6 @@ namespace MyPet.Infrastructure.Common.Persistence.Migrations
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
 
                     b.Property<string>("OwnerName")
                         .IsRequired()
@@ -282,11 +291,8 @@ namespace MyPet.Infrastructure.Common.Persistence.Migrations
 
                     b.Property<string>("AnimalName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.Property<Guid?>("CompanyUserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -301,8 +307,6 @@ namespace MyPet.Infrastructure.Common.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CompanyUserId");
 
                     b.ToTable("MedicalRecords");
                 });
@@ -337,6 +341,9 @@ namespace MyPet.Infrastructure.Common.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("Next")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
@@ -531,10 +538,6 @@ namespace MyPet.Infrastructure.Common.Persistence.Migrations
 
             modelBuilder.Entity("MyPet.Domain.MedicalRecords.Models.MedicalRecord", b =>
                 {
-                    b.HasOne("MyPet.Domain.CompanyUsers.Models.CompanyUser", null)
-                        .WithMany("MedicalRecords")
-                        .HasForeignKey("CompanyUserId");
-
                     b.OwnsOne("MyPet.Domain.MedicalRecords.Models.Breed", "AnimalBreed", b1 =>
                         {
                             b1.Property<int>("MedicalRecordId")

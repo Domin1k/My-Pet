@@ -36,9 +36,9 @@
                     .Generate()
                     .SetId(id);
 
-                foreach (var carAd in TreatmentFakes.Data.GetTreatments().Take(totalTreatments))
+                foreach (var treatment in TreatmentFakes.Data.GetTreatments().Take(totalTreatments))
                 {
-                    dealer.AddTreatment(carAd);
+                    dealer.AddTreatment(treatment.Title, treatment.Description, treatment.ImageUrl, treatment.Next);
                 }
 
                 return dealer;

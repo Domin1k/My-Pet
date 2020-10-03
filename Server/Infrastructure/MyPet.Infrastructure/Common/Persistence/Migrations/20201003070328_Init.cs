@@ -3,7 +3,7 @@
     using System;
     using Microsoft.EntityFrameworkCore.Migrations;
 
-    public partial class Initial : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -67,19 +67,55 @@
                 name: "CompanyUsers",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CreatedBy = table.Column<string>(nullable: true),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     ModifiedBy = table.Column<string>(nullable: true),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     LegalityRegistrationNumber = table.Column<string>(maxLength: 255, nullable: false),
-                    Name = table.Column<string>(maxLength: 20, nullable: false),
+                    ApplicationUserId = table.Column<Guid>(nullable: false),
+                    CompanyName = table.Column<string>(maxLength: 255, nullable: false),
+                    CompanyEmail = table.Column<string>(maxLength: 150, nullable: false),
                     OwnerName = table.Column<string>(maxLength: 100, nullable: false),
                     Address = table.Column<string>(maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CompanyUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MedicalRecords",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedBy = table.Column<string>(nullable: true),
+                    ModifiedOn = table.Column<DateTime>(nullable: true),
+                    AnimalName = table.Column<string>(maxLength: 255, nullable: false),
+                    AnimalAge = table.Column<int>(maxLength: 255, nullable: false),
+                    AnimalBreed_BreedName = table.Column<string>(nullable: true),
+                    AnimalBreed_Species_Value = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MedicalRecords", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Statistics",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TotalAdoptionAds = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Statistics", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -215,33 +251,6 @@
                 });
 
             migrationBuilder.CreateTable(
-                name: "MedicalRecords",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedBy = table.Column<string>(nullable: true),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    ModifiedBy = table.Column<string>(nullable: true),
-                    ModifiedOn = table.Column<DateTime>(nullable: true),
-                    AnimalName = table.Column<string>(maxLength: 20, nullable: false),
-                    AnimalAge = table.Column<int>(maxLength: 255, nullable: false),
-                    AnimalBreed_BreedName = table.Column<string>(nullable: true),
-                    AnimalBreed_Species_Value = table.Column<int>(nullable: true),
-                    CompanyUserId = table.Column<Guid>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MedicalRecords", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_MedicalRecords_CompanyUsers_CompanyUserId",
-                        column: x => x.CompanyUserId,
-                        principalTable: "CompanyUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Treatments",
                 columns: table => new
                 {
@@ -254,6 +263,7 @@
                     Title = table.Column<string>(maxLength: 100, nullable: false),
                     Description = table.Column<string>(maxLength: 500, nullable: false),
                     ImageUrl = table.Column<string>(maxLength: 2048, nullable: false),
+                    Next = table.Column<DateTime>(nullable: true),
                     MedicalRecordId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -267,12 +277,64 @@
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "AdoptionAdViews",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedBy = table.Column<string>(nullable: true),
+                    ModifiedOn = table.Column<DateTime>(nullable: true),
+                    AdoptionAdId = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
+                    StatisticsId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AdoptionAdViews", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AdoptionAdViews_AdoptionAdViews_AdoptionAdId",
+                        column: x => x.AdoptionAdId,
+                        principalTable: "AdoptionAdViews",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AdoptionAdViews_Statistics_StatisticsId",
+                        column: x => x.StatisticsId,
+                        principalTable: "Statistics",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AdoptionAdViews_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AdoptionAds_CategoryId",
                 table: "AdoptionAds",
                 column: "CategoryId",
                 unique: true,
                 filter: "[CategoryId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AdoptionAdViews_AdoptionAdId",
+                table: "AdoptionAdViews",
+                column: "AdoptionAdId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AdoptionAdViews_StatisticsId",
+                table: "AdoptionAdViews",
+                column: "StatisticsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AdoptionAdViews_UserId",
+                table: "AdoptionAdViews",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -314,11 +376,6 @@
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MedicalRecords_CompanyUserId",
-                table: "MedicalRecords",
-                column: "CompanyUserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Treatments_MedicalRecordId",
                 table: "Treatments",
                 column: "MedicalRecordId");
@@ -328,6 +385,9 @@
         {
             migrationBuilder.DropTable(
                 name: "AdoptionAds");
+
+            migrationBuilder.DropTable(
+                name: "AdoptionAdViews");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -345,10 +405,16 @@
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "CompanyUsers");
+
+            migrationBuilder.DropTable(
                 name: "Treatments");
 
             migrationBuilder.DropTable(
                 name: "AdoptionCategories");
+
+            migrationBuilder.DropTable(
+                name: "Statistics");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -358,9 +424,6 @@
 
             migrationBuilder.DropTable(
                 name: "MedicalRecords");
-
-            migrationBuilder.DropTable(
-                name: "CompanyUsers");
         }
     }
 }

@@ -44,7 +44,7 @@
                         .WithBreed(request.AnimalBreedName, Enumeration.FromName<Species>(request.AnimalSpecies))
                         .Build();
                 
-                companyUser.AddMedicalRecord(medicalRecord);
+                companyUser.AddMedicalRecord(medicalRecord.Id);
 
                 await this.medicalRecordRepository.Save(medicalRecord, cancellationToken);
 

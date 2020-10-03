@@ -5,7 +5,6 @@
     using MyPet.Application.Common;
     using MyPet.Domain.Common.Models;
     using MyPet.Domain.MedicalRecords;
-    using MyPet.Domain.MedicalRecords.Factories;
     using MyPet.Domain.MedicalRecords.Models;
     using System;
     using System.Threading;
@@ -24,26 +23,18 @@
         public class CreateTreatmentCommandHandler : IRequestHandler<CreateTreatmentCommand, CreateTreatmentOutputModel>
         {
             private readonly IMedicalRecordDomainRepository medicalRecordDomainRepository;
-            private readonly IMedicalRecordFactory medicalRecordFactory;
 
-            public CreateTreatmentCommandHandler(IMedicalRecordDomainRepository medicalRecordDomainRepository, IMedicalRecordFactory medicalRecordFactory)
-            {
-                this.medicalRecordDomainRepository = medicalRecordDomainRepository;
-                this.medicalRecordFactory = medicalRecordFactory;
-            }
+            public CreateTreatmentCommandHandler(IMedicalRecordDomainRepository medicalRecordDomainRepository) 
+                => this.medicalRecordDomainRepository = medicalRecordDomainRepository;
 
             public async Task<CreateTreatmentOutputModel> Handle(CreateTreatmentCommand request, CancellationToken cancellationToken)
             {
                 var medicalRecord = await this.medicalRecordDomainRepository.Find(request.Id, cancellationToken);
-                var medRecordTreatment = this.medicalRecordFactory
-                        .WithTreatment(t => t
-                            .WithTitle(request.Title)
-                            .WithDescription(request.Description)
-                            .WithImageUrl(request.ImageUrl)
-                            .WithNextDate(request.Next)
-                            .Build());
-                // TODO find out how to build Treatment domain model
-               /* medicalRecord.AddTreatments(medRecordTreatment.Treatments);*/
+                medicalRecord.AddTreatment(
+                        request.Title,
+                        request.Description,
+                        request.ImageUrl,
+                        request.Next);
                 await this.medicalRecordDomainRepository.Save(medicalRecord, cancellationToken);
 
                 return new CreateTreatmentOutputModel(medicalRecord.Id);

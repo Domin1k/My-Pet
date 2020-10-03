@@ -2,6 +2,7 @@
 {
     using Exceptions;
     using System;
+    using System.Text.RegularExpressions;
 
     public static class Guard
     {
@@ -14,6 +15,23 @@
             }
 
             ThrowException<TException>($"{name} cannot be null ot empty.");
+        }
+
+        public static void ForEmailAddress<TException>(string value, string name = "Value")
+            where TException : BaseDomainException, new()
+        {
+            const string validEmailPattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
+            + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)"
+            + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
+
+            var regex = new Regex(validEmailPattern, RegexOptions.IgnoreCase);
+
+            if (regex.IsMatch(value))
+            {
+                return;
+            }
+
+            ThrowException<TException>($"{name} must be valid email.");
         }
 
         public static void ForStringLength<TException>(string value, int minLength, int maxLength, string name = "Value")

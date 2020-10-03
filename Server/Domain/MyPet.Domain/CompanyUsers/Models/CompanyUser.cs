@@ -3,26 +3,26 @@
     using MyPet.Domain.Common.Models;
     using MyPet.Domain.CompanyUsers.Events;
     using MyPet.Domain.CompanyUsers.Exceptions;
-    using MyPet.Domain.MedicalRecords.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
     public class CompanyUser : Entity<int>, IAggregateRoot
     {
-        private readonly HashSet<MedicalRecord> medicalRecords;
+        private readonly HashSet<int> medicalRecordsIds;
 
-        internal CompanyUser(Guid applicationUserId, string companyName, string ownerName, string address, string legalityRegistrationNumber)
+        internal CompanyUser(Guid applicationUserId, string companyName, string ownerName, string address, string legalityRegistrationNumber, string companyEmail)
         {
-            this.Validate(companyName, ownerName, address, legalityRegistrationNumber, applicationUserId);
+            this.Validate(companyName, ownerName, address, legalityRegistrationNumber, applicationUserId, companyEmail);
 
             this.ApplicationUserId = applicationUserId;
             this.CompanyName = companyName;
             this.OwnerName = ownerName;
             this.Address = address;
             this.LegalityRegistrationNumber = legalityRegistrationNumber;
+            this.CompanyEmail = companyEmail;
 
-            this.medicalRecords = new HashSet<MedicalRecord>();
+            this.medicalRecordsIds = new HashSet<int>();
         }
 
         private CompanyUser(string companyName, string ownerName, string address, string legalityRegistrationNumber)
@@ -32,7 +32,7 @@
             this.Address = address;
             this.LegalityRegistrationNumber = legalityRegistrationNumber;
 
-            this.medicalRecords = new HashSet<MedicalRecord>();
+            this.medicalRecordsIds = new HashSet<int>();
         }
 
         public string LegalityRegistrationNumber { get; private set; }
@@ -41,17 +41,19 @@
 
         public string CompanyName { get; private set; }
 
+        public string CompanyEmail { get; private set; }
+
         public string OwnerName { get; private set; }
 
         public string Address { get; private set; }
 
-        public IReadOnlyCollection<MedicalRecord> MedicalRecords => this.medicalRecords.ToList().AsReadOnly();
+        public IReadOnlyCollection<int> MedicalRecords => this.medicalRecordsIds.ToList().AsReadOnly();
 
-        public CompanyUser AddMedicalRecord(MedicalRecord medicalRecord)
+        public CompanyUser AddMedicalRecord(int medicalRecordId)
         {
-            this.medicalRecords.Add(medicalRecord);
+            this.medicalRecordsIds.Add(medicalRecordId);
+            this.AddEvent(new MedicalRecordAddedEvent(medicalRecordId));
 
-            this.AddEvent(new MedicalRecordAddedEvent(medicalRecord.Id));
             return this;
         }
 
@@ -76,6 +78,13 @@
             return this;
         }
 
+        public CompanyUser UpdateCompanyEmail(string email)
+        {
+            this.ValidateEmail(email);
+            this.CompanyEmail = email;
+            return this;
+        }
+
         public CompanyUser UpdateAddress(string address)
         {
             this.ValidateAddress(address);
@@ -83,26 +92,41 @@
             return this;
         }
 
-        private void Validate(string companyName, string ownerName, string address, string legalityCode, Guid applicationUserId)
+        private void Validate(string companyName, string ownerName, string address, string legalityCode, Guid applicationUserId, string companyEmail)
         {
             this.ValidateCompany(companyName);
             this.ValidateOwnerName(ownerName);
             this.ValidateAddress(address);
             this.ValidateLegalityRegistrationNumber(legalityCode);
+            this.ValidateEmail(companyEmail);
+
             if (applicationUserId == Guid.Empty)
             {
                 throw new InvalidCompanyUserException($"{nameof(this.ApplicationUserId)} cannot be empty or null");
             }
         }
 
-        private void ValidateCompany(string companyName) 
+        private void ValidateEmail(string companyEmail)
+        {
+            Guard.ForStringLength<InvalidCompanyUserException>(
+                companyEmail,
+                ModelConstants.Common.MinEmailLength,
+                ModelConstants.Common.MaxEmailLength,
+                nameof(this.CompanyEmail));
+
+            Guard.ForEmailAddress<InvalidCompanyUserException>(
+                companyEmail,
+                nameof(this.CompanyEmail));
+        }
+
+        private void ValidateCompany(string companyName)
             => Guard.ForStringLength<InvalidCompanyUserException>(
                companyName,
                ModelConstants.Common.MinNameLength,
                ModelConstants.Common.MaxNameLength,
                nameof(this.CompanyName));
 
-        private void ValidateOwnerName(string ownerName) 
+        private void ValidateOwnerName(string ownerName)
             => Guard.ForStringLength<InvalidCompanyUserException>(
                 ownerName,
                 CompanyUsersConstants.CompanyUser.MinOwnerName,

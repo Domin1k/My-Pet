@@ -14,7 +14,5 @@
         IMedicalRecordFactory WithBreed(string breed, Species species);
 
         IMedicalRecordFactory WithBreed(Breed breed);
-
-        IMedicalRecordFactory WithTreatment(Action<TreatmentFactory> treatment);
     }
 }

@@ -8,6 +8,7 @@
         private Guid applicationUserId;
         private string name;
         private string ownerName;
+        private string email;
         private string legalityRegistrationNumber;
         private string address;
 
@@ -41,14 +42,21 @@
             return this;
         }
 
+        public ICompanyUserFactory WithCompanyEmail(string email)
+        {
+            this.email = email;
+            return this;
+        }
+
         public CompanyUser Build()
         {
             return new CompanyUser(
-                applicationUserId,
-                name,
-                ownerName,
-                address,
-                legalityRegistrationNumber);
+                this.applicationUserId,
+                this.name,
+                this.ownerName,
+                this.address,
+                this.legalityRegistrationNumber,
+                this.email);
         }
     }
 }

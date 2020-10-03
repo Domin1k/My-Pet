@@ -18,6 +18,11 @@
                 .HasMaxLength(ModelConstants.Common.MaxNameLength);
 
             builder
+             .Property(d => d.CompanyEmail)
+             .IsRequired()
+             .HasMaxLength(ModelConstants.Common.MaxEmailLength);
+
+            builder
                 .Property(d => d.OwnerName)
                 .IsRequired()
                 .HasMaxLength(CompanyUsersConstants.CompanyUser.MaxOwnerName);
@@ -31,13 +36,6 @@
                 .Property(d => d.LegalityRegistrationNumber)
                 .IsRequired()
                 .HasMaxLength(CompanyUsersConstants.CompanyUser.MaxLegalityRegistrationNumberLength);
-
-            builder
-                .HasMany(d => d.MedicalRecords)
-                .WithOne()
-                .Metadata
-                .PrincipalToDependent
-                .SetField("medicalRecords");
         }
     }
 }

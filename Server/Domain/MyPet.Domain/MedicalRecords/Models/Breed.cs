@@ -13,10 +13,8 @@
             this.Species = species;
         }
 
-        private Breed(string breedName)
-        {
-            this.BreedName = breedName;
-        }
+        private Breed(string breedName) 
+            => this.BreedName = breedName;
 
         public string BreedName { get; }
 

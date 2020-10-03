@@ -4,21 +4,15 @@
     using MediatR;
     using MyPet.Application.Common;
     using MyPet.Application.Common.Contracts;
+    using MyPet.Application.CompanyUsers.Commands.Common;
     using MyPet.Domain.Common.Models;
     using MyPet.Domain.CompanyUsers;
-    using MyPet.Domain.CompanyUsers.Models;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class EditCompanyUserCommand : EntityCommand<int>, IRequest<Result>
+    public class EditCompanyUserCommand : CompanyUserInputModel, IRequest<Result>
     {
-        public string LegalityRegistrationNumber { get; set; }
-
-        public string CompanyName { get; set; }
-
-        public string OwnerName { get; set; }
-
-        public string Address { get; set; }
+        public string CompanyEmailAddress { get; set; }
 
         public class EditCompanyUserCommandHandler : IRequestHandler<EditCompanyUserCommand, Result>
         {
@@ -37,6 +31,7 @@
                 companyUser
                     .UpdateAddress(request.Address)
                     .UpdateCompanyName(request.CompanyName)
+                    .UpdateCompanyEmail(request.CompanyEmailAddress)
                     .UpdateLegalityRegistrationNumber(request.LegalityRegistrationNumber)
                     .UpdateOwnerName(request.OwnerName);
 
@@ -46,28 +41,15 @@
             }
         }
 
-        public class CompanyUserCommandValidator : AbstractValidator<EditCompanyUserCommand>
+        public class EditCompanyUserCommandValidator : CompanyUserCommandValidator<EditCompanyUserCommand>
         {
-            public CompanyUserCommandValidator()
+            public EditCompanyUserCommandValidator()
+                : base()
             {
-                this.RuleFor(x => x.Address)
-                    .MinimumLength(CompanyUsersConstants.CompanyUser.MinAddressLength)
-                    .MaximumLength(CompanyUsersConstants.CompanyUser.MaxAddressLength)
-                    .NotEmpty();
-
-                this.RuleFor(x => x.CompanyName)
-                    .MinimumLength(ModelConstants.Common.MinNameLength)
-                    .MaximumLength(ModelConstants.Common.MaxNameLength)
-                    .NotEmpty();
-
-                this.RuleFor(x => x.OwnerName)
-                    .MinimumLength(CompanyUsersConstants.CompanyUser.MinOwnerName)
-                    .MaximumLength(CompanyUsersConstants.CompanyUser.MaxOwnerName)
-                    .NotEmpty();
-
-                this.RuleFor(x => x.LegalityRegistrationNumber)
-                    .MinimumLength(CompanyUsersConstants.CompanyUser.MinLegalityRegistrationNumberLength)
-                    .MaximumLength(CompanyUsersConstants.CompanyUser.MaxLegalityRegistrationNumberLength)
+                this.RuleFor(x => x.CompanyEmailAddress)
+                    .EmailAddress()
+                    .MinimumLength(ModelConstants.Common.MinEmailLength)
+                    .MaximumLength(ModelConstants.Common.MaxEmailLength)
                     .NotEmpty();
             }
         }

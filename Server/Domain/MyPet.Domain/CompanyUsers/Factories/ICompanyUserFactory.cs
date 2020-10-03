@@ -10,6 +10,8 @@
 
         ICompanyUserFactory WithCompanyName(string companyName);
 
+        ICompanyUserFactory WithCompanyEmail(string email);
+
         ICompanyUserFactory WithOwnerName(string ownerName);
 
         ICompanyUserFactory WithAddress(string address);

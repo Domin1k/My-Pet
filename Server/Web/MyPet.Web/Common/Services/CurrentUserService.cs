@@ -20,8 +20,12 @@
             {
                 this.UserId = new Guid(user.FindFirstValue(ClaimTypes.NameIdentifier));
             }
+
+            this.Email = user.FindFirstValue(ClaimTypes.Email);
         }
 
         public Guid UserId { get; }
+
+        public string Email { get; }
     }
 }
