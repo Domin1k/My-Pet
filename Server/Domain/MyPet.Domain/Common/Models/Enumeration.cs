@@ -4,8 +4,8 @@
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
-
     using System.Reflection;
+
     public abstract class Enumeration : IComparable
     {
         private static readonly ConcurrentDictionary<Type, IEnumerable<object>> EnumCache

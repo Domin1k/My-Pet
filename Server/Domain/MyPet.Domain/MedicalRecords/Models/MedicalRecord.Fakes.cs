@@ -28,7 +28,7 @@
 
             public static MedicalRecord GetMedicalRecord(int id = 1, int totalTreatments = 10)
             {
-                var dealer = new Faker<MedicalRecord>()
+                var medicalRecord = new Faker<MedicalRecord>()
                     .CustomInstantiator(f => new MedicalRecord(
                         $"AnimalName{id}",
                         f.Random.Number(1, 20),
@@ -38,10 +38,10 @@
 
                 foreach (var treatment in TreatmentFakes.Data.GetTreatments().Take(totalTreatments))
                 {
-                    dealer.AddTreatment(treatment.Title, treatment.Description, treatment.ImageUrl, treatment.Next);
+                    medicalRecord.AddTreatment(treatment.Title, treatment.Description, treatment.ImageUrl, treatment.Next);
                 }
 
-                return dealer;
+                return medicalRecord;
             }
         }
     }

@@ -4,11 +4,10 @@
     using MyPet.Domain.MedicalRecords.Exceptions;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     public class MedicalRecord : Entity<int>, IAggregateRoot
     {
-        private readonly HashSet<Treatment> treatments;
+        private readonly List<Treatment> treatments;
 
         internal MedicalRecord(string animalName, int animalAge, Breed breed)
         {
@@ -19,7 +18,7 @@
             this.AnimalAge = animalAge;
             this.AnimalBreed = breed;
 
-            this.treatments = new HashSet<Treatment>();
+            this.treatments = new List<Treatment>();
         }
 
         private MedicalRecord(string animalName, int animalAge)
@@ -27,7 +26,7 @@
             this.AnimalName = animalName;
             this.AnimalAge = animalAge;
 
-            this.treatments = new HashSet<Treatment>();
+            this.treatments = new List<Treatment>();
         }
 
         public string AnimalName { get; private set; }
@@ -36,7 +35,7 @@
 
         public Breed AnimalBreed { get; private set; }
 
-        public IReadOnlyCollection<Treatment> Treatments => this.treatments.ToList().AsReadOnly();
+        public IReadOnlyCollection<Treatment> Treatments => this.treatments.AsReadOnly();
 
         public MedicalRecord AddTreatment(string title, string description, string imageUrl, DateTime? next)
         {

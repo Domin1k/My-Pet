@@ -5,11 +5,10 @@
     using MyPet.Domain.CompanyUsers.Exceptions;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     public class CompanyUser : Entity<int>, IAggregateRoot
     {
-        private readonly HashSet<int> medicalRecordsIds;
+        private readonly List<int> medicalRecordsIds;
 
         internal CompanyUser(Guid applicationUserId, string companyName, string ownerName, string address, string legalityRegistrationNumber, string companyEmail)
         {
@@ -22,7 +21,7 @@
             this.LegalityRegistrationNumber = legalityRegistrationNumber;
             this.CompanyEmail = companyEmail;
 
-            this.medicalRecordsIds = new HashSet<int>();
+            this.medicalRecordsIds = new List<int>();
         }
 
         private CompanyUser(string companyName, string ownerName, string address, string legalityRegistrationNumber)
@@ -32,7 +31,7 @@
             this.Address = address;
             this.LegalityRegistrationNumber = legalityRegistrationNumber;
 
-            this.medicalRecordsIds = new HashSet<int>();
+            this.medicalRecordsIds = new List<int>();
         }
 
         public string LegalityRegistrationNumber { get; private set; }
@@ -47,7 +46,7 @@
 
         public string Address { get; private set; }
 
-        public IReadOnlyCollection<int> MedicalRecords => this.medicalRecordsIds.ToList().AsReadOnly();
+        public IReadOnlyCollection<int> MedicalRecords => this.medicalRecordsIds.AsReadOnly();
 
         public CompanyUser AddMedicalRecord(int medicalRecordId)
         {

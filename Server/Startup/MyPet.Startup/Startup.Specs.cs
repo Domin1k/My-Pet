@@ -38,7 +38,6 @@
             provider.GetRequiredService<ICompanyUserQueryRepository>();
             provider.GetRequiredService<IAdoptionAdQueryRepository>();
             provider.GetRequiredService<IMedicalRecordQueryRepository>();
-            provider.GetRequiredService<ICompanyUserQueryRepository>();
             provider.GetRequiredService<IMediator>();
             provider.GetRequiredService<IControllerFactory>();
         }

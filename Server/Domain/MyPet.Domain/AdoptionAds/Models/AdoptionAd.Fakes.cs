@@ -21,7 +21,7 @@
         {
             public static AdoptionAd GetAdoptionAd(int id = 1)
             {
-                var dealer = new Faker<AdoptionAd>()
+                var adoptionAd = new Faker<AdoptionAd>()
                     .CustomInstantiator(f => new AdoptionAd(
                         f.Commerce.ProductName(),
                         f.Commerce.ProductDescription(),
@@ -31,7 +31,7 @@
                     .SetId(id);
 
 
-                return dealer;
+                return adoptionAd;
             }
         }
     }

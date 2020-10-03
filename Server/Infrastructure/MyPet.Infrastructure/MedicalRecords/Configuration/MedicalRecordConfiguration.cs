@@ -11,6 +11,8 @@
         {
             builder.HasKey(x => x.Id);
 
+            builder.Property(x => x.Id).UseHiLo();
+
             builder
                 .Property(x => x.AnimalAge)
                 .IsRequired()

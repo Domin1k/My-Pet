@@ -11,7 +11,7 @@
     public class IdentityControllerSpecs
     {
         [Fact]
-        public void RegisterCompany_ShouldHaveCorrectAttributes()
+        public void Register_ShouldHaveCorrectAttributes()
             => MyController<IdentityController>
                 .Calling(c => c
                     .Register(RegisterCommandFakes.Data.GetCommand()))
@@ -22,7 +22,7 @@
 
         [Theory]
         [InlineData(IdentityFakes.TestEmail, IdentityFakes.ValidPassword)]
-        public void LoginCompany_ShouldHaveCorrectAttributes(string email, string password)
+        public void Login_ShouldHaveCorrectAttributes(string email, string password)
             => MyController<IdentityController>
                 .Calling(c => c
                     .Login(new LoginCommand
@@ -37,7 +37,7 @@
 
         [Theory]
         [InlineData(IdentityFakes.TestEmail, IdentityFakes.ValidPassword, JwtTokenGeneratorFakes.ValidToken)]
-        public void LoginCompany_ShouldReturnTokenWhenUserEntersValidCredentials(string email, string password, string token)
+        public void Login_ShouldReturnTokenWhenUserEntersValidCredentials(string email, string password, string token)
             => MyPipeline
                 .Configuration()
                 .ShouldMap(request => request

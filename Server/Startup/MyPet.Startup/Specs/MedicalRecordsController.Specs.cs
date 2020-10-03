@@ -10,7 +10,6 @@
     using MyPet.Domain.MedicalRecords.Models;
     using MyPet.Web.MedicalRecords;
     using MyTested.AspNetCore.Mvc;
-    using System;
     using Xunit;
 
     public class MedicalRecordsControllerSpecs
@@ -45,7 +44,7 @@
                         .WithJsonBody(new
                         {
                             AnimalAge = 10,
-                            AnimalBreedName = "MyBreed",
+                            AnimalBreedName = "Pom",
                             AnimalName = "Johny",
                             AnimalSpecies = Species.Dog.ToString()
                         }))
@@ -53,11 +52,11 @@
                     .Create(new CreateMedicalRecordCommand
                     {
                         AnimalAge = 10,
-                        AnimalBreedName = "MyBreed",
+                        AnimalBreedName = "Pom",
                         AnimalName = "Johny",
                         AnimalSpecies = Species.Dog.ToString()
                     }))
-                .Which(instance => instance.WithData(MedicalRecordFakes.Data.GetMedicalRecord()))
+                .Which(instance => instance.WithData(CompanyUserFakes.Data.GetCompanyUser()))
                 .ShouldReturn()
                 .ActionResult<CreateMedicalRecordOutputModel>(result => result
                     .Passing(model =>
