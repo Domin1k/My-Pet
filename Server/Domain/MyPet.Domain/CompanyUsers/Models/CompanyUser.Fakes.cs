@@ -8,6 +8,7 @@
     {
         public static int CompanyUserFakeId = 1;
         public static Guid CompanyUserFakeApplicationId = Guid.Parse("0f8fad5b-d9cb-469f-a165-70867728950e");
+        public static string CompanyUserFakeEmailAddress = "domin1k@mysite.com";
 
         public static class Data
         {

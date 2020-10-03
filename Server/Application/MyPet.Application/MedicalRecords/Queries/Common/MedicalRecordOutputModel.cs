@@ -6,7 +6,7 @@
     using MyPet.Domain.MedicalRecords.Models;
     using System.Collections.Generic;
 
-    public abstract class MedicalRecordOutputModel : IMapFrom<MedicalRecord>
+    public class MedicalRecordOutputModel : IMapFrom<MedicalRecord>
     {
         public string AnimalName { get; private set; }
 

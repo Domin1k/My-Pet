@@ -1,6 +1,7 @@
 ﻿namespace MyPet.Startup.Specs
 {
     using FluentAssertions;
+    using MyPet.Application.CompanyUsers.Commands.Create;
     using MyPet.Application.CompanyUsers.Commands.Delete;
     using MyPet.Application.CompanyUsers.Commands.Edit;
     using MyPet.Application.CompanyUsers.Queries.Profile;
@@ -43,10 +44,39 @@
                             LegalityRegistrationNumber = "321312312",
                             Address = "Bulgaria, Sofia 1000",
                             CompanyName = "MyCompany",
-                            OwnerName = "Domin1k"
+                            OwnerName = "Domin1k",
+                            CompanyEmailAddress = CompanyUserFakes.CompanyUserFakeEmailAddress
+
                         }))
                 .To<CompanyUsersController>(c => c
                     .Edit(new EditCompanyUserCommand
+                    {
+                        LegalityRegistrationNumber = "321312312",
+                        Address = "Bulgaria, Sofia 1000",
+                        CompanyName = "MyCompany",
+                        OwnerName = "Domin1k",
+                        CompanyEmailAddress = CompanyUserFakes.CompanyUserFakeEmailAddress
+                    }))
+                .Which(instance => instance.WithData(CompanyUserFakes.Data.GetCompanyUser()))
+                .ShouldReturn()
+                .Ok();
+
+        [Fact]
+        public void Create_WithValidData_ForExistingRecord_ShouldCorrectlyModifyRecord()
+            => MyPipeline
+                .Configuration()
+                .ShouldMap(request => request
+                        .WithLocation($"/{this.controllerName}")
+                        .WithMethod(HttpMethod.Post)
+                        .WithJsonBody(new
+                        {
+                            LegalityRegistrationNumber = "321312312",
+                            Address = "Bulgaria, Sofia 1000",
+                            CompanyName = "MyCompany",
+                            OwnerName = "Domin1k"
+                        }))
+                .To<CompanyUsersController>(c => c
+                    .Create(new CreateCompanyUserCommand
                     {
                         LegalityRegistrationNumber = "321312312",
                         Address = "Bulgaria, Sofia 1000",
@@ -55,7 +85,11 @@
                     }))
                 .Which(instance => instance.WithData(CompanyUserFakes.Data.GetCompanyUser()))
                 .ShouldReturn()
-                .Ok();
+                .ActionResult<CreateCompanyUserOutputModel>(result => result
+                    .Passing(model =>
+                    {
+                        model.UserId.Should().Equals(CompanyUserFakes.CompanyUserFakeId);
+                    }));
 
         [Fact]
         public void Delete_ForExistingRecord_ShouldCorrectlyDeleteRecord()

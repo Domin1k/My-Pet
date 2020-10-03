@@ -3,7 +3,6 @@
     using FakeItEasy;
     using MyPet.Application.Common.Contracts;
     using MyPet.Domain.CompanyUsers.Models;
-    using System;
 
     public class CurrentUserServiceFakes
     {
@@ -13,7 +12,13 @@
             {
                 var currentUserService = A.Fake<ICurrentUserService>();
 
-                A.CallTo(() => currentUserService.UserId).Returns(CompanyUserFakes.CompanyUserFakeApplicationId);
+                A
+                    .CallTo(() => currentUserService.UserId)
+                    .Returns(CompanyUserFakes.CompanyUserFakeApplicationId);
+
+                A
+                    .CallTo(() => currentUserService.Email)
+                    .Returns(CompanyUserFakes.CompanyUserFakeEmailAddress);
 
                 return currentUserService;
             }
