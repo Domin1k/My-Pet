@@ -5,6 +5,9 @@
     <UserSecretsId>1c8e6ac4-2c64-446d-a684-7d7f56a6114b</UserSecretsId>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateProgramFile>false</GenerateProgramFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyName>MyPet.Startup.Core</AssemblyName>
+    <RootNamespace>MyPet.Startup</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Infrastructure\MyPet.Infrastructure\MyPet.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\Web\MyPet.Web\MyPet.Web.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\MyPet.Infrastructure\Core.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Web\MyPet.Web\Core.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' != 'Release'">

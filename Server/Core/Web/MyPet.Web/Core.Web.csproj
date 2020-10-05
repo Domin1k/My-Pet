@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyName>MyPet.Web.Core</AssemblyName>
+    <RootNamespace>MyPet.Web</RootNamespace>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectCapability Include="DynamicFileNesting" />
   </ItemGroup>
@@ -19,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Application\MyPet.Application\MyPet.Application.csproj" />
+    <ProjectReference Include="..\..\Application\MyPet.Application\Core.Application.csproj" />
   </ItemGroup>
 
 </Project>

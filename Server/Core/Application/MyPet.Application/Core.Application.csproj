@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyName>MyPet.Application.Core</AssemblyName>
+    <RootNamespace>MyPet.Application</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\MyPet.Domain\MyPet.Domain.csproj" />
+    <ProjectReference Include="..\..\Domain\MyPet.Domain\Core.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Release'">

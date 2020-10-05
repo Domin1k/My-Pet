@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyName>MyPet.Domain.Core</AssemblyName>
     <RootNamespace>MyPet.Domain</RootNamespace>
-    <AssemblyName>MyPet.Domain</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
