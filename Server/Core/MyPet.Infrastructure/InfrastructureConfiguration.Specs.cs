@@ -1,7 +1,6 @@
 ﻿namespace MyPet.Infrastructure
 {
     using AutoMapper;
-    using FakeItEasy;
     using FluentAssertions;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;

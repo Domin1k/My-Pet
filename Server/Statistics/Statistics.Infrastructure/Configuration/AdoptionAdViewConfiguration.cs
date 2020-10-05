@@ -3,7 +3,6 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using MyPet.Domain.Statistics.Models;
-    using MyPet.Infrastructure.Identity;
 
     internal class AdoptionAdViewConfiguration : IEntityTypeConfiguration<AdoptionAdView>
     {
@@ -12,10 +11,8 @@
             builder.HasKey(x => x.Id);
 
             builder
-                .HasOne<ApplicationUser>()
-                .WithMany()
-                .HasForeignKey(x => x.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .Property(x => x.UserId)
+                .IsRequired();
 
             builder
                 .HasOne<AdoptionAdView>()

@@ -19,13 +19,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Common.Application\Common.Application.csproj" />
-    <ProjectReference Include="..\..\Domain\MyPet.Domain\Core.Domain.csproj" />
+    <ProjectReference Include="..\..\Common\Common.Application\Common.Application.csproj" />
+    <ProjectReference Include="..\MyPet.Domain\Core.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Release'">
     <Compile Remove="**\*.Specs.cs" />
     <Compile Remove="**\*.Fakes.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Statistic\" />
   </ItemGroup>
 
 </Project>

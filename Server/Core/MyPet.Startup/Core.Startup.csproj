@@ -6,7 +6,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateProgramFile>false</GenerateProgramFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <AssemblyName>MyPet.Startup</AssemblyName>
+    <AssemblyName>MyPet.Startup.Core</AssemblyName>
     <RootNamespace>MyPet.Startup</RootNamespace>
   </PropertyGroup>
 
@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Infrastructure\MyPet.Infrastructure\Core.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\Web\MyPet.Web\Core.Web.csproj" />
+    <ProjectReference Include="..\MyPet.Infrastructure\Core.Infrastructure.csproj" />
+    <ProjectReference Include="..\MyPet.Web\Core.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' != 'Release'">

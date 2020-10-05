@@ -10,7 +10,6 @@
     using Microsoft.IdentityModel.Tokens;
     using MyPet.Application;
     using MyPet.Application.Identity.Contracts;
-    using MyPet.Domain.Common;
     using MyPet.Infrastructure.AdoptionAds;
     using MyPet.Infrastructure.Common;
     using MyPet.Infrastructure.Common.Events;
@@ -39,7 +38,6 @@
                 .AddScoped<ICompanyUsersDbContext>(provider => provider.GetService<MyPetDbContext>())
                 .AddScoped<IAdoptionAdsDbContext>(provider => provider.GetService<MyPetDbContext>())
                 .AddScoped<IMedicalRecordsDbContext>(provider => provider.GetService<MyPetDbContext>())
-                .AddScoped<IStatisticsDbContext>(provider => provider.GetService<MyPetDbContext>())
                 .AddTransient<IInitializer, DatabaseInitializer>();
 
         internal static IServiceCollection AddQueryRepositories(this IServiceCollection services)

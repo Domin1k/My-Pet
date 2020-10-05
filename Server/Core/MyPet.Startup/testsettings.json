@@ -1,6 +1,6 @@
 {
 	"General": {
-		"WebAssemblyName": "MyPet.Startup"
+		"WebAssemblyName": "MyPet.Startup.Core"
 	},
 	"AppSettings": {
 		"Secret": "My Fake Secret"
