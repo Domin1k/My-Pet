@@ -35,10 +35,10 @@
             CancellationToken cancellationToken = default)
         {
             var data = await this.mapper
-                    .ProjectTo<MedicalRecordSearchOutputModel>(this.GetMedicalRecordsQuery(specification))
+                    .ProjectTo<MedicalRecordSearchOutputModel>(this.GetMedicalRecordsQuery(specification).Sort(sort))
                     .ToListAsync(cancellationToken);
 
-            return data.Skip(skip).Take(take); // Old SQL Server version forces me to execute paging on the client.
+            return data.Skip(skip).Take(take).ToList(); // Old SQL Server version forces me to execute paging on the client.
         }
 
         private IQueryable<MedicalRecord> GetMedicalRecordsQuery(Specification<MedicalRecord> specification)

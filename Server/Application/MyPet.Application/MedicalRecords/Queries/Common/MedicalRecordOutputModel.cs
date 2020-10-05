@@ -4,14 +4,16 @@
 
     public abstract class MedicalRecordOutputModel
     {
-        public string AnimalName { get; private set; }
+        public int Id { get; set; }
 
-        public int AnimalAge { get; private set; }
+        public string AnimalName { get; set; }
 
-        public string BreedName { get; private set; }
+        public int AnimalAge { get; set; }
 
-        public string Species { get; private set; }
+        public string BreedName { get; set; }
 
-        public IEnumerable<TreatmentOutputModel> Treatments { get; private set; }
+        public string Species { get; set; }
+
+        public IEnumerable<TreatmentOutputModel> Treatments { get; set; }
     }
 }

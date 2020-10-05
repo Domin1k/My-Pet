@@ -24,20 +24,20 @@
             {
                 var data = Enumerable
                     .Range(1, count)
-                    .Select(GetMedicalRecord)
+                    .Select(x => GetMedicalRecord(x))
                     .ToList();
                 return data;
             }
 
-            public static MedicalRecord GetMedicalRecord(int id = 1, int totalTreatments = 10)
+            public static MedicalRecord GetMedicalRecord(int id = 1, int totalTreatments = 5)
             {
                 var medicalRecord = new Faker<MedicalRecord>()
                     .CustomInstantiator(f => new MedicalRecord(
                         $"AnimalName{id}",
                         f.Random.Number(1, 20),
-                        A.Dummy<Breed>()))
+                        new Breed($"Test{id}", Enumeration.FromValue<Species>(id))))
                     .Generate()
-                    .SetId(id++);
+                    .SetId(id);
 
                 foreach (var treatment in TreatmentFakes.Data.GetTreatments().Take(totalTreatments))
                 {

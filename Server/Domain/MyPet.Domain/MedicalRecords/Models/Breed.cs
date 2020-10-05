@@ -16,9 +16,9 @@
         private Breed(string breedName) 
             => this.BreedName = breedName;
 
-        public string BreedName { get; }
+        public string BreedName { get; private set; }
 
-        public Species Species { get; }
+        public Species Species { get; private set; }
 
         private void Validate(string breedName)
             => Guard.ForStringLength<InvalidMedicalRecordException>(

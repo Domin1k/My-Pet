@@ -149,9 +149,9 @@
                 .Configuration()
                 .ShouldMap($"/{this.controllerName}?{nameof(animalName)}={animalName}&{nameof(page)}={page}&sortby=animalName")
                 .To<MedicalRecordsController>(c => c.Search(new MedicalRecordSearchQuery { AnimalName = animalName, Page = page, SortBy = "animalName" }))
-                .Which(instance => instance.WithData(MedicalRecordFakes.Data.GetMedicalRecords(30)))
+                .Which(instance => instance.WithData(MedicalRecordFakes.Data.GetMedicalRecords(3)))
                 .ShouldReturn()
-                .ActionResult<IEnumerable<MedicalRecordSearchOutputModel>>(result => result
+                .ActionResult<List<MedicalRecordSearchOutputModel>>(result => result
                     .Passing(model =>
                     {
                         model.Count().Should().Equals(10);
