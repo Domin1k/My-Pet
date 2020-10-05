@@ -2,7 +2,7 @@
 {
     using Microsoft.EntityFrameworkCore;
     using MyPet.Domain.MedicalRecords.Models;
-    using MyPet.Infrastructure.Common.Persistence;
+    using MyPet.Infrastructure.Common;
 
     internal interface IMedicalRecordsDbContext : IDbContext
     {

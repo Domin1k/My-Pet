@@ -6,6 +6,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using MyPet.Application.AdoptionAds;
+    using MyPet.Application.Common.Mapping;
     using MyPet.Application.CompanyUsers;
     using MyPet.Application.MedicalRecords;
     using MyPet.Infrastructure.AdoptionAds;
@@ -31,7 +32,7 @@
 
             // Act
             var services = serviceCollection
-                .AddAutoMapper(Assembly.GetExecutingAssembly())
+                .AddAutoMapper((_, config) => config.AddProfile(new MappingProfile(Assembly.GetExecutingAssembly())), Array.Empty<Assembly>())
                 .AddQueryRepositories()
                 .BuildServiceProvider();
 

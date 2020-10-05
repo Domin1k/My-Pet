@@ -41,7 +41,7 @@
             => MyPipeline
                 .Configuration()
                 .ShouldMap(request => request
-                    .WithLocation("/Identity/LoginCompany")
+                    .WithLocation("/Identity/Login")
                     .WithMethod(HttpMethod.Post)
                     .WithJsonBody(new
                     {

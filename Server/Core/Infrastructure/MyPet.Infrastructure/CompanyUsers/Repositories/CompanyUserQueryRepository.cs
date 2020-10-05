@@ -5,7 +5,7 @@
     using MyPet.Application.CompanyUsers;
     using MyPet.Application.CompanyUsers.Queries.Profile;
     using MyPet.Domain.CompanyUsers.Models;
-    using MyPet.Infrastructure.Common.Persistence;
+    using MyPet.Infrastructure.Common;
     using System;
     using System.Linq;
     using System.Threading;

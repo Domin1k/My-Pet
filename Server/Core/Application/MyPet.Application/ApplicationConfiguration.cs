@@ -6,6 +6,8 @@
     using Microsoft.Extensions.DependencyInjection;
     using MyPet.Application.Common.Behaviors;
     using MyPet.Application.Common.Contracts;
+    using MyPet.Application.Common.Mapping;
+    using System;
     using System.Reflection;
 
     public static class ApplicationConfiguration
@@ -17,7 +19,7 @@
                 .Configure<AppSettings>(
                     configuration.GetSection(nameof(AppSettings)),
                     options => options.BindNonPublicProperties = true)
-                .AddAutoMapper(Assembly.GetExecutingAssembly())
+                .AddAutoMapper((_, config) => config.AddProfile(new MappingProfile(Assembly.GetExecutingAssembly())), Array.Empty<Assembly>())
                 .AddMediatR(Assembly.GetExecutingAssembly())
                 .AddEventHandlers()
                 .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));

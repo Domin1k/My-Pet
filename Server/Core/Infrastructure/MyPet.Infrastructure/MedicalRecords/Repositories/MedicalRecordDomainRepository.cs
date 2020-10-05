@@ -3,7 +3,7 @@
     using Microsoft.EntityFrameworkCore;
     using MyPet.Domain.MedicalRecords;
     using MyPet.Domain.MedicalRecords.Models;
-    using MyPet.Infrastructure.Common.Persistence;
+    using MyPet.Infrastructure.Common;
     using System.Threading;
     using System.Threading.Tasks;
 

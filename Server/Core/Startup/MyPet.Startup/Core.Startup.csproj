@@ -6,7 +6,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateProgramFile>false</GenerateProgramFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <AssemblyName>MyPet.Startup.Core</AssemblyName>
+    <AssemblyName>MyPet.Startup</AssemblyName>
     <RootNamespace>MyPet.Startup</RootNamespace>
   </PropertyGroup>
 

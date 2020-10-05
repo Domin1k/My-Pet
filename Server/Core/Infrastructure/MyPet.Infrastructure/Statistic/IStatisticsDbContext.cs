@@ -2,7 +2,7 @@
 {
     using Microsoft.EntityFrameworkCore;
     using MyPet.Domain.Statistics.Models;
-    using MyPet.Infrastructure.Common.Persistence;
+    using MyPet.Infrastructure.Common;
 
     internal interface IStatisticsDbContext : IDbContext
     {

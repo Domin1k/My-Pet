@@ -35,4 +35,8 @@
     <PackageReference Include="Scrutor" Version="3.2.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Common.Domain\Common.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
