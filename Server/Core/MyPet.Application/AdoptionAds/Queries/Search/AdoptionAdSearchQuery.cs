@@ -5,10 +5,10 @@
     using MyPet.Application.Common;
     using MyPet.Domain.AdoptionAds.Models;
     using MyPet.Domain.AdoptionAds.Specifications;
-    using MyPet.Domain.Common;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Domain;
 
     public class AdoptionAdSearchQuery : PageModel, IRequest<IEnumerable<AdoptionAdSearchOutputModel>>
     {

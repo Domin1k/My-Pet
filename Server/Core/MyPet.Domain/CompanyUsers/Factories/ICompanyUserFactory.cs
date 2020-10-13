@@ -1,8 +1,8 @@
 ﻿namespace MyPet.Domain.CompanyUsers.Factories
 {
-    using MyPet.Domain.Common.Factories;
     using MyPet.Domain.CompanyUsers.Models;
     using System;
+    using Domain.Factories;
 
     public interface ICompanyUserFactory : IFactory<CompanyUser>
     {

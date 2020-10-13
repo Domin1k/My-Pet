@@ -1,7 +1,7 @@
 ﻿namespace MyPet.Infrastructure.Common.Events
 {
-    using MyPet.Domain.Common.Events;
     using System.Threading.Tasks;
+    using Domain.Events;
 
     public interface IEventDispatcher
     {

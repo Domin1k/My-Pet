@@ -1,8 +1,8 @@
 ﻿namespace MyPet.Infrastructure.MedicalRecords.Configuration
 {
+    using Domain.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using MyPet.Domain.Common.Models;
     using MyPet.Domain.MedicalRecords.Models;
 
     internal class TreatmentConfiguration : IEntityTypeConfiguration<Treatment>

@@ -2,8 +2,8 @@
 {
     using Bogus;
     using FakeItEasy;
-    using MyPet.Domain.Common.Models;
     using System;
+    using Domain.Models;
 
     public class AdoptionCategoryFakes
     {

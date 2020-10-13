@@ -5,10 +5,10 @@
     using MyPet.Application.AdoptionAds.Queries.Search;
     using MyPet.Application.Common.Contracts;
     using MyPet.Domain.AdoptionAds.Models;
-    using MyPet.Domain.Common;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Domain;
 
     public interface IAdoptionAdQueryRepository : IQueryRepository<AdoptionAd>
     {

@@ -1,6 +1,6 @@
 ﻿namespace MyPet.Domain.AdoptionAds.Exceptions
 {
-    using MyPet.Domain.Common.Exceptions;
+    using Domain.Exceptions;
 
     public class InvalidAdoptionCategoryException : BaseDomainException
     {

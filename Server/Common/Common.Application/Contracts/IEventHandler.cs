@@ -1,7 +1,7 @@
 ﻿namespace MyPet.Application.Common.Contracts
 {
-    using MyPet.Domain.Common.Events;
     using System.Threading.Tasks;
+    using Domain.Events;
 
     public interface IEventHandler<in TEvent>
         where TEvent : IDomainEvent

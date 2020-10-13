@@ -1,6 +1,6 @@
-﻿namespace MyPet.Domain.Common.Factories
+﻿namespace MyPet.Domain.Factories
 {
-    using MyPet.Domain.Common.Models;
+    using Models;
 
     public interface IFactory<out TEntity>
          where TEntity : IAggregateRoot

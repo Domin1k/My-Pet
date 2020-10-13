@@ -1,6 +1,6 @@
 ﻿namespace MyPet.Domain.Statistics.Models
 {
-    using MyPet.Domain.Common.Models;
+    using Domain.Models;
 
     public class AdoptionAdView : Entity<int>
     {

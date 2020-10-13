@@ -1,7 +1,7 @@
 ﻿namespace MyPet.Domain.Statistics.Models
 {
-    using MyPet.Domain.Common.Models;
     using System.Collections.Generic;
+    using Domain.Models;
 
     public class Statistics : IAggregateRoot
     {

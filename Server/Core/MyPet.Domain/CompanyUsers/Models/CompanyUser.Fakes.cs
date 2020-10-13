@@ -1,8 +1,8 @@
 ﻿namespace MyPet.Domain.CompanyUsers.Models
 {
     using Bogus;
-    using MyPet.Domain.Common.Models;
     using System;
+    using Domain.Models;
 
     public class CompanyUserFakes
     {

@@ -1,9 +1,9 @@
-﻿namespace MyPet.Domain.Common.Models
+﻿namespace MyPet.Domain.Models
 {
-    using MyPet.Domain.Common.Events;
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Events;
 
     public abstract class Entity<TId>
         where TId : struct

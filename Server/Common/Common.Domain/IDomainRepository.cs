@@ -1,8 +1,8 @@
-﻿namespace MyPet.Domain.Common
+﻿namespace MyPet.Domain
 {
-    using MyPet.Domain.Common.Models;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
 
     public interface IDomainRepository<in TEntity>
         where TEntity : IAggregateRoot

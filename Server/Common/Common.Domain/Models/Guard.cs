@@ -1,8 +1,8 @@
-﻿namespace MyPet.Domain.Common.Models
+﻿namespace MyPet.Domain.Models
 {
-    using Exceptions;
     using System;
     using System.Text.RegularExpressions;
+    using Exceptions;
 
     public static class Guard
     {

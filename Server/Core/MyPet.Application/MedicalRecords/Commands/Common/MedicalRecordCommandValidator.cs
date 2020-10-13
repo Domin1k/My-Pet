@@ -1,7 +1,7 @@
 ﻿namespace MyPet.Application.MedicalRecords.Commands.Common
 {
+    using Domain.Models;
     using FluentValidation;
-    using MyPet.Domain.Common.Models;
     using MyPet.Domain.MedicalRecords.Models;
 
     public class MedicalRecordCommandValidator : AbstractValidator<MedicalRecordInputModel>

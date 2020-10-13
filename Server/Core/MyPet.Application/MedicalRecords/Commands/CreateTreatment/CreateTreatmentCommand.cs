@@ -3,12 +3,12 @@
     using FluentValidation;
     using MediatR;
     using MyPet.Application.Common;
-    using MyPet.Domain.Common.Models;
     using MyPet.Domain.MedicalRecords;
     using MyPet.Domain.MedicalRecords.Models;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Domain.Models;
 
     public class CreateTreatmentCommand : EntityCommand<int>, IRequest<CreateTreatmentOutputModel>
     {

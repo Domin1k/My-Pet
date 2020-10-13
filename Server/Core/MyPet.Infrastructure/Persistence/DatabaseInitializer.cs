@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using Domain.Common;
+    using Domain;
     using Microsoft.EntityFrameworkCore;
     using MyPet.Infrastructure.Persistence;
 

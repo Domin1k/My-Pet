@@ -1,6 +1,5 @@
-﻿namespace MyPet.Domain.Common.Events
+﻿namespace MyPet.Domain.Events
 {
-
     using System;
 
     public interface IDomainEvent

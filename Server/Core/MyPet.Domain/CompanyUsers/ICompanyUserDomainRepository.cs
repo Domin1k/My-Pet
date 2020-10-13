@@ -1,6 +1,5 @@
 ﻿namespace MyPet.Domain.CompanyUsers
 {
-    using MyPet.Domain.Common;
     using MyPet.Domain.CompanyUsers.Models;
     using System;
     using System.Threading;

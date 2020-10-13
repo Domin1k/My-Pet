@@ -2,10 +2,10 @@
 {
     using Bogus;
     using FakeItEasy;
-    using MyPet.Domain.Common.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Domain.Models;
 
     public class MedicalRecordFakes
     {

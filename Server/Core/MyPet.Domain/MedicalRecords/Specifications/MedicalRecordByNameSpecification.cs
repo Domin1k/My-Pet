@@ -1,6 +1,5 @@
 ﻿namespace MyPet.Domain.MedicalRecords.Specifications
 {
-    using MyPet.Domain.Common;
     using MyPet.Domain.MedicalRecords.Models;
     using System;
     using System.Linq.Expressions;

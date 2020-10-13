@@ -1,6 +1,5 @@
 ﻿namespace MyPet.Domain.Statistics.Models
 {
-    using Common;
     using System;
     using System.Collections.Generic;
 

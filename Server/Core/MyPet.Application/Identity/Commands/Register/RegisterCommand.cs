@@ -4,13 +4,13 @@
     using MediatR;
     using MyPet.Application.Common;
     using MyPet.Application.Identity.Contracts;
-    using MyPet.Domain.Common.Models;
     using MyPet.Domain.CompanyUsers;
     using MyPet.Domain.CompanyUsers.Factories;
     using MyPet.Domain.CompanyUsers.Models;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Domain.Models;
 
     public class RegisterCommand : UserInputModel, IRequest<Result>
     {

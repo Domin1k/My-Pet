@@ -1,7 +1,6 @@
 ﻿namespace MyPet.Domain.AdoptionAds
 {
     using MyPet.Domain.AdoptionAds.Models;
-    using MyPet.Domain.Common;
     using System.Threading;
     using System.Threading.Tasks;
 

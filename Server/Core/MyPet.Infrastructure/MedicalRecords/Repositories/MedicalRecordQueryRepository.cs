@@ -6,13 +6,13 @@
     using MyPet.Application.MedicalRecords.Queries.Common;
     using MyPet.Application.MedicalRecords.Queries.Details;
     using MyPet.Application.MedicalRecords.Queries.Search;
-    using MyPet.Domain.Common;
     using MyPet.Domain.MedicalRecords.Models;
     using MyPet.Infrastructure.Common;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Domain;
 
     internal class MedicalRecordQueryRepository : DataRepository<IMedicalRecordsDbContext, MedicalRecord>, IMedicalRecordQueryRepository
     {

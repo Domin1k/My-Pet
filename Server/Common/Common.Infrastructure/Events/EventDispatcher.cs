@@ -2,13 +2,13 @@
 {
     using Microsoft.Extensions.DependencyInjection;
     using MyPet.Application.Common.Contracts;
-    using MyPet.Domain.Common.Events;
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
     using System.Threading.Tasks;
+    using Domain.Events;
 
     internal class EventDispatcher : IEventDispatcher
     {

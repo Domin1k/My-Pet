@@ -7,13 +7,13 @@
     using MyPet.Application.AdoptionAds.Queries.Details;
     using MyPet.Application.AdoptionAds.Queries.Search;
     using MyPet.Domain.AdoptionAds.Models;
-    using MyPet.Domain.Common;
     using MyPet.Infrastructure.Common;
     using MyPet.Infrastructure.Common.Persistence;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Domain;
 
     internal class AdoptionAdQueryRepository : DataRepository<IAdoptionAdsDbContext, AdoptionAd>, IAdoptionAdQueryRepository
     {

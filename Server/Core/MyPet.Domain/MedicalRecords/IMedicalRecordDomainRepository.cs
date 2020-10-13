@@ -1,6 +1,5 @@
 ﻿namespace MyPet.Domain.MedicalRecords
 {
-    using MyPet.Domain.Common;
     using MyPet.Domain.MedicalRecords.Models;
     using System.Threading;
     using System.Threading.Tasks;

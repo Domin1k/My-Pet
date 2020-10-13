@@ -4,9 +4,9 @@
     using MediatR;
     using MyPet.Application.Common;
     using MyPet.Application.Identity.Contracts;
-    using MyPet.Domain.Common.Models;
     using System.Threading;
     using System.Threading.Tasks;
+    using Domain.Models;
 
     public class LoginCommand : UserInputModel, IRequest<Result<LoginOutputModel>>
     {

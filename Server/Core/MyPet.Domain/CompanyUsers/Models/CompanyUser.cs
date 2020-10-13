@@ -1,10 +1,10 @@
 ﻿namespace MyPet.Domain.CompanyUsers.Models
 {
-    using MyPet.Domain.Common.Models;
     using MyPet.Domain.CompanyUsers.Events;
     using MyPet.Domain.CompanyUsers.Exceptions;
     using System;
     using System.Collections.Generic;
+    using Domain.Models;
 
     public class CompanyUser : Entity<int>, IAggregateRoot
     {

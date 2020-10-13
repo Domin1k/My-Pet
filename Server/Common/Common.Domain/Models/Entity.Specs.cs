@@ -1,7 +1,7 @@
-﻿namespace MyPet.Domain.Common.Models
+﻿namespace MyPet.Domain.Models
 {
-    using FluentAssertions;
     using System;
+    using FluentAssertions;
     using Xunit;
 
     public class EntitySpecs

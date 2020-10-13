@@ -1,8 +1,8 @@
 ﻿namespace MyPet.Infrastructure.CompanyUsers.Configuration
 {
+    using Domain.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using MyPet.Domain.Common.Models;
     using MyPet.Domain.CompanyUsers.Models;
 
     internal class CompanyUserConfiguration : IEntityTypeConfiguration<CompanyUser>

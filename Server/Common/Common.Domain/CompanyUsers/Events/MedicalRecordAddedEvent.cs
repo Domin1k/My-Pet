@@ -1,7 +1,7 @@
 ﻿namespace MyPet.Domain.CompanyUsers.Events
 {
-    using MyPet.Domain.Common.Events;
     using System;
+    using Domain.Events;
 
     public class MedicalRecordAddedEvent : IDomainEvent
     {

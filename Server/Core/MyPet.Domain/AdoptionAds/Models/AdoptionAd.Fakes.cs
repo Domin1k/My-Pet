@@ -4,7 +4,7 @@
     using Bogus;
     using MyPet.Domain.CompanyUsers.Models;
     using System;
-    using MyPet.Domain.Common.Models;
+    using Domain.Models;
 
     public class AdoptionAdFakes
     {

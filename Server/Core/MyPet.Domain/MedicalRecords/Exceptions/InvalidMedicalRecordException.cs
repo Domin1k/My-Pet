@@ -1,6 +1,6 @@
 ﻿namespace MyPet.Domain.MedicalRecords.Exceptions
 {
-    using MyPet.Domain.Common.Exceptions;
+    using Domain.Exceptions;
 
     public class InvalidMedicalRecordException : BaseDomainException
     {

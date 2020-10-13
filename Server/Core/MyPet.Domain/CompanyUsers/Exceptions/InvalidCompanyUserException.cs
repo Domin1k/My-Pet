@@ -1,6 +1,6 @@
 ﻿namespace MyPet.Domain.CompanyUsers.Exceptions
 {
-    using MyPet.Domain.Common.Exceptions;
+    using Domain.Exceptions;
 
     public class InvalidCompanyUserException : BaseDomainException
     {

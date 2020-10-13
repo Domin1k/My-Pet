@@ -1,7 +1,7 @@
 ﻿namespace MyPet.Domain.AdoptionAds.Factories
 {
+    using Domain.Factories;
     using MyPet.Domain.AdoptionAds.Models;
-    using MyPet.Domain.Common.Factories;
 
     public interface IAdoptionAdFactory : IFactory<AdoptionAd>
     {

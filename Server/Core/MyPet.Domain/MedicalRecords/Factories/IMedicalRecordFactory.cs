@@ -1,6 +1,6 @@
 ﻿namespace MyPet.Domain.MedicalRecords.Factories
 {
-    using MyPet.Domain.Common.Factories;
+    using Domain.Factories;
     using MyPet.Domain.MedicalRecords.Models;
 
     public interface IMedicalRecordFactory : IFactory<MedicalRecord>

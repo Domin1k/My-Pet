@@ -1,7 +1,6 @@
 ﻿namespace MyPet.Domain.AdoptionAds.Specifications
 {
     using MyPet.Domain.AdoptionAds.Models;
-    using MyPet.Domain.Common;
     using System;
     using System.Linq.Expressions;
 

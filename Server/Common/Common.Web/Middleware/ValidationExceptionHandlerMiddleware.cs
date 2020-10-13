@@ -3,12 +3,12 @@
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
     using MyPet.Application.Common.Exceptions;
-    using MyPet.Domain.Common.Exceptions;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
     using System;
     using System.Net;
     using System.Threading.Tasks;
+    using Domain.Exceptions;
 
     public class ValidationExceptionHandlerMiddleware
     {

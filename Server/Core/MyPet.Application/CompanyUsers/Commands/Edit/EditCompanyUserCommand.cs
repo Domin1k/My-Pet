@@ -5,10 +5,10 @@
     using MyPet.Application.Common;
     using MyPet.Application.Common.Contracts;
     using MyPet.Application.CompanyUsers.Commands.Common;
-    using MyPet.Domain.Common.Models;
     using MyPet.Domain.CompanyUsers;
     using System.Threading;
     using System.Threading.Tasks;
+    using Domain.Models;
 
     public class EditCompanyUserCommand : CompanyUserInputModel, IRequest<Result>
     {

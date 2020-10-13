@@ -1,7 +1,7 @@
 ﻿namespace MyPet.Application.CompanyUsers.Commands.Common
 {
+    using Domain.Models;
     using FluentValidation;
-    using MyPet.Domain.Common.Models;
     using MyPet.Domain.CompanyUsers.Models;
 
     public class CompanyUserCommandValidator<TModel> : AbstractValidator<TModel>

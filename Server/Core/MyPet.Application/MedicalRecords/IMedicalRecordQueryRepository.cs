@@ -4,11 +4,11 @@
     using MyPet.Application.MedicalRecords.Queries.Common;
     using MyPet.Application.MedicalRecords.Queries.Details;
     using MyPet.Application.MedicalRecords.Queries.Search;
-    using MyPet.Domain.Common;
     using MyPet.Domain.MedicalRecords.Models;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Domain;
 
     public interface IMedicalRecordQueryRepository : IQueryRepository<MedicalRecord>
     {

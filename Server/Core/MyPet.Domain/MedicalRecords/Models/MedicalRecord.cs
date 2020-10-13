@@ -1,9 +1,9 @@
 ﻿namespace MyPet.Domain.MedicalRecords.Models
 {
-    using MyPet.Domain.Common.Models;
     using MyPet.Domain.MedicalRecords.Exceptions;
     using System;
     using System.Collections.Generic;
+    using Domain.Models;
 
     public class MedicalRecord : Entity<int>, IAggregateRoot
     {

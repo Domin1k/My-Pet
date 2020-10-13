@@ -1,4 +1,4 @@
-﻿namespace MyPet.Domain.Common.Models
+﻿namespace MyPet.Domain.Models
 {
     using System.Collections.Generic;
     using System.Linq;

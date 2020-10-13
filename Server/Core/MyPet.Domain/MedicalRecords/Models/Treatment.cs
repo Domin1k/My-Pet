@@ -1,8 +1,8 @@
 ﻿namespace MyPet.Domain.MedicalRecords.Models
 {
-    using MyPet.Domain.Common.Models;
     using MyPet.Domain.MedicalRecords.Exceptions;
     using System;
+    using Domain.Models;
 
     public class Treatment : Entity<int>
     {

@@ -1,11 +1,11 @@
 ﻿namespace MyPet.Infrastructure.Common
 {
     using Application.Common.Contracts;
-    using MyPet.Domain.Common;
-    using MyPet.Domain.Common.Models;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Domain;
+    using Domain.Models;
 
     internal abstract class DataRepository<TDbContext, TEntity> : IQueryRepository<TEntity>, IDomainRepository<TEntity>
         where TDbContext : IDbContext

@@ -1,6 +1,6 @@
 ﻿namespace MyPet.Domain.MedicalRecords.Models
 {
-    using MyPet.Domain.Common.Models;
+    using Domain.Models;
 
     public class Species : Enumeration
     {

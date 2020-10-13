@@ -1,10 +1,10 @@
 ﻿namespace MyPet.Domain.MedicalRecords.Models
 {
     using Bogus;
-    using MyPet.Domain.Common.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Domain.Models;
 
     public class TreatmentFakes
     {

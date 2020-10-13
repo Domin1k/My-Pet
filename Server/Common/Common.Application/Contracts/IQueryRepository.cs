@@ -1,6 +1,6 @@
 ﻿namespace MyPet.Application.Common.Contracts
 {
-    using MyPet.Domain.Common.Models;
+    using Domain.Models;
 
     public interface IQueryRepository<in TEntity>
         where TEntity : IAggregateRoot

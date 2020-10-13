@@ -1,4 +1,4 @@
-﻿namespace MyPet.Domain.Common
+﻿namespace MyPet.Domain
 {
     using System;
     using System.Collections.Concurrent;

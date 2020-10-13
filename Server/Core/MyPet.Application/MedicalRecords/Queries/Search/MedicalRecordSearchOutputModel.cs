@@ -1,9 +1,9 @@
 ﻿namespace MyPet.Application.MedicalRecords.Queries.Search
 {
     using AutoMapper;
+    using Domain.Models;
     using MyPet.Application.Common.Mapping;
     using MyPet.Application.MedicalRecords.Queries.Common;
-    using MyPet.Domain.Common.Models;
     using MyPet.Domain.MedicalRecords.Models;
 
     public class MedicalRecordSearchOutputModel : MedicalRecordOutputModel, IMapFrom<MedicalRecord>

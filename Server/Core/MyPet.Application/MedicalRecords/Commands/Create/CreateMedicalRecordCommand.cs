@@ -3,13 +3,13 @@
     using MediatR;
     using MyPet.Application.Common.Contracts;
     using MyPet.Application.MedicalRecords.Commands.Common;
-    using MyPet.Domain.Common.Models;
     using MyPet.Domain.CompanyUsers;
     using MyPet.Domain.MedicalRecords;
     using MyPet.Domain.MedicalRecords.Factories;
     using MyPet.Domain.MedicalRecords.Models;
     using System.Threading;
     using System.Threading.Tasks;
+    using Domain.Models;
 
     public class CreateMedicalRecordCommand : MedicalRecordInputModel, IRequest<CreateMedicalRecordOutputModel>
     {
