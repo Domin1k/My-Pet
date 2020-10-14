@@ -2,7 +2,6 @@
 {
     using FluentValidation;
     using MediatR;
-    using MyPet.Application.Common;
     using MyPet.Domain.MedicalRecords;
     using MyPet.Domain.MedicalRecords.Models;
     using System;

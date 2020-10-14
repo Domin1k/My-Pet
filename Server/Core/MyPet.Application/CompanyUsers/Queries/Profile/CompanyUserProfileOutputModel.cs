@@ -1,6 +1,6 @@
 ﻿namespace MyPet.Application.CompanyUsers.Queries.Profile
 {
-    using MyPet.Application.Common.Mapping;
+    using Mapping;
     using MyPet.Domain.CompanyUsers.Models;
 
     public class CompanyUserProfileOutputModel : IMapFrom<CompanyUser>

@@ -1,6 +1,5 @@
 ﻿namespace MyPet.Infrastructure
 {
-    using Application.Common.Contracts;
     using Identity;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Identity;
@@ -18,6 +17,7 @@
     using MyPet.Infrastructure.MedicalRecords;
     using MyPet.Infrastructure.Persistence;
     using System.Text;
+    using Application.Contracts;
 
     public static class InfrastructureConfiguration
     {

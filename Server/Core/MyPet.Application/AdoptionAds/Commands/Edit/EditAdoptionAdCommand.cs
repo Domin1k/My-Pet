@@ -2,7 +2,6 @@
 {
     using MediatR;
     using MyPet.Application.AdoptionAds.Commands.Common;
-    using MyPet.Application.Common;
     using MyPet.Domain.AdoptionAds;
     using System.Threading;
     using System.Threading.Tasks;

@@ -1,7 +1,7 @@
 ﻿namespace MyPet.Web.Common
 {
     using System.Threading.Tasks;
-    using Application.Common;
+    using Application;
     using Microsoft.AspNetCore.Mvc;
 
     public static class ResultExtensions

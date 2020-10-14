@@ -1,6 +1,5 @@
 ﻿namespace MyPet.Application.Identity.Contracts
 {
-    using MyPet.Application.Common;
     using MyPet.Application.Identity.Commands;
     using MyPet.Application.Identity.Commands.Login;
     using System.Threading.Tasks;

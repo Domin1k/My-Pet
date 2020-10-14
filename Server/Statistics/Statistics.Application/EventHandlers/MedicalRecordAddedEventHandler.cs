@@ -1,9 +1,9 @@
 ﻿namespace MyPet.Application.Statistic.EventHandlers
 {
-    using MyPet.Application.Common.Contracts;
     using MyPet.Application.Statistic;
     using MyPet.Domain.CompanyUsers.Events;
     using System.Threading.Tasks;
+    using Contracts;
 
     public class MedicalRecordAddedEventHandler : IEventHandler<MedicalRecordAddedEvent>
     {

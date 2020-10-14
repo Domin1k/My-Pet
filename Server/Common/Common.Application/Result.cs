@@ -1,4 +1,4 @@
-﻿namespace MyPet.Application.Common
+﻿namespace MyPet.Application
 {
     using System;
     using System.Collections.Generic;

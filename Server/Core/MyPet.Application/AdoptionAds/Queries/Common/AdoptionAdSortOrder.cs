@@ -1,6 +1,5 @@
 ﻿namespace MyPet.Application.AdoptionAds.Queries.Common
 {
-    using MyPet.Application.Common;
     using MyPet.Domain.AdoptionAds.Models;
     using System;
     using System.Linq.Expressions;

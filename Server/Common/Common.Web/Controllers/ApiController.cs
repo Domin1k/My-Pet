@@ -1,10 +1,10 @@
 ﻿namespace MyPet.Web.Common
 {
-    using Application.Common;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.DependencyInjection;
     using System.Threading.Tasks;
+    using Application;
 
     [ApiController]
     [Route("[controller]")]

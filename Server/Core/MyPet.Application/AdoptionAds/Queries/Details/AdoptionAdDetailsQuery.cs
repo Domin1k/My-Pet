@@ -1,7 +1,6 @@
 ﻿namespace MyPet.Application.AdoptionAds.Queries.Details
 {
     using MediatR;
-    using MyPet.Application.Common;
     using System.Threading;
     using System.Threading.Tasks;
 

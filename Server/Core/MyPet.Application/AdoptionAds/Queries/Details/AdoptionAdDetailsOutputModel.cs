@@ -1,7 +1,7 @@
 ﻿namespace MyPet.Application.AdoptionAds.Queries.Details
 {
     using AutoMapper;
-    using MyPet.Application.Common.Mapping;
+    using Mapping;
     using MyPet.Domain.AdoptionAds.Models;
 
     public class AdoptionAdDetailsOutputModel : IMapFrom<AdoptionAd>

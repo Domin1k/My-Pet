@@ -1,4 +1,4 @@
-﻿namespace MyPet.Application.Common.Mapping
+﻿namespace MyPet.Application.Mapping
 {
     using AutoMapper;
 

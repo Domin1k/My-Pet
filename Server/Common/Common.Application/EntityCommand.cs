@@ -1,4 +1,4 @@
-﻿namespace MyPet.Application.Common
+﻿namespace MyPet.Application
 {
     public class EntityCommand<TId>
     {

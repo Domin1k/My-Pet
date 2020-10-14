@@ -3,11 +3,11 @@
     using MyPet.Application.AdoptionAds.Queries.Common;
     using MyPet.Application.AdoptionAds.Queries.Details;
     using MyPet.Application.AdoptionAds.Queries.Search;
-    using MyPet.Application.Common.Contracts;
     using MyPet.Domain.AdoptionAds.Models;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Contracts;
     using Domain;
 
     public interface IAdoptionAdQueryRepository : IQueryRepository<AdoptionAd>

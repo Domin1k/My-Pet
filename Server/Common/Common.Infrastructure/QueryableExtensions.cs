@@ -1,7 +1,7 @@
 ﻿namespace MyPet.Infrastructure.Common
 {
     using System.Linq;
-    using Application.Common;
+    using Application;
 
     public static class QueryableExtensions
     {

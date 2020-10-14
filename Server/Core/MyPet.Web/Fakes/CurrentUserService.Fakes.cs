@@ -1,7 +1,7 @@
 ﻿namespace MyPet.Web.Common
 {
+    using Application.Contracts;
     using FakeItEasy;
-    using MyPet.Application.Common.Contracts;
     using MyPet.Domain.CompanyUsers.Models;
 
     public class CurrentUserServiceFakes

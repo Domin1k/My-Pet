@@ -1,7 +1,6 @@
 ﻿namespace MyPet.Application.MedicalRecords.Commands.Edit
 {
     using MediatR;
-    using MyPet.Application.Common;
     using MyPet.Application.MedicalRecords.Commands.Common;
     using MyPet.Domain.MedicalRecords;
     using System.Threading;

@@ -1,10 +1,10 @@
 ﻿namespace MyPet.Web
 {
-    using Application.Common;
+    using Application;
+    using Application.Contracts;
     using FluentValidation.AspNetCore;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.DependencyInjection;
-    using MyPet.Application.Common.Contracts;
     using MyPet.Web.Common;
 
     public static class WebConfiguration

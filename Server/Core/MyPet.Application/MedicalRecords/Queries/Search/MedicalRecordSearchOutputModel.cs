@@ -2,7 +2,7 @@
 {
     using AutoMapper;
     using Domain.Models;
-    using MyPet.Application.Common.Mapping;
+    using Mapping;
     using MyPet.Application.MedicalRecords.Queries.Common;
     using MyPet.Domain.MedicalRecords.Models;
 

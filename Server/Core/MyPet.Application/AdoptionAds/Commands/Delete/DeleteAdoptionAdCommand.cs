@@ -1,7 +1,6 @@
 ﻿namespace MyPet.Application.AdoptionAds.Commands.Delete
 {
     using MediatR;
-    using MyPet.Application.Common;
     using MyPet.Domain.AdoptionAds;
     using System.Threading;
     using System.Threading.Tasks;

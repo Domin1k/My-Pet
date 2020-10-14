@@ -4,11 +4,11 @@
     using MediatR;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using MyPet.Application.Common.Behaviors;
-    using MyPet.Application.Common.Contracts;
-    using MyPet.Application.Common.Mapping;
     using System;
     using System.Reflection;
+    using Behaviors;
+    using Contracts;
+    using Mapping;
 
     public static class ApplicationConfiguration
     {

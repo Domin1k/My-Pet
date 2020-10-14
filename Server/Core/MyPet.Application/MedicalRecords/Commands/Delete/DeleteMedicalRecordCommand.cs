@@ -1,7 +1,6 @@
 ﻿namespace MyPet.Application.MedicalRecords.Commands.Delete
 {
     using MediatR;
-    using MyPet.Application.Common;
     using MyPet.Domain.MedicalRecords;
     using System.Threading;
     using System.Threading.Tasks;

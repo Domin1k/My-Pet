@@ -1,12 +1,12 @@
 ﻿namespace MyPet.Infrastructure.Identity
 {
-    using Application.Common;
     using Microsoft.AspNetCore.Identity;
     using MyPet.Application.Identity.Commands;
     using MyPet.Application.Identity.Commands.Login;
     using MyPet.Application.Identity.Contracts;
     using System.Linq;
     using System.Threading.Tasks;
+    using Application;
 
     internal class IdentityService : IIdentity
     {

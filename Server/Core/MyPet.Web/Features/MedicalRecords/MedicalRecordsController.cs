@@ -2,7 +2,6 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using MyPet.Application.Common;
     using MyPet.Application.MedicalRecords.Commands.Create;
     using MyPet.Application.MedicalRecords.Commands.CreateTreatment;
     using MyPet.Application.MedicalRecords.Commands.Delete;
@@ -12,6 +11,7 @@
     using MyPet.Web.Common;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Application;
 
     [Authorize]
     public class MedicalRecordsController : ApiController

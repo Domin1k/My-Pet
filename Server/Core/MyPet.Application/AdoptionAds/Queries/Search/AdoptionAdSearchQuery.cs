@@ -2,7 +2,6 @@
 {
     using MediatR;
     using MyPet.Application.AdoptionAds.Queries.Common;
-    using MyPet.Application.Common;
     using MyPet.Domain.AdoptionAds.Models;
     using MyPet.Domain.AdoptionAds.Specifications;
     using System.Collections.Generic;

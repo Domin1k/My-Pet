@@ -1,9 +1,9 @@
 ﻿namespace MyPet.Application.Statistic
 {
-    using MyPet.Application.Common.Contracts;
     using MyPet.Domain.Statistics.Models;
     using System.Threading;
     using System.Threading.Tasks;
+    using Contracts;
 
     public interface IStatisticsQueryRepository : IQueryRepository<Statistics>
     {

@@ -1,12 +1,11 @@
 ﻿namespace MyPet.Application.CompanyUsers.Commands.Delete
 {
     using MediatR;
-    using MyPet.Application.Common;
-    using MyPet.Application.Common.Contracts;
     using MyPet.Domain.CompanyUsers;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Contracts;
 
     public class DeleteCompanyUserCommand : IRequest<Result>
     {

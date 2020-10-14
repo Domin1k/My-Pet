@@ -1,6 +1,5 @@
 ﻿namespace MyPet.Application.MedicalRecords
 {
-    using MyPet.Application.Common.Contracts;
     using MyPet.Application.MedicalRecords.Queries.Common;
     using MyPet.Application.MedicalRecords.Queries.Details;
     using MyPet.Application.MedicalRecords.Queries.Search;
@@ -8,6 +7,7 @@
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Contracts;
     using Domain;
 
     public interface IMedicalRecordQueryRepository : IQueryRepository<MedicalRecord>

@@ -1,4 +1,4 @@
-﻿namespace MyPet.Application.Common.Exceptions
+﻿namespace MyPet.Application.Exceptions
 {
     using System;
 

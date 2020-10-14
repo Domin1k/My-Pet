@@ -1,4 +1,4 @@
-﻿namespace MyPet.Application.Common.Behaviors
+﻿namespace MyPet.Application.Behaviors
 {
     using System.Collections.Generic;
     using System.Linq;

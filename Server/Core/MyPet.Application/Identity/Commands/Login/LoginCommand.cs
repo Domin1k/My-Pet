@@ -2,7 +2,6 @@
 {
     using FluentValidation;
     using MediatR;
-    using MyPet.Application.Common;
     using MyPet.Application.Identity.Contracts;
     using System.Threading;
     using System.Threading.Tasks;

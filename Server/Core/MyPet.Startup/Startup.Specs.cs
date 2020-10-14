@@ -1,5 +1,6 @@
 ﻿namespace MyPet.Startup
 {
+    using Application.Contracts;
     using Infrastructure.Identity;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
@@ -7,7 +8,6 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using MyPet.Application.AdoptionAds;
-    using MyPet.Application.Common.Contracts;
     using MyPet.Application.CompanyUsers;
     using MyPet.Application.MedicalRecords;
     using MyPet.Web.Common;

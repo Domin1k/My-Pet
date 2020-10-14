@@ -7,10 +7,10 @@
     using MyPet.Application.AdoptionAds.Commands.Edit;
     using MyPet.Application.AdoptionAds.Queries.Details;
     using MyPet.Application.AdoptionAds.Queries.Search;
-    using MyPet.Application.Common;
     using MyPet.Web.Common;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Application;
 
     [Authorize]
     public class AdoptionAdsController : ApiController

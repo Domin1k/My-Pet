@@ -5,7 +5,6 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using MyPet.Application.AdoptionAds;
-    using MyPet.Application.Common.Mapping;
     using MyPet.Application.CompanyUsers;
     using MyPet.Application.MedicalRecords;
     using MyPet.Infrastructure.AdoptionAds;
@@ -14,6 +13,7 @@
     using MyPet.Infrastructure.Persistence;
     using System;
     using System.Reflection;
+    using Application.Mapping;
     using Xunit;
 
     public class InfrastructureConfigurationSpecs

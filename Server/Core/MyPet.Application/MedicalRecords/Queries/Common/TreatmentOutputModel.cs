@@ -1,8 +1,8 @@
 ﻿namespace MyPet.Application.MedicalRecords.Queries.Common
 {
-    using MyPet.Application.Common.Mapping;
     using MyPet.Domain.MedicalRecords.Models;
     using System;
+    using Mapping;
 
     public class TreatmentOutputModel : IMapFrom<Treatment>
     {

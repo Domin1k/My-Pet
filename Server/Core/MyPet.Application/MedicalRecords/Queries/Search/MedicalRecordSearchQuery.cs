@@ -1,7 +1,6 @@
 ﻿namespace MyPet.Application.MedicalRecords.Queries.Search
 {
     using MediatR;
-    using MyPet.Application.Common;
     using MyPet.Application.MedicalRecords.Queries.Common;
     using MyPet.Domain.MedicalRecords.Specifications;
     using System.Collections.Generic;

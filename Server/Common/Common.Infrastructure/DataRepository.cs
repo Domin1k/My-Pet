@@ -1,9 +1,9 @@
 ﻿namespace MyPet.Infrastructure.Common
 {
-    using Application.Common.Contracts;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Contracts;
     using Domain;
     using Domain.Models;
 

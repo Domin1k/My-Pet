@@ -1,4 +1,4 @@
-﻿namespace MyPet.Application.Common.Contracts
+﻿namespace MyPet.Application.Contracts
 {
     using Domain.Models;
 

@@ -1,9 +1,9 @@
 ﻿namespace MyPet.Web.Common
 {
     using Microsoft.AspNetCore.Http;
-    using MyPet.Application.Common.Contracts;
     using System;
     using System.Security.Claims;
+    using Application.Contracts;
 
     public class CurrentUserService : ICurrentUserService
     {

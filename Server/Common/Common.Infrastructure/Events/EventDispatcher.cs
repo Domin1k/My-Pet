@@ -1,13 +1,13 @@
 ﻿namespace MyPet.Infrastructure.Common.Events
 {
     using Microsoft.Extensions.DependencyInjection;
-    using MyPet.Application.Common.Contracts;
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
     using System.Threading.Tasks;
+    using Application.Contracts;
     using Domain.Events;
 
     internal class EventDispatcher : IEventDispatcher

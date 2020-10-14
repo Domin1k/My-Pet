@@ -1,11 +1,10 @@
 ﻿namespace MyPet.Application.CompanyUsers.Queries.Profile
 {
     using MediatR;
-    using MyPet.Application.Common;
-    using MyPet.Application.Common.Contracts;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Contracts;
 
     public class CompanyUserProfileQuery : IRequest<CompanyUserProfileOutputModel>
     {

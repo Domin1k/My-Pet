@@ -1,13 +1,13 @@
 ﻿namespace MyPet.Application.CompanyUsers.Commands.Edit
 {
     using MediatR;
-    using MyPet.Application.Common.Contracts;
     using MyPet.Application.CompanyUsers.Commands.Common;
     using MyPet.Application.CompanyUsers.Commands.Create;
     using MyPet.Domain.CompanyUsers;
     using MyPet.Domain.CompanyUsers.Factories;
     using System.Threading;
     using System.Threading.Tasks;
+    using Contracts;
 
     public class CreateCompanyUserCommand : CompanyUserInputModel, IRequest<CreateCompanyUserOutputModel>
     {
